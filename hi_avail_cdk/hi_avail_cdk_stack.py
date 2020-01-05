@@ -47,12 +47,31 @@ class HiAvailCdkStack(core.Stack):
             max_azs=2
         )
 
-        privateSubnet0 = vpc.select_subnets(subnet_type=SubnetType.PRIVATE)
+        #private_subnets = vpc.select_subnets(subnet_type=SubnetType.PRIVATE)
+        #private_subnet0 = ec2.SelectedSubnets(availability_zones='*', has_public=False, internet_connectivity_established=True, subnet_ids=0, subnets='*')
 
         # define the IAM role that will allow the EC2 instance to communicate with SSM
         role = iam.Role(self, "Role", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
         # arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
         role.add_managed_policy(iam.ManagedPolicy(self, id='mp', managed_policy_name='AmazonSSMManagedInstanceCore', statements=[iam.PolicyStatement(actions=['*'], resources=['*'])]))
+        # define a user data script to install & launch our web server
+        ssma_user_data = ec2.UserData.for_linux()
+        SSM_AGENT_RPM = 'https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm'
+        install_command = 'sudo yum install -y ' + SSM_AGENT_RPM
+        ssma_user_data.add_commands('sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpmhttps://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm', 'restart amazon-ssm-agent')
+        # install and start Nginx
+        ssma_user_data.add_commands('yum install -y nginx', 'chkconfig nginx on', 'service nginx start')
 
-
-
+        # hi-avail-cdk/NewsBlogInstance
+        # launch an EC2 instance in the private subnet
+        instance = ec2.Instance(
+            self, "NewsBlogInstance",
+            vpc=vpc,
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO
+            ),
+            machine_image=ec2.AmazonLinuxImage(),
+            vpc_subnets={ 'subnet_type': ec2.SubnetType.PRIVATE },
+            role=role,
+            user_data=ssma_user_data
+        )

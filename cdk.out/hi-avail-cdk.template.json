@@ -469,6 +469,89 @@
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk/mp/Resource"
       }
+    },
+    "NewsBlogInstanceInstanceSecurityGroupA337909F": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "hi-avail-cdk/NewsBlogInstance/InstanceSecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk/NewsBlogInstance"
+          }
+        ],
+        "VpcId": {
+          "Ref": "MyVpcF9F0CA6F"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk/NewsBlogInstance/InstanceSecurityGroup/Resource"
+      }
+    },
+    "NewsBlogInstanceInstanceProfile0456EC8E": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "Role1ABCC5F0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk/NewsBlogInstance/InstanceProfile"
+      }
+    },
+    "NewsBlogInstanceDE9AC72B": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": "us-east-1a",
+        "IamInstanceProfile": {
+          "Ref": "NewsBlogInstanceInstanceProfile0456EC8E"
+        },
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "t2.micro",
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "NewsBlogInstanceInstanceSecurityGroupA337909F",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetId": {
+          "Ref": "MyVpcPrivateSubnet1Subnet5057CF7E"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk/NewsBlogInstance"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": "#!/bin/bash\nsudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpmhttps://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm\nrestart amazon-ssm-agent\nyum install -y nginx\nchkconfig nginx on\nservice nginx start"
+        }
+      },
+      "DependsOn": [
+        "Role1ABCC5F0"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk/NewsBlogInstance/Resource"
+      }
+    }
+  },
+  "Parameters": {
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2"
     }
   }
 }
