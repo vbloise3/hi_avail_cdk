@@ -44,5 +44,3 @@ class HiAvailCdkStack(core.Stack):
             user_data=ssma_user_data
         )
 
-        # to get instance metadata
-        # curl http://169.254.169.254/latest/meta-data/
