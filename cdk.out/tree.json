@@ -559,21 +559,21 @@
               }
             }
           },
-          "NewsBlogInstance": {
-            "id": "NewsBlogInstance",
-            "path": "hi-avail-cdk/NewsBlogInstance",
+          "PrivateInstance": {
+            "id": "PrivateInstance",
+            "path": "hi-avail-cdk/PrivateInstance",
             "children": {
               "InstanceSecurityGroup": {
                 "id": "InstanceSecurityGroup",
-                "path": "hi-avail-cdk/NewsBlogInstance/InstanceSecurityGroup",
+                "path": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk/NewsBlogInstance/InstanceSecurityGroup/Resource",
+                    "path": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
                       "aws:cdk:cloudformation:props": {
-                        "groupDescription": "hi-avail-cdk/NewsBlogInstance/InstanceSecurityGroup",
+                        "groupDescription": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup",
                         "securityGroupEgress": [
                           {
                             "cidrIp": "0.0.0.0/0",
@@ -584,7 +584,7 @@
                         "tags": [
                           {
                             "key": "Name",
-                            "value": "hi-avail-cdk/NewsBlogInstance"
+                            "value": "hi-avail-cdk/PrivateInstance"
                           }
                         ],
                         "vpcId": {
@@ -597,7 +597,7 @@
               },
               "InstanceProfile": {
                 "id": "InstanceProfile",
-                "path": "hi-avail-cdk/NewsBlogInstance/InstanceProfile",
+                "path": "hi-avail-cdk/PrivateInstance/InstanceProfile",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
                   "aws:cdk:cloudformation:props": {
@@ -611,13 +611,13 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "hi-avail-cdk/NewsBlogInstance/Resource",
+                "path": "hi-avail-cdk/PrivateInstance/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
                   "aws:cdk:cloudformation:props": {
                     "availabilityZone": "us-east-1a",
                     "iamInstanceProfile": {
-                      "Ref": "NewsBlogInstanceInstanceProfile0456EC8E"
+                      "Ref": "PrivateInstanceInstanceProfile81FB7A0C"
                     },
                     "imageId": {
                       "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
@@ -626,7 +626,7 @@
                     "securityGroupIds": [
                       {
                         "Fn::GetAtt": [
-                          "NewsBlogInstanceInstanceSecurityGroupA337909F",
+                          "PrivateInstanceInstanceSecurityGroup181877AD",
                           "GroupId"
                         ]
                       }
@@ -637,11 +637,11 @@
                     "tags": [
                       {
                         "key": "Name",
-                        "value": "hi-avail-cdk/NewsBlogInstance"
+                        "value": "hi-avail-cdk/PrivateInstance"
                       }
                     ],
                     "userData": {
-                      "Fn::Base64": "#!/bin/bash\nsudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpmhttps://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm\nrestart amazon-ssm-agent\nyum install -y nginx\nchkconfig nginx on\nservice nginx start"
+                      "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
                     }
                   }
                 }
