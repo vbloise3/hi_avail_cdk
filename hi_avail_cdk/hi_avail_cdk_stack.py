@@ -10,7 +10,7 @@ class HiAvailCdkStack(core.Stack):
         super().__init__(scope, id, **kwargs)
 
         # create VPC w/ public and private subnets in 2 AZs
-        #     this also creates NAT Gateways
+        #     this also creates NAT Gateways in our public subnets
         vpc = ec2.Vpc(
             self, "MyVpc",
             max_azs=2
@@ -19,7 +19,8 @@ class HiAvailCdkStack(core.Stack):
         # define the IAM role that will allow the EC2 instance to communicate with SSM
         role = iam.Role(self, "Role", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
         # arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
-        role.add_managed_policy(iam.ManagedPolicy(self, id='mp', managed_policy_name='AmazonSSMManagedInstanceCore', statements=[iam.PolicyStatement(actions=['*'], resources=['*'])]))
+        role.add_managed_policy(iam.ManagedPolicy(self, id='mp', managed_policy_name='AmazonSSMManagedInstanceCore',
+                                                  statements=[iam.PolicyStatement(actions=['*'], resources=['*'])]))
         # define user data script to update server software
         ssma_user_data = ec2.UserData.for_linux()
         ssma_user_data.add_commands('sudo yum update -y')
@@ -30,7 +31,6 @@ class HiAvailCdkStack(core.Stack):
         ssma_user_data.add_commands("sudo echo 'VAR=' >> metadata.sh")
         ssma_user_data.add_commands("sudo echo 'echo $VAR' >> metadata.sh")
 
-
         # launch an EC2 instance in the private subnet
         instance = ec2.Instance(
             self, "PrivateInstance",
@@ -39,8 +39,7 @@ class HiAvailCdkStack(core.Stack):
                 ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO
             ),
             machine_image=ec2.AmazonLinuxImage(),
-            vpc_subnets={ 'subnet_type': ec2.SubnetType.PRIVATE },
+            vpc_subnets={'subnet_type': ec2.SubnetType.PRIVATE},
             role=role,
             user_data=ssma_user_data
         )
-
