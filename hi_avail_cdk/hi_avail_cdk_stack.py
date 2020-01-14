@@ -1,8 +1,11 @@
 from aws_cdk import (
     aws_ec2 as ec2,
     aws_iam as iam,
+    aws_elasticloadbalancingv2 as elb,
+    aws_autoscaling as autoscaling,
     core,
 )
+
 
 class HiAvailCdkStack(core.Stack):
 
@@ -43,3 +46,39 @@ class HiAvailCdkStack(core.Stack):
             role=role,
             user_data=ssma_user_data
         )
+
+        # Create the load balancer in our VPC. Set internet_facing to 'true'
+        # to create an external load balancer.
+        lb = elb.ApplicationLoadBalancer(self, "LB",
+                                           vpc=vpc,
+                                           internet_facing=True
+                                         )
+
+        # Add a listener and open up the load balancer's security group
+        # to the world. 'open' is the default, set this to 'false'
+        # and use 'listener.connections' if you want to be selective
+        # about who can access the listener.
+        listener = lb.add_listener("Listener",
+                                   port=80,
+                                   open=True
+                                   )
+
+        # Create an AutoScaling group and add it as a load balancing
+        # target to the listener.
+        asg = autoscaling.AutoScalingGroup(self, "ASG",
+                                           vpc=vpc,
+                                           instance_type=ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO),
+                                           machine_image=ec2.AmazonLinuxImage(),
+                                           min_capacity=1,
+                                           max_capacity=2
+                                           )
+        listener.add_targets("ApplicationFleet",
+                             port=8080,
+                             targets=[asg]
+                             )
+
+        # Scale to keep the CPU usage of your instances at around 50% utilization
+        asg.scale_on_cpu_utilization("KeepSpareCPU",
+                                     target_utilization_percent=50
+                                     )
+
