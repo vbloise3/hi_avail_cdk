@@ -50,8 +50,8 @@ class HiAvailCdkStack(core.Stack):
         # Create the load balancer in our VPC. Set internet_facing to 'true'
         # to create an external load balancer.
         lb = elb.ApplicationLoadBalancer(self, "LB",
-                                           vpc=vpc,
-                                           internet_facing=True
+                                         vpc=vpc,
+                                         internet_facing=True
                                          )
 
         # Add a listener and open up the load balancer's security group
@@ -67,7 +67,8 @@ class HiAvailCdkStack(core.Stack):
         # target to the listener.
         asg = autoscaling.AutoScalingGroup(self, "ASG",
                                            vpc=vpc,
-                                           instance_type=ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.MICRO),
+                                           instance_type=ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2,
+                                                                             ec2.InstanceSize.MICRO),
                                            machine_image=ec2.AmazonLinuxImage(),
                                            min_capacity=1,
                                            max_capacity=2

@@ -559,6 +559,103 @@
               }
             }
           },
+          "PrivateInstance": {
+            "id": "PrivateInstance",
+            "path": "hi-avail-cdk/PrivateInstance",
+            "children": {
+              "InstanceSecurityGroup": {
+                "id": "InstanceSecurityGroup",
+                "path": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup",
+                        "securityGroupEgress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "description": "Allow all outbound traffic by default",
+                            "ipProtocol": "-1"
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk/PrivateInstance"
+                          }
+                        ],
+                        "vpcId": {
+                          "Ref": "MyVpcF9F0CA6F"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "InstanceProfile": {
+                "id": "InstanceProfile",
+                "path": "hi-avail-cdk/PrivateInstance/InstanceProfile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      {
+                        "Ref": "Role1ABCC5F0"
+                      }
+                    ]
+                  }
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk/PrivateInstance/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
+                  "aws:cdk:cloudformation:props": {
+                    "availabilityZone": "us-east-1a",
+                    "iamInstanceProfile": {
+                      "Ref": "PrivateInstanceInstanceProfile81FB7A0C"
+                    },
+                    "imageId": {
+                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                    },
+                    "instanceType": "t2.micro",
+                    "securityGroupIds": [
+                      {
+                        "Fn::GetAtt": [
+                          "PrivateInstanceInstanceSecurityGroup181877AD",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetId": {
+                      "Ref": "MyVpcPrivateSubnet1Subnet5057CF7E"
+                    },
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "hi-avail-cdk/PrivateInstance"
+                      }
+                    ],
+                    "userData": {
+                      "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "hi-avail-cdk/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter"
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "hi-avail-cdk/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118"
+          },
           "LB": {
             "id": "LB",
             "path": "hi-avail-cdk/LB",
@@ -885,103 +982,6 @@
                           "targetValue": 50
                         }
                       }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
-            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
-            "path": "hi-avail-cdk/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter"
-          },
-          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
-            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
-            "path": "hi-avail-cdk/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118"
-          },
-          "PrivateInstance": {
-            "id": "PrivateInstance",
-            "path": "hi-avail-cdk/PrivateInstance",
-            "children": {
-              "InstanceSecurityGroup": {
-                "id": "InstanceSecurityGroup",
-                "path": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
-                      "aws:cdk:cloudformation:props": {
-                        "groupDescription": "hi-avail-cdk/PrivateInstance/InstanceSecurityGroup",
-                        "securityGroupEgress": [
-                          {
-                            "cidrIp": "0.0.0.0/0",
-                            "description": "Allow all outbound traffic by default",
-                            "ipProtocol": "-1"
-                          }
-                        ],
-                        "tags": [
-                          {
-                            "key": "Name",
-                            "value": "hi-avail-cdk/PrivateInstance"
-                          }
-                        ],
-                        "vpcId": {
-                          "Ref": "MyVpcF9F0CA6F"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "InstanceProfile": {
-                "id": "InstanceProfile",
-                "path": "hi-avail-cdk/PrivateInstance/InstanceProfile",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
-                  "aws:cdk:cloudformation:props": {
-                    "roles": [
-                      {
-                        "Ref": "Role1ABCC5F0"
-                      }
-                    ]
-                  }
-                }
-              },
-              "Resource": {
-                "id": "Resource",
-                "path": "hi-avail-cdk/PrivateInstance/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
-                  "aws:cdk:cloudformation:props": {
-                    "availabilityZone": "us-east-1a",
-                    "iamInstanceProfile": {
-                      "Ref": "PrivateInstanceInstanceProfile81FB7A0C"
-                    },
-                    "imageId": {
-                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
-                    },
-                    "instanceType": "t2.micro",
-                    "securityGroupIds": [
-                      {
-                        "Fn::GetAtt": [
-                          "PrivateInstanceInstanceSecurityGroup181877AD",
-                          "GroupId"
-                        ]
-                      }
-                    ],
-                    "subnetId": {
-                      "Ref": "MyVpcPrivateSubnet1Subnet5057CF7E"
-                    },
-                    "tags": [
-                      {
-                        "key": "Name",
-                        "value": "hi-avail-cdk/PrivateInstance"
-                      }
-                    ],
-                    "userData": {
-                      "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
                     }
                   }
                 }
