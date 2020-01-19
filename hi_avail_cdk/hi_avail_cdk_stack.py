@@ -71,7 +71,8 @@ class HiAvailCdkStack(core.Stack):
                                                                              ec2.InstanceSize.MICRO),
                                            machine_image=ec2.AmazonLinuxImage(),
                                            min_capacity=1,
-                                           max_capacity=2
+                                           max_capacity=2,
+                                           vpc_subnets={'subnet_type': ec2.SubnetType.PUBLIC}
                                            )
         listener.add_targets("ApplicationFleet",
                              port=8080,
