@@ -1,6 +1,6 @@
 {
   "Resources": {
-    "WestStack2894DEB4": {
+    "UsWestStack0147F19B": {
       "Type": "AWS::EC2::VPC",
       "Properties": {
         "CidrBlock": "10.10.0.0/16",
@@ -10,20 +10,20 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack"
+            "Value": "hi-avail-cdk-west/UsWestStack"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/Resource"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/Resource"
       }
     },
-    "WestStackPublicSubnet1Subnet2EDEC8FB": {
+    "UsWestStackPublicSubnet1SubnetC9D25B5B": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.10.0.0/24",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -37,7 +37,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet1"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -50,102 +50,102 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet1/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet1/Subnet"
       }
     },
-    "WestStackPublicSubnet1RouteTable57A4E591": {
+    "UsWestStackPublicSubnet1RouteTable3B138895": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet1/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet1/RouteTable"
       }
     },
-    "WestStackPublicSubnet1RouteTableAssociation7D1E63BA": {
+    "UsWestStackPublicSubnet1RouteTableAssociation5004AF24": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPublicSubnet1RouteTable57A4E591"
+          "Ref": "UsWestStackPublicSubnet1RouteTable3B138895"
         },
         "SubnetId": {
-          "Ref": "WestStackPublicSubnet1Subnet2EDEC8FB"
+          "Ref": "UsWestStackPublicSubnet1SubnetC9D25B5B"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet1/RouteTableAssociation"
       }
     },
-    "WestStackPublicSubnet1DefaultRouteAEF61D40": {
+    "UsWestStackPublicSubnet1DefaultRouteB6560294": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPublicSubnet1RouteTable57A4E591"
+          "Ref": "UsWestStackPublicSubnet1RouteTable3B138895"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
-          "Ref": "WestStackIGW6DA6F239"
+          "Ref": "UsWestStackIGWECEEB41C"
         }
       },
       "DependsOn": [
-        "WestStackVPCGW24210EEC"
+        "UsWestStackVPCGW346FC965"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet1/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet1/DefaultRoute"
       }
     },
-    "WestStackPublicSubnet1EIP57D233D8": {
+    "UsWestStackPublicSubnet1EIPD08DED86": {
       "Type": "AWS::EC2::EIP",
       "Properties": {
         "Domain": "vpc",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet1/EIP"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet1/EIP"
       }
     },
-    "WestStackPublicSubnet1NATGateway36368ACF": {
+    "UsWestStackPublicSubnet1NATGateway39D1581C": {
       "Type": "AWS::EC2::NatGateway",
       "Properties": {
         "AllocationId": {
           "Fn::GetAtt": [
-            "WestStackPublicSubnet1EIP57D233D8",
+            "UsWestStackPublicSubnet1EIPD08DED86",
             "AllocationId"
           ]
         },
         "SubnetId": {
-          "Ref": "WestStackPublicSubnet1Subnet2EDEC8FB"
+          "Ref": "UsWestStackPublicSubnet1SubnetC9D25B5B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet1/NATGateway"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet1/NATGateway"
       }
     },
-    "WestStackPublicSubnet2Subnet6564F031": {
+    "UsWestStackPublicSubnet2Subnet658E2C13": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.10.1.0/24",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -159,7 +159,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet2"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -172,102 +172,102 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet2/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet2/Subnet"
       }
     },
-    "WestStackPublicSubnet2RouteTableCC8B2700": {
+    "UsWestStackPublicSubnet2RouteTable5E97D761": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet2/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet2/RouteTable"
       }
     },
-    "WestStackPublicSubnet2RouteTableAssociation4B8BAF57": {
+    "UsWestStackPublicSubnet2RouteTableAssociation1ED5861B": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPublicSubnet2RouteTableCC8B2700"
+          "Ref": "UsWestStackPublicSubnet2RouteTable5E97D761"
         },
         "SubnetId": {
-          "Ref": "WestStackPublicSubnet2Subnet6564F031"
+          "Ref": "UsWestStackPublicSubnet2Subnet658E2C13"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet2/RouteTableAssociation"
       }
     },
-    "WestStackPublicSubnet2DefaultRoute3EE4E268": {
+    "UsWestStackPublicSubnet2DefaultRoute529B563C": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPublicSubnet2RouteTableCC8B2700"
+          "Ref": "UsWestStackPublicSubnet2RouteTable5E97D761"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
-          "Ref": "WestStackIGW6DA6F239"
+          "Ref": "UsWestStackIGWECEEB41C"
         }
       },
       "DependsOn": [
-        "WestStackVPCGW24210EEC"
+        "UsWestStackVPCGW346FC965"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet2/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet2/DefaultRoute"
       }
     },
-    "WestStackPublicSubnet2EIP014FA72B": {
+    "UsWestStackPublicSubnet2EIP1AED05BD": {
       "Type": "AWS::EC2::EIP",
       "Properties": {
         "Domain": "vpc",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet2/EIP"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet2/EIP"
       }
     },
-    "WestStackPublicSubnet2NATGateway51E8EB09": {
+    "UsWestStackPublicSubnet2NATGatewayF9E052A7": {
       "Type": "AWS::EC2::NatGateway",
       "Properties": {
         "AllocationId": {
           "Fn::GetAtt": [
-            "WestStackPublicSubnet2EIP014FA72B",
+            "UsWestStackPublicSubnet2EIP1AED05BD",
             "AllocationId"
           ]
         },
         "SubnetId": {
-          "Ref": "WestStackPublicSubnet2Subnet6564F031"
+          "Ref": "UsWestStackPublicSubnet2Subnet658E2C13"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PublicSubnet2/NATGateway"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PublicSubnet2/NATGateway"
       }
     },
-    "WestStackPrivateSubnet1Subnet84BA1355": {
+    "UsWestStackPrivateSubnet1SubnetED24826C": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.10.2.0/24",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -281,7 +281,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PrivateSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/PrivateSubnet1"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -294,61 +294,61 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet1/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet1/Subnet"
       }
     },
-    "WestStackPrivateSubnet1RouteTable49576C55": {
+    "UsWestStackPrivateSubnet1RouteTableBE46E4C5": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PrivateSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/PrivateSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet1/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet1/RouteTable"
       }
     },
-    "WestStackPrivateSubnet1RouteTableAssociation9DC11D1A": {
+    "UsWestStackPrivateSubnet1RouteTableAssociationD28BEDAF": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPrivateSubnet1RouteTable49576C55"
+          "Ref": "UsWestStackPrivateSubnet1RouteTableBE46E4C5"
         },
         "SubnetId": {
-          "Ref": "WestStackPrivateSubnet1Subnet84BA1355"
+          "Ref": "UsWestStackPrivateSubnet1SubnetED24826C"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet1/RouteTableAssociation"
       }
     },
-    "WestStackPrivateSubnet1DefaultRoute1AEE8A92": {
+    "UsWestStackPrivateSubnet1DefaultRoute2AE07E96": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPrivateSubnet1RouteTable49576C55"
+          "Ref": "UsWestStackPrivateSubnet1RouteTableBE46E4C5"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "NatGatewayId": {
-          "Ref": "WestStackPublicSubnet1NATGateway36368ACF"
+          "Ref": "UsWestStackPublicSubnet1NATGateway39D1581C"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet1/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet1/DefaultRoute"
       }
     },
-    "WestStackPrivateSubnet2SubnetE428E24E": {
+    "UsWestStackPrivateSubnet2Subnet75077D3E": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.10.3.0/24",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -362,7 +362,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PrivateSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/PrivateSubnet2"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -375,61 +375,61 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet2/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet2/Subnet"
       }
     },
-    "WestStackPrivateSubnet2RouteTable4BAEABC3": {
+    "UsWestStackPrivateSubnet2RouteTable60E81D7F": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/PrivateSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/PrivateSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet2/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet2/RouteTable"
       }
     },
-    "WestStackPrivateSubnet2RouteTableAssociationFF6517D7": {
+    "UsWestStackPrivateSubnet2RouteTableAssociation5A974487": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPrivateSubnet2RouteTable4BAEABC3"
+          "Ref": "UsWestStackPrivateSubnet2RouteTable60E81D7F"
         },
         "SubnetId": {
-          "Ref": "WestStackPrivateSubnet2SubnetE428E24E"
+          "Ref": "UsWestStackPrivateSubnet2Subnet75077D3E"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet2/RouteTableAssociation"
       }
     },
-    "WestStackPrivateSubnet2DefaultRoute67AFCF8E": {
+    "UsWestStackPrivateSubnet2DefaultRouteD04E8AD2": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackPrivateSubnet2RouteTable4BAEABC3"
+          "Ref": "UsWestStackPrivateSubnet2RouteTable60E81D7F"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "NatGatewayId": {
-          "Ref": "WestStackPublicSubnet2NATGateway51E8EB09"
+          "Ref": "UsWestStackPublicSubnet2NATGatewayF9E052A7"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/PrivateSubnet2/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/PrivateSubnet2/DefaultRoute"
       }
     },
-    "WestStackDBSubnet1Subnet74BACD5E": {
+    "UsWestStackDBSubnet1SubnetD38F1B21": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.10.4.0/24",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -443,7 +443,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/DBSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/DBSubnet1"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -456,46 +456,46 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/DBSubnet1/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/DBSubnet1/Subnet"
       }
     },
-    "WestStackDBSubnet1RouteTable5FAD72CC": {
+    "UsWestStackDBSubnet1RouteTableD4ED4AC7": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/DBSubnet1"
+            "Value": "hi-avail-cdk-west/UsWestStack/DBSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/DBSubnet1/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/DBSubnet1/RouteTable"
       }
     },
-    "WestStackDBSubnet1RouteTableAssociation447D7C16": {
+    "UsWestStackDBSubnet1RouteTableAssociationBEF51E17": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackDBSubnet1RouteTable5FAD72CC"
+          "Ref": "UsWestStackDBSubnet1RouteTableD4ED4AC7"
         },
         "SubnetId": {
-          "Ref": "WestStackDBSubnet1Subnet74BACD5E"
+          "Ref": "UsWestStackDBSubnet1SubnetD38F1B21"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/DBSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/DBSubnet1/RouteTableAssociation"
       }
     },
-    "WestStackDBSubnet2SubnetAB9AD75C": {
+    "UsWestStackDBSubnet2Subnet2C1C7B83": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.10.5.0/24",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -509,7 +509,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/DBSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/DBSubnet2"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -522,66 +522,66 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/DBSubnet2/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/DBSubnet2/Subnet"
       }
     },
-    "WestStackDBSubnet2RouteTable4F444D95": {
+    "UsWestStackDBSubnet2RouteTable61B913FF": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack/DBSubnet2"
+            "Value": "hi-avail-cdk-west/UsWestStack/DBSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/DBSubnet2/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/DBSubnet2/RouteTable"
       }
     },
-    "WestStackDBSubnet2RouteTableAssociation193F3382": {
+    "UsWestStackDBSubnet2RouteTableAssociationA7EBDB89": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "WestStackDBSubnet2RouteTable4F444D95"
+          "Ref": "UsWestStackDBSubnet2RouteTable61B913FF"
         },
         "SubnetId": {
-          "Ref": "WestStackDBSubnet2SubnetAB9AD75C"
+          "Ref": "UsWestStackDBSubnet2Subnet2C1C7B83"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/DBSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/DBSubnet2/RouteTableAssociation"
       }
     },
-    "WestStackIGW6DA6F239": {
+    "UsWestStackIGWECEEB41C": {
       "Type": "AWS::EC2::InternetGateway",
       "Properties": {
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-west/WestStack"
+            "Value": "hi-avail-cdk-west/UsWestStack"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/IGW"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/IGW"
       }
     },
-    "WestStackVPCGW24210EEC": {
+    "UsWestStackVPCGW346FC965": {
       "Type": "AWS::EC2::VPCGatewayAttachment",
       "Properties": {
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         },
         "InternetGatewayId": {
-          "Ref": "WestStackIGW6DA6F239"
+          "Ref": "UsWestStackIGWECEEB41C"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-west/WestStack/VPCGW"
+        "aws:cdk:path": "hi-avail-cdk-west/UsWestStack/VPCGW"
       }
     },
     "Role1ABCC5F0": {
@@ -648,7 +648,7 @@
           }
         ],
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         }
       },
       "Metadata": {
@@ -695,7 +695,7 @@
           }
         ],
         "SubnetId": {
-          "Ref": "WestStackPrivateSubnet1Subnet84BA1355"
+          "Ref": "UsWestStackPrivateSubnet1SubnetED24826C"
         },
         "Tags": [
           {
@@ -704,7 +704,7 @@
           }
         ],
         "UserData": {
-          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
+          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo yum -y install httpd php\nsudo chkconfig httpd on\nsudo service httpd start\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
         }
       },
       "DependsOn": [
@@ -729,17 +729,17 @@
         ],
         "Subnets": [
           {
-            "Ref": "WestStackPublicSubnet1Subnet2EDEC8FB"
+            "Ref": "UsWestStackPublicSubnet1SubnetC9D25B5B"
           },
           {
-            "Ref": "WestStackPublicSubnet2Subnet6564F031"
+            "Ref": "UsWestStackPublicSubnet2Subnet658E2C13"
           }
         ],
         "Type": "application"
       },
       "DependsOn": [
-        "WestStackPublicSubnet1DefaultRouteAEF61D40",
-        "WestStackPublicSubnet2DefaultRoute3EE4E268"
+        "UsWestStackPublicSubnet1DefaultRouteB6560294",
+        "UsWestStackPublicSubnet2DefaultRoute529B563C"
       ],
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-west/myALB/Resource"
@@ -759,7 +759,7 @@
           }
         ],
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         }
       },
       "Metadata": {
@@ -818,7 +818,7 @@
         "Protocol": "HTTP",
         "TargetType": "instance",
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         }
       },
       "Metadata": {
@@ -843,7 +843,7 @@
           }
         ],
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         }
       },
       "Metadata": {
@@ -906,7 +906,7 @@
           }
         ],
         "UserData": {
-          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo yum -y install httpd php\nsudo chkconfig httpd on\nsudo service httpd start"
+          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo yum -y install httpd php\nsudo chkconfig httpd on\nsudo service httpd start\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
         }
       },
       "DependsOn": [
@@ -939,10 +939,10 @@
         ],
         "VPCZoneIdentifier": [
           {
-            "Ref": "WestStackPrivateSubnet1Subnet84BA1355"
+            "Ref": "UsWestStackPrivateSubnet1SubnetED24826C"
           },
           {
-            "Ref": "WestStackPrivateSubnet2SubnetE428E24E"
+            "Ref": "UsWestStackPrivateSubnet2Subnet75077D3E"
           }
         ]
       },
@@ -979,10 +979,10 @@
         "DBSubnetGroupDescription": "Subnet group for MySQL_DB_easy database",
         "SubnetIds": [
           {
-            "Ref": "WestStackPrivateSubnet1Subnet84BA1355"
+            "Ref": "UsWestStackPrivateSubnet1SubnetED24826C"
           },
           {
-            "Ref": "WestStackPrivateSubnet2SubnetE428E24E"
+            "Ref": "UsWestStackPrivateSubnet2Subnet75077D3E"
           }
         ]
       },
@@ -1002,7 +1002,7 @@
           }
         ],
         "VpcId": {
-          "Ref": "WestStack2894DEB4"
+          "Ref": "UsWestStack0147F19B"
         }
       },
       "Metadata": {
@@ -1128,8 +1128,8 @@
           }
         ]
       },
-      "UpdateReplacePolicy": "Retain",
-      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-west/MySQL_DB_easy/Resource"
       }
