@@ -709,7 +709,7 @@
                     },
                     "managedPolicyArns": [
                       {
-                        "Ref": "mpF33C555B"
+                        "Ref": "mpUsEastStack53DA23A2"
                       }
                     ]
                   }
@@ -717,13 +717,13 @@
               }
             }
           },
-          "mp": {
-            "id": "mp",
-            "path": "hi-avail-cdk-east/mp",
+          "mpUsEastStack": {
+            "id": "mpUsEastStack",
+            "path": "hi-avail-cdk-east/mpUsEastStack",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "hi-avail-cdk-east/mp/Resource",
+                "path": "hi-avail-cdk-east/mpUsEastStack/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::ManagedPolicy",
                   "aws:cdk:cloudformation:props": {
@@ -738,116 +738,12 @@
                       "Version": "2012-10-17"
                     },
                     "description": "",
-                    "managedPolicyName": "AmazonSSMManagedInstanceCore",
+                    "managedPolicyName": "AmazonSSMManagedInstanceCoreUsEastStack",
                     "path": "/"
                   }
                 }
               }
             }
-          },
-          "PrivateInstance": {
-            "id": "PrivateInstance",
-            "path": "hi-avail-cdk-east/PrivateInstance",
-            "children": {
-              "InstanceSecurityGroup": {
-                "id": "InstanceSecurityGroup",
-                "path": "hi-avail-cdk-east/PrivateInstance/InstanceSecurityGroup",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "hi-avail-cdk-east/PrivateInstance/InstanceSecurityGroup/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
-                      "aws:cdk:cloudformation:props": {
-                        "groupDescription": "hi-avail-cdk-east/PrivateInstance/InstanceSecurityGroup",
-                        "securityGroupEgress": [
-                          {
-                            "cidrIp": "0.0.0.0/0",
-                            "description": "Allow all outbound traffic by default",
-                            "ipProtocol": "-1"
-                          }
-                        ],
-                        "tags": [
-                          {
-                            "key": "Name",
-                            "value": "hi-avail-cdk-east/PrivateInstance"
-                          }
-                        ],
-                        "vpcId": {
-                          "Ref": "UsEastStack142C3F03"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "InstanceProfile": {
-                "id": "InstanceProfile",
-                "path": "hi-avail-cdk-east/PrivateInstance/InstanceProfile",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
-                  "aws:cdk:cloudformation:props": {
-                    "roles": [
-                      {
-                        "Ref": "Role1ABCC5F0"
-                      }
-                    ]
-                  }
-                }
-              },
-              "Resource": {
-                "id": "Resource",
-                "path": "hi-avail-cdk-east/PrivateInstance/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
-                  "aws:cdk:cloudformation:props": {
-                    "availabilityZone": {
-                      "Fn::Select": [
-                        0,
-                        {
-                          "Fn::GetAZs": ""
-                        }
-                      ]
-                    },
-                    "iamInstanceProfile": {
-                      "Ref": "PrivateInstanceInstanceProfile81FB7A0C"
-                    },
-                    "imageId": {
-                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
-                    },
-                    "instanceType": "t2.micro",
-                    "securityGroupIds": [
-                      {
-                        "Fn::GetAtt": [
-                          "PrivateInstanceInstanceSecurityGroup181877AD",
-                          "GroupId"
-                        ]
-                      }
-                    ],
-                    "subnetId": {
-                      "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
-                    },
-                    "tags": [
-                      {
-                        "key": "Name",
-                        "value": "hi-avail-cdk-east/PrivateInstance"
-                      }
-                    ],
-                    "userData": {
-                      "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo yum -y install httpd php\nsudo chkconfig httpd on\nsudo service httpd start\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
-            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
-            "path": "hi-avail-cdk-east/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter"
-          },
-          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
-            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
-            "path": "hi-avail-cdk-east/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118"
           },
           "myALB": {
             "id": "myALB",
@@ -1148,6 +1044,14 @@
                 }
               }
             }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "hi-avail-cdk-east/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter"
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "hi-avail-cdk-east/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118"
           },
           "para-group-mysql": {
             "id": "para-group-mysql",
@@ -2045,7 +1949,7 @@
                     },
                     "managedPolicyArns": [
                       {
-                        "Ref": "mpF33C555B"
+                        "Ref": "mpUsWestStackC62CA010"
                       }
                     ]
                   }
@@ -2053,13 +1957,13 @@
               }
             }
           },
-          "mp": {
-            "id": "mp",
-            "path": "hi-avail-cdk-west/mp",
+          "mpUsWestStack": {
+            "id": "mpUsWestStack",
+            "path": "hi-avail-cdk-west/mpUsWestStack",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "hi-avail-cdk-west/mp/Resource",
+                "path": "hi-avail-cdk-west/mpUsWestStack/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::ManagedPolicy",
                   "aws:cdk:cloudformation:props": {
@@ -2074,116 +1978,12 @@
                       "Version": "2012-10-17"
                     },
                     "description": "",
-                    "managedPolicyName": "AmazonSSMManagedInstanceCore",
+                    "managedPolicyName": "AmazonSSMManagedInstanceCoreUsWestStack",
                     "path": "/"
                   }
                 }
               }
             }
-          },
-          "PrivateInstance": {
-            "id": "PrivateInstance",
-            "path": "hi-avail-cdk-west/PrivateInstance",
-            "children": {
-              "InstanceSecurityGroup": {
-                "id": "InstanceSecurityGroup",
-                "path": "hi-avail-cdk-west/PrivateInstance/InstanceSecurityGroup",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "hi-avail-cdk-west/PrivateInstance/InstanceSecurityGroup/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
-                      "aws:cdk:cloudformation:props": {
-                        "groupDescription": "hi-avail-cdk-west/PrivateInstance/InstanceSecurityGroup",
-                        "securityGroupEgress": [
-                          {
-                            "cidrIp": "0.0.0.0/0",
-                            "description": "Allow all outbound traffic by default",
-                            "ipProtocol": "-1"
-                          }
-                        ],
-                        "tags": [
-                          {
-                            "key": "Name",
-                            "value": "hi-avail-cdk-west/PrivateInstance"
-                          }
-                        ],
-                        "vpcId": {
-                          "Ref": "UsWestStack0147F19B"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "InstanceProfile": {
-                "id": "InstanceProfile",
-                "path": "hi-avail-cdk-west/PrivateInstance/InstanceProfile",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
-                  "aws:cdk:cloudformation:props": {
-                    "roles": [
-                      {
-                        "Ref": "Role1ABCC5F0"
-                      }
-                    ]
-                  }
-                }
-              },
-              "Resource": {
-                "id": "Resource",
-                "path": "hi-avail-cdk-west/PrivateInstance/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::EC2::Instance",
-                  "aws:cdk:cloudformation:props": {
-                    "availabilityZone": {
-                      "Fn::Select": [
-                        0,
-                        {
-                          "Fn::GetAZs": ""
-                        }
-                      ]
-                    },
-                    "iamInstanceProfile": {
-                      "Ref": "PrivateInstanceInstanceProfile81FB7A0C"
-                    },
-                    "imageId": {
-                      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
-                    },
-                    "instanceType": "t2.micro",
-                    "securityGroupIds": [
-                      {
-                        "Fn::GetAtt": [
-                          "PrivateInstanceInstanceSecurityGroup181877AD",
-                          "GroupId"
-                        ]
-                      }
-                    ],
-                    "subnetId": {
-                      "Ref": "UsWestStackPrivateSubnet1SubnetED24826C"
-                    },
-                    "tags": [
-                      {
-                        "key": "Name",
-                        "value": "hi-avail-cdk-west/PrivateInstance"
-                      }
-                    ],
-                    "userData": {
-                      "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo yum -y install httpd php\nsudo chkconfig httpd on\nsudo service httpd start\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
-            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
-            "path": "hi-avail-cdk-west/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter"
-          },
-          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
-            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
-            "path": "hi-avail-cdk-west/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118"
           },
           "myALB": {
             "id": "myALB",
@@ -2484,6 +2284,14 @@
                 }
               }
             }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "hi-avail-cdk-west/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter"
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "hi-avail-cdk-west/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118"
           },
           "para-group-mysql": {
             "id": "para-group-mysql",

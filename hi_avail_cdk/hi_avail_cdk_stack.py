@@ -21,7 +21,7 @@ class HiAvailCdkStack(core.Stack):
     def __init__(self, scope: core.Construct, id: str, *, stack_tag="default", **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # define the vpc with 3 subnets across 2 AZs
+     # define the vpc with 3 subnets across 2 AZs
         vpc = ec2.Vpc(self, stack_tag,
                            max_azs=2,
                            cidr="10.10.0.0/16",
@@ -43,11 +43,12 @@ class HiAvailCdkStack(core.Stack):
                            # nat_gateway_provider=ec2.NatProvider.gateway(),
                            nat_gateways=2,
                            )
-
-        # define the IAM role that will allow the EC2 instance to communicate with SSM
+    # define the IAM role that will allow the EC2 instance to communicate with SSM
         role = iam.Role(self, "Role", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
         # arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
-        role.add_managed_policy(iam.ManagedPolicy(self, id='mp', managed_policy_name='AmazonSSMManagedInstanceCore',
+        role_id="mp" + stack_tag
+        policy_name="AmazonSSMManagedInstanceCore" + stack_tag
+        role.add_managed_policy(iam.ManagedPolicy(self, id=role_id, managed_policy_name=policy_name,
                                                   statements=[iam.PolicyStatement(actions=['*'], resources=['*'])]))
 
         # Create ALB in our VPC. Set internet_facing to 'true'
@@ -57,7 +58,7 @@ class HiAvailCdkStack(core.Stack):
                                           internet_facing=True,
                                           load_balancer_name="myALB"
                                           )
-        # allow internet access to port 80 
+        # allow internet access to port 80
         alb.connections.allow_from_any_ipv4(
             ec2.Port.tcp(80), "Internet access ALB 80")
         # listen on port 80
@@ -86,7 +87,7 @@ class HiAvailCdkStack(core.Stack):
         asg.scale_on_cpu_utilization("KeepSpareCPU",
                                      target_utilization_percent=50
                                      )
- 
+
         # create MySQL RDS with CDK High Level API
         asg_security_groups=asg.connections.security_groups
         db_mysql_easy = rds.DatabaseInstance(self, "MySQL_DB_easy",
@@ -110,4 +111,4 @@ class HiAvailCdkStack(core.Stack):
                                              )
                                              )
         for asg_sg in asg_security_groups:
-            db_mysql_easy.connections.allow_default_port_from(asg_sg, "EC2 Autoscaling Group access MySQL")
+            db_mysql_easy.connections.allow_default_port_from(asg_sg, "EC2 Autoscaling Group access MySQL")   
