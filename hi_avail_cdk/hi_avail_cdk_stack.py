@@ -60,7 +60,7 @@ class HiAvailCdkStack(core.Stack):
                                           )
         # allow internet access to port 80
         alb.connections.allow_from_any_ipv4(
-            ec2.Port.tcp(80), "Internet access ALB 80")
+            ec2.Port.tcp(80), "Internet access ALB via port 80")
         # listen on port 80
         listener = alb.add_listener("my80",
                                     port=80,
@@ -78,7 +78,7 @@ class HiAvailCdkStack(core.Stack):
                                                 max_capacity=3,
                                                 )
 
-        asg.connections.allow_from(alb, ec2.Port.tcp(80), "ALB access 80 port of EC2 in Autoscaling Group")
+        asg.connections.allow_from(alb, ec2.Port.tcp(80), "ALB access port 80 of EC2 in Autoscaling Group")
         listener.add_targets("addTargetGroup",
                              port=80,
                              targets=[asg])
@@ -90,7 +90,7 @@ class HiAvailCdkStack(core.Stack):
 
         # create MySQL RDS with CDK High Level API
         asg_security_groups=asg.connections.security_groups
-        db_mysql_easy = rds.DatabaseInstance(self, "MySQL_DB_easy",
+        db_mysql = rds.DatabaseInstance(self, "MySQL_DB",
                                              engine=rds.DatabaseInstanceEngine.MYSQL,
                                              engine_version="5.7.22",
                                              instance_class=ec2.InstanceType.of(
@@ -111,4 +111,4 @@ class HiAvailCdkStack(core.Stack):
                                              )
                                              )
         for asg_sg in asg_security_groups:
-            db_mysql_easy.connections.allow_default_port_from(asg_sg, "EC2 Autoscaling Group access MySQL")   
+            db_mysql.connections.allow_default_port_from(asg_sg, "EC2 Autoscaling Group access MySQL")   

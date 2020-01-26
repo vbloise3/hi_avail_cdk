@@ -794,7 +794,7 @@
                             "ipProtocol": "tcp",
                             "fromPort": 80,
                             "toPort": 80,
-                            "description": "Internet access ALB 80"
+                            "description": "Internet access ALB via port 80"
                           }
                         ],
                         "vpcId": {
@@ -816,7 +816,7 @@
                           ]
                         },
                         "ipProtocol": "tcp",
-                        "description": "ALB access 80 port of EC2 in Autoscaling Group",
+                        "description": "ALB access port 80 of EC2 in Autoscaling Group",
                         "destinationSecurityGroupId": {
                           "Fn::GetAtt": [
                             "myASGInstanceSecurityGroup77B88BA5",
@@ -922,7 +922,7 @@
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
                       "aws:cdk:cloudformation:props": {
                         "ipProtocol": "tcp",
-                        "description": "ALB access 80 port of EC2 in Autoscaling Group",
+                        "description": "ALB access port 80 of EC2 in Autoscaling Group",
                         "fromPort": 80,
                         "groupId": {
                           "Fn::GetAtt": [
@@ -1057,17 +1057,17 @@
             "id": "para-group-mysql",
             "path": "hi-avail-cdk-east/para-group-mysql"
           },
-          "MySQL_DB_easy": {
-            "id": "MySQL_DB_easy",
-            "path": "hi-avail-cdk-east/MySQL_DB_easy",
+          "MySQL_DB": {
+            "id": "MySQL_DB",
+            "path": "hi-avail-cdk-east/MySQL_DB",
             "children": {
               "SubnetGroup": {
                 "id": "SubnetGroup",
-                "path": "hi-avail-cdk-east/MySQL_DB_easy/SubnetGroup",
+                "path": "hi-avail-cdk-east/MySQL_DB/SubnetGroup",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::RDS::DBSubnetGroup",
                   "aws:cdk:cloudformation:props": {
-                    "dbSubnetGroupDescription": "Subnet group for MySQL_DB_easy database",
+                    "dbSubnetGroupDescription": "Subnet group for MySQL_DB database",
                     "subnetIds": [
                       {
                         "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
@@ -1081,15 +1081,15 @@
               },
               "SecurityGroup": {
                 "id": "SecurityGroup",
-                "path": "hi-avail-cdk-east/MySQL_DB_easy/SecurityGroup",
+                "path": "hi-avail-cdk-east/MySQL_DB/SecurityGroup",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-east/MySQL_DB_easy/SecurityGroup/Resource",
+                    "path": "hi-avail-cdk-east/MySQL_DB/SecurityGroup/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
                       "aws:cdk:cloudformation:props": {
-                        "groupDescription": "Security group for MySQL_DB_easy database",
+                        "groupDescription": "Security group for MySQL_DB database",
                         "securityGroupEgress": [
                           {
                             "cidrIp": "0.0.0.0/0",
@@ -1105,7 +1105,7 @@
                   },
                   "from hiavailcdkeastmyASGInstanceSecurityGroup9983CD5C:{IndirectPort}": {
                     "id": "from hiavailcdkeastmyASGInstanceSecurityGroup9983CD5C:{IndirectPort}",
-                    "path": "hi-avail-cdk-east/MySQL_DB_easy/SecurityGroup/from hiavailcdkeastmyASGInstanceSecurityGroup9983CD5C:{IndirectPort}",
+                    "path": "hi-avail-cdk-east/MySQL_DB/SecurityGroup/from hiavailcdkeastmyASGInstanceSecurityGroup9983CD5C:{IndirectPort}",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
                       "aws:cdk:cloudformation:props": {
@@ -1113,13 +1113,13 @@
                         "description": "EC2 Autoscaling Group access MySQL",
                         "fromPort": {
                           "Fn::GetAtt": [
-                            "MySQLDBeasy3657991E",
+                            "MySQLDBF2825476",
                             "Endpoint.Port"
                           ]
                         },
                         "groupId": {
                           "Fn::GetAtt": [
-                            "MySQLDBeasySecurityGroup3A93DCA8",
+                            "MySQLDBSecurityGroupA568815D",
                             "GroupId"
                           ]
                         },
@@ -1131,7 +1131,7 @@
                         },
                         "toPort": {
                           "Fn::GetAtt": [
-                            "MySQLDBeasy3657991E",
+                            "MySQLDBF2825476",
                             "Endpoint.Port"
                           ]
                         }
@@ -1142,11 +1142,11 @@
               },
               "Secret": {
                 "id": "Secret",
-                "path": "hi-avail-cdk-east/MySQL_DB_easy/Secret",
+                "path": "hi-avail-cdk-east/MySQL_DB/Secret",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-east/MySQL_DB_easy/Secret/Resource",
+                    "path": "hi-avail-cdk-east/MySQL_DB/Secret/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::SecretsManager::Secret",
                       "aws:cdk:cloudformation:props": {
@@ -1161,19 +1161,19 @@
                   },
                   "Attachment": {
                     "id": "Attachment",
-                    "path": "hi-avail-cdk-east/MySQL_DB_easy/Secret/Attachment",
+                    "path": "hi-avail-cdk-east/MySQL_DB/Secret/Attachment",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-east/MySQL_DB_easy/Secret/Attachment/Resource",
+                        "path": "hi-avail-cdk-east/MySQL_DB/Secret/Attachment/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::SecretsManager::SecretTargetAttachment",
                           "aws:cdk:cloudformation:props": {
                             "secretId": {
-                              "Ref": "MySQLDBeasySecretEAFDC74C"
+                              "Ref": "MySQLDBSecret9360EDF1"
                             },
                             "targetId": {
-                              "Ref": "MySQLDBeasy3657991E"
+                              "Ref": "MySQLDBF2825476"
                             },
                             "targetType": "AWS::RDS::DBInstance"
                           }
@@ -1185,7 +1185,7 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "hi-avail-cdk-east/MySQL_DB_easy/Resource",
+                "path": "hi-avail-cdk-east/MySQL_DB/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::RDS::DBInstance",
                   "aws:cdk:cloudformation:props": {
@@ -1195,7 +1195,7 @@
                     "copyTagsToSnapshot": true,
                     "dbParameterGroupName": "default.mysql5.7",
                     "dbSubnetGroupName": {
-                      "Ref": "MySQLDBeasySubnetGroupFA3883CE"
+                      "Ref": "MySQLDBSubnetGroupB238183C"
                     },
                     "deleteAutomatedBackups": false,
                     "deletionProtection": false,
@@ -1213,7 +1213,7 @@
                         [
                           "{{resolve:secretsmanager:",
                           {
-                            "Ref": "MySQLDBeasySecretEAFDC74C"
+                            "Ref": "MySQLDBSecret9360EDF1"
                           },
                           ":SecretString:username::}}"
                         ]
@@ -1225,7 +1225,7 @@
                         [
                           "{{resolve:secretsmanager:",
                           {
-                            "Ref": "MySQLDBeasySecretEAFDC74C"
+                            "Ref": "MySQLDBSecret9360EDF1"
                           },
                           ":SecretString:password::}}"
                         ]
@@ -1236,7 +1236,7 @@
                     "vpcSecurityGroups": [
                       {
                         "Fn::GetAtt": [
-                          "MySQLDBeasySecurityGroup3A93DCA8",
+                          "MySQLDBSecurityGroupA568815D",
                           "GroupId"
                         ]
                       }
@@ -2034,7 +2034,7 @@
                             "ipProtocol": "tcp",
                             "fromPort": 80,
                             "toPort": 80,
-                            "description": "Internet access ALB 80"
+                            "description": "Internet access ALB via port 80"
                           }
                         ],
                         "vpcId": {
@@ -2056,7 +2056,7 @@
                           ]
                         },
                         "ipProtocol": "tcp",
-                        "description": "ALB access 80 port of EC2 in Autoscaling Group",
+                        "description": "ALB access port 80 of EC2 in Autoscaling Group",
                         "destinationSecurityGroupId": {
                           "Fn::GetAtt": [
                             "myASGInstanceSecurityGroup77B88BA5",
@@ -2162,7 +2162,7 @@
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
                       "aws:cdk:cloudformation:props": {
                         "ipProtocol": "tcp",
-                        "description": "ALB access 80 port of EC2 in Autoscaling Group",
+                        "description": "ALB access port 80 of EC2 in Autoscaling Group",
                         "fromPort": 80,
                         "groupId": {
                           "Fn::GetAtt": [
@@ -2297,17 +2297,17 @@
             "id": "para-group-mysql",
             "path": "hi-avail-cdk-west/para-group-mysql"
           },
-          "MySQL_DB_easy": {
-            "id": "MySQL_DB_easy",
-            "path": "hi-avail-cdk-west/MySQL_DB_easy",
+          "MySQL_DB": {
+            "id": "MySQL_DB",
+            "path": "hi-avail-cdk-west/MySQL_DB",
             "children": {
               "SubnetGroup": {
                 "id": "SubnetGroup",
-                "path": "hi-avail-cdk-west/MySQL_DB_easy/SubnetGroup",
+                "path": "hi-avail-cdk-west/MySQL_DB/SubnetGroup",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::RDS::DBSubnetGroup",
                   "aws:cdk:cloudformation:props": {
-                    "dbSubnetGroupDescription": "Subnet group for MySQL_DB_easy database",
+                    "dbSubnetGroupDescription": "Subnet group for MySQL_DB database",
                     "subnetIds": [
                       {
                         "Ref": "UsWestStackPrivateSubnet1SubnetED24826C"
@@ -2321,15 +2321,15 @@
               },
               "SecurityGroup": {
                 "id": "SecurityGroup",
-                "path": "hi-avail-cdk-west/MySQL_DB_easy/SecurityGroup",
+                "path": "hi-avail-cdk-west/MySQL_DB/SecurityGroup",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-west/MySQL_DB_easy/SecurityGroup/Resource",
+                    "path": "hi-avail-cdk-west/MySQL_DB/SecurityGroup/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
                       "aws:cdk:cloudformation:props": {
-                        "groupDescription": "Security group for MySQL_DB_easy database",
+                        "groupDescription": "Security group for MySQL_DB database",
                         "securityGroupEgress": [
                           {
                             "cidrIp": "0.0.0.0/0",
@@ -2345,7 +2345,7 @@
                   },
                   "from hiavailcdkwestmyASGInstanceSecurityGroupBC858E9E:{IndirectPort}": {
                     "id": "from hiavailcdkwestmyASGInstanceSecurityGroupBC858E9E:{IndirectPort}",
-                    "path": "hi-avail-cdk-west/MySQL_DB_easy/SecurityGroup/from hiavailcdkwestmyASGInstanceSecurityGroupBC858E9E:{IndirectPort}",
+                    "path": "hi-avail-cdk-west/MySQL_DB/SecurityGroup/from hiavailcdkwestmyASGInstanceSecurityGroupBC858E9E:{IndirectPort}",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
                       "aws:cdk:cloudformation:props": {
@@ -2353,13 +2353,13 @@
                         "description": "EC2 Autoscaling Group access MySQL",
                         "fromPort": {
                           "Fn::GetAtt": [
-                            "MySQLDBeasy3657991E",
+                            "MySQLDBF2825476",
                             "Endpoint.Port"
                           ]
                         },
                         "groupId": {
                           "Fn::GetAtt": [
-                            "MySQLDBeasySecurityGroup3A93DCA8",
+                            "MySQLDBSecurityGroupA568815D",
                             "GroupId"
                           ]
                         },
@@ -2371,7 +2371,7 @@
                         },
                         "toPort": {
                           "Fn::GetAtt": [
-                            "MySQLDBeasy3657991E",
+                            "MySQLDBF2825476",
                             "Endpoint.Port"
                           ]
                         }
@@ -2382,11 +2382,11 @@
               },
               "Secret": {
                 "id": "Secret",
-                "path": "hi-avail-cdk-west/MySQL_DB_easy/Secret",
+                "path": "hi-avail-cdk-west/MySQL_DB/Secret",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-west/MySQL_DB_easy/Secret/Resource",
+                    "path": "hi-avail-cdk-west/MySQL_DB/Secret/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::SecretsManager::Secret",
                       "aws:cdk:cloudformation:props": {
@@ -2401,19 +2401,19 @@
                   },
                   "Attachment": {
                     "id": "Attachment",
-                    "path": "hi-avail-cdk-west/MySQL_DB_easy/Secret/Attachment",
+                    "path": "hi-avail-cdk-west/MySQL_DB/Secret/Attachment",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-west/MySQL_DB_easy/Secret/Attachment/Resource",
+                        "path": "hi-avail-cdk-west/MySQL_DB/Secret/Attachment/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::SecretsManager::SecretTargetAttachment",
                           "aws:cdk:cloudformation:props": {
                             "secretId": {
-                              "Ref": "MySQLDBeasySecretEAFDC74C"
+                              "Ref": "MySQLDBSecret9360EDF1"
                             },
                             "targetId": {
-                              "Ref": "MySQLDBeasy3657991E"
+                              "Ref": "MySQLDBF2825476"
                             },
                             "targetType": "AWS::RDS::DBInstance"
                           }
@@ -2425,7 +2425,7 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "hi-avail-cdk-west/MySQL_DB_easy/Resource",
+                "path": "hi-avail-cdk-west/MySQL_DB/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::RDS::DBInstance",
                   "aws:cdk:cloudformation:props": {
@@ -2435,7 +2435,7 @@
                     "copyTagsToSnapshot": true,
                     "dbParameterGroupName": "default.mysql5.7",
                     "dbSubnetGroupName": {
-                      "Ref": "MySQLDBeasySubnetGroupFA3883CE"
+                      "Ref": "MySQLDBSubnetGroupB238183C"
                     },
                     "deleteAutomatedBackups": false,
                     "deletionProtection": false,
@@ -2453,7 +2453,7 @@
                         [
                           "{{resolve:secretsmanager:",
                           {
-                            "Ref": "MySQLDBeasySecretEAFDC74C"
+                            "Ref": "MySQLDBSecret9360EDF1"
                           },
                           ":SecretString:username::}}"
                         ]
@@ -2465,7 +2465,7 @@
                         [
                           "{{resolve:secretsmanager:",
                           {
-                            "Ref": "MySQLDBeasySecretEAFDC74C"
+                            "Ref": "MySQLDBSecret9360EDF1"
                           },
                           ":SecretString:password::}}"
                         ]
@@ -2476,7 +2476,7 @@
                     "vpcSecurityGroups": [
                       {
                         "Fn::GetAtt": [
-                          "MySQLDBeasySecurityGroup3A93DCA8",
+                          "MySQLDBSecurityGroupA568815D",
                           "GroupId"
                         ]
                       }
