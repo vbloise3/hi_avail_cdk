@@ -1,29 +1,29 @@
 {
   "Resources": {
-    "UsEastStack142C3F03": {
+    "Vpc8378EB38": {
       "Type": "AWS::EC2::VPC",
       "Properties": {
-        "CidrBlock": "10.10.0.0/16",
+        "CidrBlock": "10.0.0.0/16",
         "EnableDnsHostnames": true,
         "EnableDnsSupport": true,
         "InstanceTenancy": "default",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack"
+            "Value": "hi-avail-cdk-east/Vpc"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/Resource"
       }
     },
-    "UsEastStackPublicSubnet1SubnetD76FA3C4": {
+    "VpcPublicSubnet1Subnet5C2D37C4": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.10.0.0/24",
+        "CidrBlock": "10.0.0.0/18",
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -37,7 +37,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet1"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -50,102 +50,102 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet1/Subnet"
       }
     },
-    "UsEastStackPublicSubnet1RouteTable9D35AD8F": {
+    "VpcPublicSubnet1RouteTable6C95E38E": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet1/RouteTable"
       }
     },
-    "UsEastStackPublicSubnet1RouteTableAssociation90FF41E0": {
+    "VpcPublicSubnet1RouteTableAssociation97140677": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPublicSubnet1RouteTable9D35AD8F"
+          "Ref": "VpcPublicSubnet1RouteTable6C95E38E"
         },
         "SubnetId": {
-          "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
+          "Ref": "VpcPublicSubnet1Subnet5C2D37C4"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet1/RouteTableAssociation"
       }
     },
-    "UsEastStackPublicSubnet1DefaultRoute01DEF0D8": {
+    "VpcPublicSubnet1DefaultRoute3DA9E72A": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPublicSubnet1RouteTable9D35AD8F"
+          "Ref": "VpcPublicSubnet1RouteTable6C95E38E"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
-          "Ref": "UsEastStackIGWA8A634B8"
+          "Ref": "VpcIGWD7BA715C"
         }
       },
       "DependsOn": [
-        "UsEastStackVPCGW1F0CA4E5"
+        "VpcVPCGWBF912B6E"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet1/DefaultRoute"
       }
     },
-    "UsEastStackPublicSubnet1EIPD8A1850E": {
+    "VpcPublicSubnet1EIPD7E02669": {
       "Type": "AWS::EC2::EIP",
       "Properties": {
         "Domain": "vpc",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/EIP"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet1/EIP"
       }
     },
-    "UsEastStackPublicSubnet1NATGatewayD7C91B9A": {
+    "VpcPublicSubnet1NATGateway4D7517AA": {
       "Type": "AWS::EC2::NatGateway",
       "Properties": {
         "AllocationId": {
           "Fn::GetAtt": [
-            "UsEastStackPublicSubnet1EIPD8A1850E",
+            "VpcPublicSubnet1EIPD7E02669",
             "AllocationId"
           ]
         },
         "SubnetId": {
-          "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
+          "Ref": "VpcPublicSubnet1Subnet5C2D37C4"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/NATGateway"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet1/NATGateway"
       }
     },
-    "UsEastStackPublicSubnet2Subnet5FA3B28C": {
+    "VpcPublicSubnet2Subnet691E08A3": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.10.1.0/24",
+        "CidrBlock": "10.0.64.0/18",
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -159,7 +159,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet2"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -172,102 +172,102 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet2/Subnet"
       }
     },
-    "UsEastStackPublicSubnet2RouteTableA0940589": {
+    "VpcPublicSubnet2RouteTable94F7E489": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet2/RouteTable"
       }
     },
-    "UsEastStackPublicSubnet2RouteTableAssociation15459460": {
+    "VpcPublicSubnet2RouteTableAssociationDD5762D8": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPublicSubnet2RouteTableA0940589"
+          "Ref": "VpcPublicSubnet2RouteTable94F7E489"
         },
         "SubnetId": {
-          "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
+          "Ref": "VpcPublicSubnet2Subnet691E08A3"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet2/RouteTableAssociation"
       }
     },
-    "UsEastStackPublicSubnet2DefaultRoute3B723B11": {
+    "VpcPublicSubnet2DefaultRoute97F91067": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPublicSubnet2RouteTableA0940589"
+          "Ref": "VpcPublicSubnet2RouteTable94F7E489"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
-          "Ref": "UsEastStackIGWA8A634B8"
+          "Ref": "VpcIGWD7BA715C"
         }
       },
       "DependsOn": [
-        "UsEastStackVPCGW1F0CA4E5"
+        "VpcVPCGWBF912B6E"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet2/DefaultRoute"
       }
     },
-    "UsEastStackPublicSubnet2EIP33CFE250": {
+    "VpcPublicSubnet2EIP3C605A87": {
       "Type": "AWS::EC2::EIP",
       "Properties": {
         "Domain": "vpc",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/EIP"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet2/EIP"
       }
     },
-    "UsEastStackPublicSubnet2NATGatewayA2C8CA6C": {
+    "VpcPublicSubnet2NATGateway9182C01D": {
       "Type": "AWS::EC2::NatGateway",
       "Properties": {
         "AllocationId": {
           "Fn::GetAtt": [
-            "UsEastStackPublicSubnet2EIP33CFE250",
+            "VpcPublicSubnet2EIP3C605A87",
             "AllocationId"
           ]
         },
         "SubnetId": {
-          "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
+          "Ref": "VpcPublicSubnet2Subnet691E08A3"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+            "Value": "hi-avail-cdk-east/Vpc/PublicSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/NATGateway"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PublicSubnet2/NATGateway"
       }
     },
-    "UsEastStackPrivateSubnet1SubnetF02F8685": {
+    "VpcPrivateSubnet1Subnet536B997A": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.10.2.0/24",
+        "CidrBlock": "10.0.128.0/18",
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -281,7 +281,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1"
+            "Value": "hi-avail-cdk-east/Vpc/PrivateSubnet1"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -294,61 +294,61 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet1/Subnet"
       }
     },
-    "UsEastStackPrivateSubnet1RouteTableC6AA2972": {
+    "VpcPrivateSubnet1RouteTableB2C5B500": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1"
+            "Value": "hi-avail-cdk-east/Vpc/PrivateSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet1/RouteTable"
       }
     },
-    "UsEastStackPrivateSubnet1RouteTableAssociation87AEA703": {
+    "VpcPrivateSubnet1RouteTableAssociation70C59FA6": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPrivateSubnet1RouteTableC6AA2972"
+          "Ref": "VpcPrivateSubnet1RouteTableB2C5B500"
         },
         "SubnetId": {
-          "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
+          "Ref": "VpcPrivateSubnet1Subnet536B997A"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet1/RouteTableAssociation"
       }
     },
-    "UsEastStackPrivateSubnet1DefaultRoute8D9621DE": {
+    "VpcPrivateSubnet1DefaultRouteBE02A9ED": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPrivateSubnet1RouteTableC6AA2972"
+          "Ref": "VpcPrivateSubnet1RouteTableB2C5B500"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "NatGatewayId": {
-          "Ref": "UsEastStackPublicSubnet1NATGatewayD7C91B9A"
+          "Ref": "VpcPublicSubnet1NATGateway4D7517AA"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet1/DefaultRoute"
       }
     },
-    "UsEastStackPrivateSubnet2Subnet20A8CD2F": {
+    "VpcPrivateSubnet2Subnet3788AAA1": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "CidrBlock": "10.10.3.0/24",
+        "CidrBlock": "10.0.192.0/18",
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "AvailabilityZone": {
           "Fn::Select": [
@@ -362,7 +362,7 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2"
+            "Value": "hi-avail-cdk-east/Vpc/PrivateSubnet2"
           },
           {
             "Key": "aws-cdk:subnet-name",
@@ -375,216 +375,147 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet2/Subnet"
       }
     },
-    "UsEastStackPrivateSubnet2RouteTable4F4D81F5": {
+    "VpcPrivateSubnet2RouteTableA678073B": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2"
+            "Value": "hi-avail-cdk-east/Vpc/PrivateSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet2/RouteTable"
       }
     },
-    "UsEastStackPrivateSubnet2RouteTableAssociation1599D746": {
+    "VpcPrivateSubnet2RouteTableAssociationA89CAD56": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPrivateSubnet2RouteTable4F4D81F5"
+          "Ref": "VpcPrivateSubnet2RouteTableA678073B"
         },
         "SubnetId": {
-          "Ref": "UsEastStackPrivateSubnet2Subnet20A8CD2F"
+          "Ref": "VpcPrivateSubnet2Subnet3788AAA1"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet2/RouteTableAssociation"
       }
     },
-    "UsEastStackPrivateSubnet2DefaultRoute3BCE4EA0": {
+    "VpcPrivateSubnet2DefaultRoute060D2087": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "UsEastStackPrivateSubnet2RouteTable4F4D81F5"
+          "Ref": "VpcPrivateSubnet2RouteTableA678073B"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "NatGatewayId": {
-          "Ref": "UsEastStackPublicSubnet2NATGatewayA2C8CA6C"
+          "Ref": "VpcPublicSubnet2NATGateway9182C01D"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/PrivateSubnet2/DefaultRoute"
       }
     },
-    "UsEastStackDBSubnet1SubnetC32A02B2": {
-      "Type": "AWS::EC2::Subnet",
-      "Properties": {
-        "CidrBlock": "10.10.4.0/24",
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        },
-        "AvailabilityZone": {
-          "Fn::Select": [
-            0,
-            {
-              "Fn::GetAZs": ""
-            }
-          ]
-        },
-        "MapPublicIpOnLaunch": false,
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet1"
-          },
-          {
-            "Key": "aws-cdk:subnet-name",
-            "Value": "DB"
-          },
-          {
-            "Key": "aws-cdk:subnet-type",
-            "Value": "Isolated"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/Subnet"
-      }
-    },
-    "UsEastStackDBSubnet1RouteTable1BE046AF": {
-      "Type": "AWS::EC2::RouteTable",
-      "Properties": {
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        },
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet1"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/RouteTable"
-      }
-    },
-    "UsEastStackDBSubnet1RouteTableAssociationAF8B6D22": {
-      "Type": "AWS::EC2::SubnetRouteTableAssociation",
-      "Properties": {
-        "RouteTableId": {
-          "Ref": "UsEastStackDBSubnet1RouteTable1BE046AF"
-        },
-        "SubnetId": {
-          "Ref": "UsEastStackDBSubnet1SubnetC32A02B2"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/RouteTableAssociation"
-      }
-    },
-    "UsEastStackDBSubnet2Subnet4F7A8A16": {
-      "Type": "AWS::EC2::Subnet",
-      "Properties": {
-        "CidrBlock": "10.10.5.0/24",
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        },
-        "AvailabilityZone": {
-          "Fn::Select": [
-            1,
-            {
-              "Fn::GetAZs": ""
-            }
-          ]
-        },
-        "MapPublicIpOnLaunch": false,
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet2"
-          },
-          {
-            "Key": "aws-cdk:subnet-name",
-            "Value": "DB"
-          },
-          {
-            "Key": "aws-cdk:subnet-type",
-            "Value": "Isolated"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/Subnet"
-      }
-    },
-    "UsEastStackDBSubnet2RouteTableE33562E4": {
-      "Type": "AWS::EC2::RouteTable",
-      "Properties": {
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        },
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet2"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/RouteTable"
-      }
-    },
-    "UsEastStackDBSubnet2RouteTableAssociationC8E1E9F3": {
-      "Type": "AWS::EC2::SubnetRouteTableAssociation",
-      "Properties": {
-        "RouteTableId": {
-          "Ref": "UsEastStackDBSubnet2RouteTableE33562E4"
-        },
-        "SubnetId": {
-          "Ref": "UsEastStackDBSubnet2Subnet4F7A8A16"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/RouteTableAssociation"
-      }
-    },
-    "UsEastStackIGWA8A634B8": {
+    "VpcIGWD7BA715C": {
       "Type": "AWS::EC2::InternetGateway",
       "Properties": {
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/UsEastStack"
+            "Value": "hi-avail-cdk-east/Vpc"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/IGW"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/IGW"
       }
     },
-    "UsEastStackVPCGW1F0CA4E5": {
+    "VpcVPCGWBF912B6E": {
       "Type": "AWS::EC2::VPCGatewayAttachment",
       "Properties": {
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         },
         "InternetGatewayId": {
-          "Ref": "UsEastStackIGWA8A634B8"
+          "Ref": "VpcIGWD7BA715C"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/VPCGW"
+        "aws:cdk:path": "hi-avail-cdk-east/Vpc/VPCGW"
       }
     },
-    "Role1ABCC5F0": {
+    "fargateserviceautoscalingD107CF93": {
+      "Type": "AWS::ECS::Cluster",
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/fargate-service-autoscaling/Resource"
+      }
+    },
+    "sampleappLBBDE1D276": {
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "Properties": {
+        "Scheme": "internet-facing",
+        "Subnets": [
+          {
+            "Ref": "VpcPublicSubnet1Subnet5C2D37C4"
+          },
+          {
+            "Ref": "VpcPublicSubnet2Subnet691E08A3"
+          }
+        ],
+        "Type": "network"
+      },
+      "DependsOn": [
+        "VpcPublicSubnet1DefaultRoute3DA9E72A",
+        "VpcPublicSubnet2DefaultRoute97F91067"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/LB/Resource"
+      }
+    },
+    "sampleappLBPublicListenerC4DF6480": {
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+      "Properties": {
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "sampleappLBPublicListenerECSGroup525A567D"
+            },
+            "Type": "forward"
+          }
+        ],
+        "LoadBalancerArn": {
+          "Ref": "sampleappLBBDE1D276"
+        },
+        "Port": 80,
+        "Protocol": "TCP"
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/LB/PublicListener/Resource"
+      }
+    },
+    "sampleappLBPublicListenerECSGroup525A567D": {
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "Properties": {
+        "Port": 80,
+        "Protocol": "TCP",
+        "TargetType": "ip",
+        "VpcId": {
+          "Ref": "Vpc8378EB38"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/LB/PublicListener/ECSGroup/Resource"
+      }
+    },
+    "sampleappTaskDefTaskRoleB530CAC0": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -593,468 +524,292 @@
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
               "Principal": {
-                "Service": "ec2.amazonaws.com"
+                "Service": "ecs-tasks.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/TaskDef/TaskRole/Resource"
+      }
+    },
+    "sampleappTaskDef6BF75736": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": "amazon/amazon-ecs-sample",
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": {
+                  "Ref": "sampleappTaskDefwebLogGroup34BE8C79"
+                },
+                "awslogs-stream-prefix": "sample-app",
+                "awslogs-region": "us-east-1"
+              }
+            },
+            "Name": "web",
+            "PortMappings": [
+              {
+                "ContainerPort": 80,
+                "Protocol": "tcp"
+              }
+            ]
+          }
+        ],
+        "Cpu": "256",
+        "ExecutionRoleArn": {
+          "Fn::GetAtt": [
+            "sampleappTaskDefExecutionRoleAD6F4C40",
+            "Arn"
+          ]
+        },
+        "Family": "hiavailcdkeastsampleappTaskDef59B79D80",
+        "Memory": "512",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE"
+        ],
+        "TaskRoleArn": {
+          "Fn::GetAtt": [
+            "sampleappTaskDefTaskRoleB530CAC0",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/TaskDef/Resource"
+      }
+    },
+    "sampleappTaskDefwebLogGroup34BE8C79": {
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/TaskDef/web/LogGroup/Resource"
+      }
+    },
+    "sampleappTaskDefExecutionRoleAD6F4C40": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/TaskDef/ExecutionRole/Resource"
+      }
+    },
+    "sampleappTaskDefExecutionRoleDefaultPolicy0AD15374": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "sampleappTaskDefwebLogGroup34BE8C79",
+                  "Arn"
+                ]
               }
             }
           ],
           "Version": "2012-10-17"
         },
-        "ManagedPolicyArns": [
+        "PolicyName": "sampleappTaskDefExecutionRoleDefaultPolicy0AD15374",
+        "Roles": [
           {
-            "Ref": "mpUsEastStack53DA23A2"
+            "Ref": "sampleappTaskDefExecutionRoleAD6F4C40"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/Role/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/TaskDef/ExecutionRole/DefaultPolicy/Resource"
       }
     },
-    "mpUsEastStack53DA23A2": {
-      "Type": "AWS::IAM::ManagedPolicy",
+    "sampleappServiceE7504FDB": {
+      "Type": "AWS::ECS::Service",
       "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "*",
-              "Effect": "Allow",
-              "Resource": "*"
-            }
-          ],
-          "Version": "2012-10-17"
+        "Cluster": {
+          "Ref": "fargateserviceautoscalingD107CF93"
         },
-        "Description": "",
-        "ManagedPolicyName": "AmazonSSMManagedInstanceCoreUsEastStack",
-        "Path": "/"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/mpUsEastStack/Resource"
-      }
-    },
-    "myALB18A49813": {
-      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
-      "Properties": {
-        "Name": "myALB",
-        "Scheme": "internet-facing",
-        "SecurityGroups": [
+        "DeploymentConfiguration": {
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50
+        },
+        "DesiredCount": 1,
+        "EnableECSManagedTags": false,
+        "HealthCheckGracePeriodSeconds": 60,
+        "LaunchType": "FARGATE",
+        "LoadBalancers": [
           {
-            "Fn::GetAtt": [
-              "myALBSecurityGroupF245F258",
-              "GroupId"
+            "ContainerName": "web",
+            "ContainerPort": 80,
+            "TargetGroupArn": {
+              "Ref": "sampleappLBPublicListenerECSGroup525A567D"
+            }
+          }
+        ],
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": [
+              {
+                "Fn::GetAtt": [
+                  "sampleappServiceSecurityGroup0ABF0D21",
+                  "GroupId"
+                ]
+              }
+            ],
+            "Subnets": [
+              {
+                "Ref": "VpcPrivateSubnet1Subnet536B997A"
+              },
+              {
+                "Ref": "VpcPrivateSubnet2Subnet3788AAA1"
+              }
             ]
           }
-        ],
-        "Subnets": [
-          {
-            "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
-          },
-          {
-            "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
-          }
-        ],
-        "Type": "application"
+        },
+        "TaskDefinition": {
+          "Ref": "sampleappTaskDef6BF75736"
+        }
       },
       "DependsOn": [
-        "UsEastStackPublicSubnet1DefaultRoute01DEF0D8",
-        "UsEastStackPublicSubnet2DefaultRoute3B723B11"
+        "sampleappLBPublicListenerECSGroup525A567D",
+        "sampleappLBPublicListenerC4DF6480"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myALB/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/Service/Service"
       }
     },
-    "myALBSecurityGroupF245F258": {
+    "sampleappServiceSecurityGroup0ABF0D21": {
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
-        "GroupDescription": "Automatically created Security Group for ELB hiavailcdkeastmyALBEBB4CC70",
-        "SecurityGroupIngress": [
+        "GroupDescription": "hi-avail-cdk-east/sample-app/Service/SecurityGroup",
+        "SecurityGroupEgress": [
           {
             "CidrIp": "0.0.0.0/0",
-            "Description": "Internet access ALB via port 80",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "Vpc8378EB38",
+                "CidrBlock"
+              ]
+            },
+            "Description": "Allow http inbound from VPC",
             "FromPort": 80,
             "IpProtocol": "tcp",
             "ToPort": 80
           }
         ],
         "VpcId": {
-          "Ref": "UsEastStack142C3F03"
+          "Ref": "Vpc8378EB38"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myALB/SecurityGroup/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/Service/SecurityGroup/Resource"
       }
     },
-    "myALBSecurityGrouptohiavailcdkeastmyASGInstanceSecurityGroup9983CD5C808B266164": {
-      "Type": "AWS::EC2::SecurityGroupEgress",
+    "sampleappServiceTaskCountTargetE827DC30": {
+      "Type": "AWS::ApplicationAutoScaling::ScalableTarget",
       "Properties": {
-        "GroupId": {
-          "Fn::GetAtt": [
-            "myALBSecurityGroupF245F258",
-            "GroupId"
-          ]
-        },
-        "IpProtocol": "tcp",
-        "Description": "ALB access port 80 of EC2 in Autoscaling Group",
-        "DestinationSecurityGroupId": {
-          "Fn::GetAtt": [
-            "myASGInstanceSecurityGroup77B88BA5",
-            "GroupId"
-          ]
-        },
-        "FromPort": 80,
-        "ToPort": 80
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myALB/SecurityGroup/to hiavailcdkeastmyASGInstanceSecurityGroup9983CD5C:80"
-      }
-    },
-    "myALBmy80B990410C": {
-      "Type": "AWS::ElasticLoadBalancingV2::Listener",
-      "Properties": {
-        "DefaultActions": [
-          {
-            "TargetGroupArn": {
-              "Ref": "myALBmy80addTargetGroupGroup1569733D"
-            },
-            "Type": "forward"
-          }
-        ],
-        "LoadBalancerArn": {
-          "Ref": "myALB18A49813"
-        },
-        "Port": 80,
-        "Protocol": "HTTP"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myALB/my80/Resource"
-      }
-    },
-    "myALBmy80addTargetGroupGroup1569733D": {
-      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
-      "Properties": {
-        "Port": 80,
-        "Protocol": "HTTP",
-        "TargetType": "instance",
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myALB/my80/addTargetGroupGroup/Resource"
-      }
-    },
-    "myASGInstanceSecurityGroup77B88BA5": {
-      "Type": "AWS::EC2::SecurityGroup",
-      "Properties": {
-        "GroupDescription": "hi-avail-cdk-east/myASG/InstanceSecurityGroup",
-        "SecurityGroupEgress": [
-          {
-            "CidrIp": "0.0.0.0/0",
-            "Description": "Allow all outbound traffic by default",
-            "IpProtocol": "-1"
-          }
-        ],
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/myASG"
-          }
-        ],
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myASG/InstanceSecurityGroup/Resource"
-      }
-    },
-    "myASGInstanceSecurityGroupfromhiavailcdkeastmyALBSecurityGroup04A00CB380FFBCC014": {
-      "Type": "AWS::EC2::SecurityGroupIngress",
-      "Properties": {
-        "IpProtocol": "tcp",
-        "Description": "ALB access port 80 of EC2 in Autoscaling Group",
-        "FromPort": 80,
-        "GroupId": {
-          "Fn::GetAtt": [
-            "myASGInstanceSecurityGroup77B88BA5",
-            "GroupId"
-          ]
-        },
-        "SourceSecurityGroupId": {
-          "Fn::GetAtt": [
-            "myALBSecurityGroupF245F258",
-            "GroupId"
-          ]
-        },
-        "ToPort": 80
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myASG/InstanceSecurityGroup/from hiavailcdkeastmyALBSecurityGroup04A00CB3:80"
-      }
-    },
-    "myASGInstanceProfile053766AB": {
-      "Type": "AWS::IAM::InstanceProfile",
-      "Properties": {
-        "Roles": [
-          {
-            "Ref": "Role1ABCC5F0"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myASG/InstanceProfile"
-      }
-    },
-    "myASGLaunchConfigA0CD8C73": {
-      "Type": "AWS::AutoScaling::LaunchConfiguration",
-      "Properties": {
-        "ImageId": {
-          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
-        },
-        "InstanceType": "t2.micro",
-        "IamInstanceProfile": {
-          "Ref": "myASGInstanceProfile053766AB"
-        },
-        "SecurityGroups": [
-          {
-            "Fn::GetAtt": [
-              "myASGInstanceSecurityGroup77B88BA5",
-              "GroupId"
+        "MaxCapacity": 2,
+        "MinCapacity": 1,
+        "ResourceId": {
+          "Fn::Join": [
+            "",
+            [
+              "service/",
+              {
+                "Ref": "fargateserviceautoscalingD107CF93"
+              },
+              "/",
+              {
+                "Fn::GetAtt": [
+                  "sampleappServiceE7504FDB",
+                  "Name"
+                ]
+              }
             ]
-          }
-        ],
-        "UserData": {
-          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo yum -y install httpd php\nsudo chkconfig httpd on\nsudo service httpd start\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
-        }
-      },
-      "DependsOn": [
-        "Role1ABCC5F0"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myASG/LaunchConfig"
-      }
-    },
-    "myASG6C9F5AC0": {
-      "Type": "AWS::AutoScaling::AutoScalingGroup",
-      "Properties": {
-        "MaxSize": "3",
-        "MinSize": "2",
-        "DesiredCapacity": "2",
-        "LaunchConfigurationName": {
-          "Ref": "myASGLaunchConfigA0CD8C73"
+          ]
         },
-        "Tags": [
-          {
-            "Key": "Name",
-            "PropagateAtLaunch": true,
-            "Value": "hi-avail-cdk-east/myASG"
-          }
-        ],
-        "TargetGroupARNs": [
-          {
-            "Ref": "myALBmy80addTargetGroupGroup1569733D"
-          }
-        ],
-        "VPCZoneIdentifier": [
-          {
-            "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
-          },
-          {
-            "Ref": "UsEastStackPrivateSubnet2Subnet20A8CD2F"
-          }
-        ]
-      },
-      "UpdatePolicy": {
-        "AutoScalingScheduledAction": {
-          "IgnoreUnmodifiedGroupSizeProperties": true
-        }
+        "RoleARN": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":iam::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService"
+            ]
+          ]
+        },
+        "ScalableDimension": "ecs:service:DesiredCount",
+        "ServiceNamespace": "ecs"
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myASG/ASG"
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/Service/TaskCount/Target/Resource"
       }
     },
-    "myASGScalingPolicyKeepSpareCPUCF8C54EC": {
-      "Type": "AWS::AutoScaling::ScalingPolicy",
+    "sampleappServiceTaskCountTargetCpuScalingF4452F80": {
+      "Type": "AWS::ApplicationAutoScaling::ScalingPolicy",
       "Properties": {
-        "AutoScalingGroupName": {
-          "Ref": "myASG6C9F5AC0"
-        },
+        "PolicyName": "hiavailcdkeastsampleappServiceTaskCountTargetCpuScaling5A1612DD",
         "PolicyType": "TargetTrackingScaling",
-        "TargetTrackingConfiguration": {
+        "ScalingTargetId": {
+          "Ref": "sampleappServiceTaskCountTargetE827DC30"
+        },
+        "TargetTrackingScalingPolicyConfiguration": {
           "PredefinedMetricSpecification": {
-            "PredefinedMetricType": "ASGAverageCPUUtilization"
+            "PredefinedMetricType": "ECSServiceAverageCPUUtilization"
           },
+          "ScaleInCooldown": 60,
+          "ScaleOutCooldown": 60,
           "TargetValue": 50
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/myASG/ScalingPolicyKeepSpareCPU/Resource"
-      }
-    },
-    "MySQLDBSubnetGroupB238183C": {
-      "Type": "AWS::RDS::DBSubnetGroup",
-      "Properties": {
-        "DBSubnetGroupDescription": "Subnet group for MySQL_DB database",
-        "SubnetIds": [
-          {
-            "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
-          },
-          {
-            "Ref": "UsEastStackPrivateSubnet2Subnet20A8CD2F"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/MySQL_DB/SubnetGroup"
-      }
-    },
-    "MySQLDBSecurityGroupA568815D": {
-      "Type": "AWS::EC2::SecurityGroup",
-      "Properties": {
-        "GroupDescription": "Security group for MySQL_DB database",
-        "SecurityGroupEgress": [
-          {
-            "CidrIp": "0.0.0.0/0",
-            "Description": "Allow all outbound traffic by default",
-            "IpProtocol": "-1"
-          }
-        ],
-        "VpcId": {
-          "Ref": "UsEastStack142C3F03"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/MySQL_DB/SecurityGroup/Resource"
-      }
-    },
-    "MySQLDBSecurityGroupfromhiavailcdkeastmyASGInstanceSecurityGroup9983CD5CIndirectPort65852E9F": {
-      "Type": "AWS::EC2::SecurityGroupIngress",
-      "Properties": {
-        "IpProtocol": "tcp",
-        "Description": "EC2 Autoscaling Group access MySQL",
-        "FromPort": {
-          "Fn::GetAtt": [
-            "MySQLDBF2825476",
-            "Endpoint.Port"
-          ]
-        },
-        "GroupId": {
-          "Fn::GetAtt": [
-            "MySQLDBSecurityGroupA568815D",
-            "GroupId"
-          ]
-        },
-        "SourceSecurityGroupId": {
-          "Fn::GetAtt": [
-            "myASGInstanceSecurityGroup77B88BA5",
-            "GroupId"
-          ]
-        },
-        "ToPort": {
-          "Fn::GetAtt": [
-            "MySQLDBF2825476",
-            "Endpoint.Port"
-          ]
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/MySQL_DB/SecurityGroup/from hiavailcdkeastmyASGInstanceSecurityGroup9983CD5C:{IndirectPort}"
-      }
-    },
-    "MySQLDBSecret9360EDF1": {
-      "Type": "AWS::SecretsManager::Secret",
-      "Properties": {
-        "GenerateSecretString": {
-          "ExcludeCharacters": "\"@/\\",
-          "GenerateStringKey": "password",
-          "PasswordLength": 30,
-          "SecretStringTemplate": "{\"username\":\"admin\"}"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/MySQL_DB/Secret/Resource"
-      }
-    },
-    "MySQLDBSecretAttachmentE4AD79F6": {
-      "Type": "AWS::SecretsManager::SecretTargetAttachment",
-      "Properties": {
-        "SecretId": {
-          "Ref": "MySQLDBSecret9360EDF1"
-        },
-        "TargetId": {
-          "Ref": "MySQLDBF2825476"
-        },
-        "TargetType": "AWS::RDS::DBInstance"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/MySQL_DB/Secret/Attachment/Resource"
-      }
-    },
-    "MySQLDBF2825476": {
-      "Type": "AWS::RDS::DBInstance",
-      "Properties": {
-        "DBInstanceClass": "db.t2.small",
-        "AllocatedStorage": "100",
-        "BackupRetentionPeriod": 7,
-        "CopyTagsToSnapshot": true,
-        "DBParameterGroupName": "default.mysql5.7",
-        "DBSubnetGroupName": {
-          "Ref": "MySQLDBSubnetGroupB238183C"
-        },
-        "DeleteAutomatedBackups": false,
-        "DeletionProtection": false,
-        "EnableCloudwatchLogsExports": [
-          "audit",
-          "error",
-          "general",
-          "slowquery"
-        ],
-        "Engine": "mysql",
-        "EngineVersion": "5.7.22",
-        "MasterUsername": {
-          "Fn::Join": [
-            "",
-            [
-              "{{resolve:secretsmanager:",
-              {
-                "Ref": "MySQLDBSecret9360EDF1"
-              },
-              ":SecretString:username::}}"
-            ]
-          ]
-        },
-        "MasterUserPassword": {
-          "Fn::Join": [
-            "",
-            [
-              "{{resolve:secretsmanager:",
-              {
-                "Ref": "MySQLDBSecret9360EDF1"
-              },
-              ":SecretString:password::}}"
-            ]
-          ]
-        },
-        "MultiAZ": true,
-        "StorageType": "gp2",
-        "VPCSecurityGroups": [
-          {
-            "Fn::GetAtt": [
-              "MySQLDBSecurityGroupA568815D",
-              "GroupId"
-            ]
-          }
-        ]
-      },
-      "UpdateReplacePolicy": "Delete",
-      "DeletionPolicy": "Delete",
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/MySQL_DB/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/sample-app/Service/TaskCount/Target/CpuScaling/Resource"
       }
     }
   },
-  "Parameters": {
-    "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
-      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
-      "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2"
+  "Outputs": {
+    "sampleappLoadBalancerDNS19B00097": {
+      "Value": {
+        "Fn::GetAtt": [
+          "sampleappLBBDE1D276",
+          "DNSName"
+        ]
+      }
     }
   }
 }
