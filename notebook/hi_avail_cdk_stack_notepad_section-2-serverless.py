@@ -23,12 +23,10 @@ class HiAvailCdkStack(core.Stack):
             self, "Vpc",
             max_azs=2
         )
-
         cluster = ecs.Cluster(
             self, 'fargate-service-autoscaling',
             vpc=vpc
         )
-
         ========================================================================================================
         # Create the task
         my_task_definition = ecs.FargateTaskDefinition(self, "TaskDef", cpu=256, memory_limit_mib=512)
@@ -83,42 +81,4 @@ class HiAvailCdkStack(core.Stack):
             handler=my_lambda,
         )
 
-        # EKS exampple
-        """
-        app_label = {"app": "hello-kubernetes"}
-
-        deployment = {
-            "api_version": "apps/v1",
-            "kind": "Deployment",
-            "metadata": {"name": "hello-kubernetes"},
-            "spec": {
-                "replicas": 3,
-                "selector": {"match_labels": app_label},
-                "template": {
-                    "metadata": {"labels": app_label},
-                    "spec": {
-                        "containers": [{
-                            "name": "hello-kubernetes",
-                            "image": "paulbouwer/hello-kubernetes:1.5",
-                            "ports": [{"container_port": 8080}]
-                        }
-                        ]
-                    }
-                }
-            }
-        }
-
-        service = {
-            "api_version": "v1",
-            "kind": "Service",
-            "metadata": {"name": "hello-kubernetes"},
-            "spec": {
-                "type": "LoadBalancer",
-                "ports": [{"port": 80, "target_port": 8080}],
-                "selector": app_label
-            }
-        }
-        cluster = eks.Cluster(self, "hello-eks")
-
-        cluster.add_resource("hello-kub",service, deployment)
-        """
+        
