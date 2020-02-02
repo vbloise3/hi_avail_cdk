@@ -541,21 +541,29 @@
               }
             }
           },
-          "sample-app": {
-            "id": "sample-app",
-            "path": "hi-avail-cdk-east/sample-app",
+          "MyFargateService": {
+            "id": "MyFargateService",
+            "path": "hi-avail-cdk-east/MyFargateService",
             "children": {
               "LB": {
                 "id": "LB",
-                "path": "hi-avail-cdk-east/sample-app/LB",
+                "path": "hi-avail-cdk-east/MyFargateService/LB",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-east/sample-app/LB/Resource",
+                    "path": "hi-avail-cdk-east/MyFargateService/LB/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
                       "aws:cdk:cloudformation:props": {
                         "scheme": "internet-facing",
+                        "securityGroups": [
+                          {
+                            "Fn::GetAtt": [
+                              "MyFargateServiceLBSecurityGroup6FBF16F1",
+                              "GroupId"
+                            ]
+                          }
+                        ],
                         "subnets": [
                           {
                             "Ref": "VpcPublicSubnet1Subnet5C2D37C4"
@@ -564,48 +572,101 @@
                             "Ref": "VpcPublicSubnet2Subnet691E08A3"
                           }
                         ],
-                        "type": "network"
+                        "type": "application"
+                      }
+                    }
+                  },
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "hi-avail-cdk-east/MyFargateService/LB/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-east/MyFargateService/LB/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "Automatically created Security Group for ELB hiavailcdkeastMyFargateServiceLB1AB3F16A",
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 80,
+                                "toPort": 80,
+                                "description": "Allow from anyone on port 80"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "Vpc8378EB38"
+                            }
+                          }
+                        }
+                      },
+                      "to hiavailcdkeastMyFargateServiceSecurityGroup9F42E33E:80": {
+                        "id": "to hiavailcdkeastMyFargateServiceSecurityGroup9F42E33E:80",
+                        "path": "hi-avail-cdk-east/MyFargateService/LB/SecurityGroup/to hiavailcdkeastMyFargateServiceSecurityGroup9F42E33E:80",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                          "aws:cdk:cloudformation:props": {
+                            "groupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceLBSecurityGroup6FBF16F1",
+                                "GroupId"
+                              ]
+                            },
+                            "ipProtocol": "tcp",
+                            "description": "Load balancer to target",
+                            "destinationSecurityGroupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceSecurityGroup7016792A",
+                                "GroupId"
+                              ]
+                            },
+                            "fromPort": 80,
+                            "toPort": 80
+                          }
+                        }
                       }
                     }
                   },
                   "PublicListener": {
                     "id": "PublicListener",
-                    "path": "hi-avail-cdk-east/sample-app/LB/PublicListener",
+                    "path": "hi-avail-cdk-east/MyFargateService/LB/PublicListener",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-east/sample-app/LB/PublicListener/Resource",
+                        "path": "hi-avail-cdk-east/MyFargateService/LB/PublicListener/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::Listener",
                           "aws:cdk:cloudformation:props": {
                             "defaultActions": [
                               {
                                 "targetGroupArn": {
-                                  "Ref": "sampleappLBPublicListenerECSGroup525A567D"
+                                  "Ref": "MyFargateServiceLBPublicListenerECSGroup4A3EDF05"
                                 },
                                 "type": "forward"
                               }
                             ],
                             "loadBalancerArn": {
-                              "Ref": "sampleappLBBDE1D276"
+                              "Ref": "MyFargateServiceLBDE830E97"
                             },
                             "port": 80,
-                            "protocol": "TCP"
+                            "protocol": "HTTP"
                           }
                         }
                       },
                       "ECSGroup": {
                         "id": "ECSGroup",
-                        "path": "hi-avail-cdk-east/sample-app/LB/PublicListener/ECSGroup",
+                        "path": "hi-avail-cdk-east/MyFargateService/LB/PublicListener/ECSGroup",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-east/sample-app/LB/PublicListener/ECSGroup/Resource",
+                            "path": "hi-avail-cdk-east/MyFargateService/LB/PublicListener/ECSGroup/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::TargetGroup",
                               "aws:cdk:cloudformation:props": {
                                 "port": 80,
-                                "protocol": "TCP",
+                                "protocol": "HTTP",
                                 "targetType": "ip",
                                 "vpcId": {
                                   "Ref": "Vpc8378EB38"
@@ -621,19 +682,23 @@
               },
               "LoadBalancerDNS": {
                 "id": "LoadBalancerDNS",
-                "path": "hi-avail-cdk-east/sample-app/LoadBalancerDNS"
+                "path": "hi-avail-cdk-east/MyFargateService/LoadBalancerDNS"
+              },
+              "ServiceURL": {
+                "id": "ServiceURL",
+                "path": "hi-avail-cdk-east/MyFargateService/ServiceURL"
               },
               "TaskDef": {
                 "id": "TaskDef",
-                "path": "hi-avail-cdk-east/sample-app/TaskDef",
+                "path": "hi-avail-cdk-east/MyFargateService/TaskDef",
                 "children": {
                   "TaskRole": {
                     "id": "TaskRole",
-                    "path": "hi-avail-cdk-east/sample-app/TaskDef/TaskRole",
+                    "path": "hi-avail-cdk-east/MyFargateService/TaskDef/TaskRole",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-east/sample-app/TaskDef/TaskRole/Resource",
+                        "path": "hi-avail-cdk-east/MyFargateService/TaskDef/TaskRole/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                           "aws:cdk:cloudformation:props": {
@@ -656,14 +721,14 @@
                   },
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-east/sample-app/TaskDef/Resource",
+                    "path": "hi-avail-cdk-east/MyFargateService/TaskDef/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ECS::TaskDefinition",
                       "aws:cdk:cloudformation:props": {
                         "containerDefinitions": [
                           {
                             "essential": true,
-                            "image": "amazon/amazon-ecs-sample",
+                            "image": "centos/httpd",
                             "name": "web",
                             "portMappings": [
                               {
@@ -675,30 +740,30 @@
                               "logDriver": "awslogs",
                               "options": {
                                 "awslogs-group": {
-                                  "Ref": "sampleappTaskDefwebLogGroup34BE8C79"
+                                  "Ref": "MyFargateServiceTaskDefwebLogGroup4A6C44E8"
                                 },
-                                "awslogs-stream-prefix": "sample-app",
+                                "awslogs-stream-prefix": "MyFargateService",
                                 "awslogs-region": "us-east-1"
                               }
                             }
                           }
                         ],
-                        "cpu": "256",
+                        "cpu": "512",
                         "executionRoleArn": {
                           "Fn::GetAtt": [
-                            "sampleappTaskDefExecutionRoleAD6F4C40",
+                            "MyFargateServiceTaskDefExecutionRoleD6305504",
                             "Arn"
                           ]
                         },
-                        "family": "hiavailcdkeastsampleappTaskDef59B79D80",
-                        "memory": "512",
+                        "family": "hiavailcdkeastMyFargateServiceTaskDef55351D3D",
+                        "memory": "2048",
                         "networkMode": "awsvpc",
                         "requiresCompatibilities": [
                           "FARGATE"
                         ],
                         "taskRoleArn": {
                           "Fn::GetAtt": [
-                            "sampleappTaskDefTaskRoleB530CAC0",
+                            "MyFargateServiceTaskDefTaskRole62C7D397",
                             "Arn"
                           ]
                         }
@@ -707,15 +772,15 @@
                   },
                   "web": {
                     "id": "web",
-                    "path": "hi-avail-cdk-east/sample-app/TaskDef/web",
+                    "path": "hi-avail-cdk-east/MyFargateService/TaskDef/web",
                     "children": {
                       "LogGroup": {
                         "id": "LogGroup",
-                        "path": "hi-avail-cdk-east/sample-app/TaskDef/web/LogGroup",
+                        "path": "hi-avail-cdk-east/MyFargateService/TaskDef/web/LogGroup",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-east/sample-app/TaskDef/web/LogGroup/Resource",
+                            "path": "hi-avail-cdk-east/MyFargateService/TaskDef/web/LogGroup/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Logs::LogGroup",
                               "aws:cdk:cloudformation:props": {}
@@ -727,11 +792,11 @@
                   },
                   "ExecutionRole": {
                     "id": "ExecutionRole",
-                    "path": "hi-avail-cdk-east/sample-app/TaskDef/ExecutionRole",
+                    "path": "hi-avail-cdk-east/MyFargateService/TaskDef/ExecutionRole",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-east/sample-app/TaskDef/ExecutionRole/Resource",
+                        "path": "hi-avail-cdk-east/MyFargateService/TaskDef/ExecutionRole/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                           "aws:cdk:cloudformation:props": {
@@ -752,11 +817,11 @@
                       },
                       "DefaultPolicy": {
                         "id": "DefaultPolicy",
-                        "path": "hi-avail-cdk-east/sample-app/TaskDef/ExecutionRole/DefaultPolicy",
+                        "path": "hi-avail-cdk-east/MyFargateService/TaskDef/ExecutionRole/DefaultPolicy",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-east/sample-app/TaskDef/ExecutionRole/DefaultPolicy/Resource",
+                            "path": "hi-avail-cdk-east/MyFargateService/TaskDef/ExecutionRole/DefaultPolicy/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                               "aws:cdk:cloudformation:props": {
@@ -770,7 +835,7 @@
                                       "Effect": "Allow",
                                       "Resource": {
                                         "Fn::GetAtt": [
-                                          "sampleappTaskDefwebLogGroup34BE8C79",
+                                          "MyFargateServiceTaskDefwebLogGroup4A6C44E8",
                                           "Arn"
                                         ]
                                       }
@@ -778,10 +843,10 @@
                                   ],
                                   "Version": "2012-10-17"
                                 },
-                                "policyName": "sampleappTaskDefExecutionRoleDefaultPolicy0AD15374",
+                                "policyName": "MyFargateServiceTaskDefExecutionRoleDefaultPolicyEC22B20F",
                                 "roles": [
                                   {
-                                    "Ref": "sampleappTaskDefExecutionRoleAD6F4C40"
+                                    "Ref": "MyFargateServiceTaskDefExecutionRoleD6305504"
                                   }
                                 ]
                               }
@@ -795,11 +860,11 @@
               },
               "Service": {
                 "id": "Service",
-                "path": "hi-avail-cdk-east/sample-app/Service",
+                "path": "hi-avail-cdk-east/MyFargateService/Service",
                 "children": {
                   "Service": {
                     "id": "Service",
-                    "path": "hi-avail-cdk-east/sample-app/Service/Service",
+                    "path": "hi-avail-cdk-east/MyFargateService/Service/Service",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ECS::Service",
                       "aws:cdk:cloudformation:props": {
@@ -810,14 +875,14 @@
                           "maximumPercent": 200,
                           "minimumHealthyPercent": 50
                         },
-                        "desiredCount": 1,
+                        "desiredCount": 2,
                         "enableEcsManagedTags": false,
                         "healthCheckGracePeriodSeconds": 60,
                         "launchType": "FARGATE",
                         "loadBalancers": [
                           {
                             "targetGroupArn": {
-                              "Ref": "sampleappLBPublicListenerECSGroup525A567D"
+                              "Ref": "MyFargateServiceLBPublicListenerECSGroup4A3EDF05"
                             },
                             "containerName": "web",
                             "containerPort": 80
@@ -837,7 +902,7 @@
                             "securityGroups": [
                               {
                                 "Fn::GetAtt": [
-                                  "sampleappServiceSecurityGroup0ABF0D21",
+                                  "MyFargateServiceSecurityGroup7016792A",
                                   "GroupId"
                                 ]
                               }
@@ -845,22 +910,22 @@
                           }
                         },
                         "taskDefinition": {
-                          "Ref": "sampleappTaskDef6BF75736"
+                          "Ref": "MyFargateServiceTaskDef5DA17B39"
                         }
                       }
                     }
                   },
                   "SecurityGroup": {
                     "id": "SecurityGroup",
-                    "path": "hi-avail-cdk-east/sample-app/Service/SecurityGroup",
+                    "path": "hi-avail-cdk-east/MyFargateService/Service/SecurityGroup",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-east/sample-app/Service/SecurityGroup/Resource",
+                        "path": "hi-avail-cdk-east/MyFargateService/Service/SecurityGroup/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
                           "aws:cdk:cloudformation:props": {
-                            "groupDescription": "hi-avail-cdk-east/sample-app/Service/SecurityGroup",
+                            "groupDescription": "hi-avail-cdk-east/MyFargateService/Service/SecurityGroup",
                             "securityGroupEgress": [
                               {
                                 "cidrIp": "0.0.0.0/0",
@@ -887,24 +952,49 @@
                             }
                           }
                         }
+                      },
+                      "from hiavailcdkeastMyFargateServiceLBSecurityGroup9BA9428A:80": {
+                        "id": "from hiavailcdkeastMyFargateServiceLBSecurityGroup9BA9428A:80",
+                        "path": "hi-avail-cdk-east/MyFargateService/Service/SecurityGroup/from hiavailcdkeastMyFargateServiceLBSecurityGroup9BA9428A:80",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                          "aws:cdk:cloudformation:props": {
+                            "ipProtocol": "tcp",
+                            "description": "Load balancer to target",
+                            "fromPort": 80,
+                            "groupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceSecurityGroup7016792A",
+                                "GroupId"
+                              ]
+                            },
+                            "sourceSecurityGroupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceLBSecurityGroup6FBF16F1",
+                                "GroupId"
+                              ]
+                            },
+                            "toPort": 80
+                          }
+                        }
                       }
                     }
                   },
                   "ScalingRole": {
                     "id": "ScalingRole",
-                    "path": "hi-avail-cdk-east/sample-app/Service/ScalingRole"
+                    "path": "hi-avail-cdk-east/MyFargateService/Service/ScalingRole"
                   },
                   "TaskCount": {
                     "id": "TaskCount",
-                    "path": "hi-avail-cdk-east/sample-app/Service/TaskCount",
+                    "path": "hi-avail-cdk-east/MyFargateService/Service/TaskCount",
                     "children": {
                       "Target": {
                         "id": "Target",
-                        "path": "hi-avail-cdk-east/sample-app/Service/TaskCount/Target",
+                        "path": "hi-avail-cdk-east/MyFargateService/Service/TaskCount/Target",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-east/sample-app/Service/TaskCount/Target/Resource",
+                            "path": "hi-avail-cdk-east/MyFargateService/Service/TaskCount/Target/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApplicationAutoScaling::ScalableTarget",
                               "aws:cdk:cloudformation:props": {
@@ -921,7 +1011,7 @@
                                       "/",
                                       {
                                         "Fn::GetAtt": [
-                                          "sampleappServiceE7504FDB",
+                                          "MyFargateServiceF490C034",
                                           "Name"
                                         ]
                                       }
@@ -951,18 +1041,18 @@
                           },
                           "CpuScaling": {
                             "id": "CpuScaling",
-                            "path": "hi-avail-cdk-east/sample-app/Service/TaskCount/Target/CpuScaling",
+                            "path": "hi-avail-cdk-east/MyFargateService/Service/TaskCount/Target/CpuScaling",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "hi-avail-cdk-east/sample-app/Service/TaskCount/Target/CpuScaling/Resource",
+                                "path": "hi-avail-cdk-east/MyFargateService/Service/TaskCount/Target/CpuScaling/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApplicationAutoScaling::ScalingPolicy",
                                   "aws:cdk:cloudformation:props": {
-                                    "policyName": "hiavailcdkeastsampleappServiceTaskCountTargetCpuScaling5A1612DD",
+                                    "policyName": "hiavailcdkeastMyFargateServiceTaskCountTargetCpuScaling1C2A4469",
                                     "policyType": "TargetTrackingScaling",
                                     "scalingTargetId": {
-                                      "Ref": "sampleappServiceTaskCountTargetE827DC30"
+                                      "Ref": "MyFargateServiceTaskCountTargetFD19DCA5"
                                     },
                                     "targetTrackingScalingPolicyConfiguration": {
                                       "predefinedMetricSpecification": {
@@ -975,6 +1065,545 @@
                                   }
                                 }
                               }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "HelloHandler": {
+            "id": "HelloHandler",
+            "path": "hi-avail-cdk-east/HelloHandler",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "hi-avail-cdk-east/HelloHandler/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/HelloHandler/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "hi-avail-cdk-east/HelloHandler/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "hi-avail-cdk-east/HelloHandler/Code/Stage"
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "hi-avail-cdk-east/HelloHandler/Code/AssetBucket"
+                  }
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-east/HelloHandler/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Ref": "AssetParametersd8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699S3Bucket9E5FF666"
+                      },
+                      "s3Key": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            {
+                              "Fn::Select": [
+                                0,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParametersd8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699S3VersionKey7AA6D727"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::Select": [
+                                1,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParametersd8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699S3VersionKey7AA6D727"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    "handler": "hello.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "HelloHandlerServiceRole11EF7C63",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.7"
+                  }
+                }
+              }
+            }
+          },
+          "AssetParameters": {
+            "id": "AssetParameters",
+            "path": "hi-avail-cdk-east/AssetParameters",
+            "children": {
+              "d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699": {
+                "id": "d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699",
+                "path": "hi-avail-cdk-east/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "hi-avail-cdk-east/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699/S3Bucket"
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "hi-avail-cdk-east/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699/S3VersionKey"
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "hi-avail-cdk-east/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699/ArtifactHash"
+                  }
+                }
+              }
+            }
+          },
+          "Endpoint": {
+            "id": "Endpoint",
+            "path": "hi-avail-cdk-east/Endpoint",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-east/Endpoint/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "Endpoint"
+                  }
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "hi-avail-cdk-east/Endpoint/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/Endpoint/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "EndpointEEF1FD8F"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    }
+                  }
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "hi-avail-cdk-east/Endpoint/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/Endpoint/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "EndpointEEF1FD8F"
+                        },
+                        "deploymentId": {
+                          "Ref": "EndpointDeployment318525DAdd8a7e35b2831c2f10466e03f19a62ad"
+                        },
+                        "stageName": "prod"
+                      }
+                    }
+                  }
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "hi-avail-cdk-east/Endpoint/Endpoint"
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "hi-avail-cdk-east/Endpoint/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/Endpoint/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "hi-avail-cdk-east/Endpoint/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "EndpointCloudWatchRoleC3C64E0F",
+                        "Arn"
+                      ]
+                    }
+                  }
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "hi-avail-cdk-east/Endpoint/Default",
+                "children": {
+                  "{proxy+}": {
+                    "id": "{proxy+}",
+                    "path": "hi-avail-cdk-east/Endpoint/Default/{proxy+}",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-east/Endpoint/Default/{proxy+}/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "EndpointEEF1FD8F",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "{proxy+}",
+                            "restApiId": {
+                              "Ref": "EndpointEEF1FD8F"
+                            }
+                          }
+                        }
+                      },
+                      "ANY": {
+                        "id": "ANY",
+                        "path": "hi-avail-cdk-east/Endpoint/Default/{proxy+}/ANY",
+                        "children": {
+                          "ApiPermission.hiavailcdkeastEndpoint6971CFE5.ANY..{proxy+}": {
+                            "id": "ApiPermission.hiavailcdkeastEndpoint6971CFE5.ANY..{proxy+}",
+                            "path": "hi-avail-cdk-east/Endpoint/Default/{proxy+}/ANY/ApiPermission.hiavailcdkeastEndpoint6971CFE5.ANY..{proxy+}",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HelloHandler2E4FBA4D",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "EndpointEEF1FD8F"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "EndpointDeploymentStageprodB78BEEA0"
+                                      },
+                                      "/*/{proxy+}"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "ApiPermission.Test.hiavailcdkeastEndpoint6971CFE5.ANY..{proxy+}": {
+                            "id": "ApiPermission.Test.hiavailcdkeastEndpoint6971CFE5.ANY..{proxy+}",
+                            "path": "hi-avail-cdk-east/Endpoint/Default/{proxy+}/ANY/ApiPermission.Test.hiavailcdkeastEndpoint6971CFE5.ANY..{proxy+}",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HelloHandler2E4FBA4D",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "EndpointEEF1FD8F"
+                                      },
+                                      "/test-invoke-stage/*/{proxy+}"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "hi-avail-cdk-east/Endpoint/Default/{proxy+}/ANY/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "ANY",
+                                "resourceId": {
+                                  "Ref": "Endpointproxy39E2174E"
+                                },
+                                "restApiId": {
+                                  "Ref": "EndpointEEF1FD8F"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "HelloHandler2E4FBA4D",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ANY": {
+                    "id": "ANY",
+                    "path": "hi-avail-cdk-east/Endpoint/Default/ANY",
+                    "children": {
+                      "ApiPermission.hiavailcdkeastEndpoint6971CFE5.ANY..": {
+                        "id": "ApiPermission.hiavailcdkeastEndpoint6971CFE5.ANY..",
+                        "path": "hi-avail-cdk-east/Endpoint/Default/ANY/ApiPermission.hiavailcdkeastEndpoint6971CFE5.ANY..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "HelloHandler2E4FBA4D",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-east-1:",
+                                  {
+                                    "Ref": "AWS::AccountId"
+                                  },
+                                  ":",
+                                  {
+                                    "Ref": "EndpointEEF1FD8F"
+                                  },
+                                  "/",
+                                  {
+                                    "Ref": "EndpointDeploymentStageprodB78BEEA0"
+                                  },
+                                  "/*/"
+                                ]
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "ApiPermission.Test.hiavailcdkeastEndpoint6971CFE5.ANY..": {
+                        "id": "ApiPermission.Test.hiavailcdkeastEndpoint6971CFE5.ANY..",
+                        "path": "hi-avail-cdk-east/Endpoint/Default/ANY/ApiPermission.Test.hiavailcdkeastEndpoint6971CFE5.ANY..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "HelloHandler2E4FBA4D",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-east-1:",
+                                  {
+                                    "Ref": "AWS::AccountId"
+                                  },
+                                  ":",
+                                  {
+                                    "Ref": "EndpointEEF1FD8F"
+                                  },
+                                  "/test-invoke-stage/*/"
+                                ]
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-east/Endpoint/Default/ANY/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "ANY",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "EndpointEEF1FD8F",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "EndpointEEF1FD8F"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "AWS_PROXY",
+                              "uri": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                    {
+                                      "Fn::GetAtt": [
+                                        "HelloHandler2E4FBA4D",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "/invocations"
+                                  ]
+                                ]
+                              },
+                              "integrationHttpMethod": "POST"
                             }
                           }
                         }
@@ -1520,21 +2149,29 @@
               }
             }
           },
-          "sample-app": {
-            "id": "sample-app",
-            "path": "hi-avail-cdk-west/sample-app",
+          "MyFargateService": {
+            "id": "MyFargateService",
+            "path": "hi-avail-cdk-west/MyFargateService",
             "children": {
               "LB": {
                 "id": "LB",
-                "path": "hi-avail-cdk-west/sample-app/LB",
+                "path": "hi-avail-cdk-west/MyFargateService/LB",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-west/sample-app/LB/Resource",
+                    "path": "hi-avail-cdk-west/MyFargateService/LB/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
                       "aws:cdk:cloudformation:props": {
                         "scheme": "internet-facing",
+                        "securityGroups": [
+                          {
+                            "Fn::GetAtt": [
+                              "MyFargateServiceLBSecurityGroup6FBF16F1",
+                              "GroupId"
+                            ]
+                          }
+                        ],
                         "subnets": [
                           {
                             "Ref": "VpcPublicSubnet1Subnet5C2D37C4"
@@ -1543,48 +2180,101 @@
                             "Ref": "VpcPublicSubnet2Subnet691E08A3"
                           }
                         ],
-                        "type": "network"
+                        "type": "application"
+                      }
+                    }
+                  },
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "hi-avail-cdk-west/MyFargateService/LB/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-west/MyFargateService/LB/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "Automatically created Security Group for ELB hiavailcdkwestMyFargateServiceLB3BC9CF2D",
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 80,
+                                "toPort": 80,
+                                "description": "Allow from anyone on port 80"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "Vpc8378EB38"
+                            }
+                          }
+                        }
+                      },
+                      "to hiavailcdkwestMyFargateServiceSecurityGroupF287757E:80": {
+                        "id": "to hiavailcdkwestMyFargateServiceSecurityGroupF287757E:80",
+                        "path": "hi-avail-cdk-west/MyFargateService/LB/SecurityGroup/to hiavailcdkwestMyFargateServiceSecurityGroupF287757E:80",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                          "aws:cdk:cloudformation:props": {
+                            "groupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceLBSecurityGroup6FBF16F1",
+                                "GroupId"
+                              ]
+                            },
+                            "ipProtocol": "tcp",
+                            "description": "Load balancer to target",
+                            "destinationSecurityGroupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceSecurityGroup7016792A",
+                                "GroupId"
+                              ]
+                            },
+                            "fromPort": 80,
+                            "toPort": 80
+                          }
+                        }
                       }
                     }
                   },
                   "PublicListener": {
                     "id": "PublicListener",
-                    "path": "hi-avail-cdk-west/sample-app/LB/PublicListener",
+                    "path": "hi-avail-cdk-west/MyFargateService/LB/PublicListener",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-west/sample-app/LB/PublicListener/Resource",
+                        "path": "hi-avail-cdk-west/MyFargateService/LB/PublicListener/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::Listener",
                           "aws:cdk:cloudformation:props": {
                             "defaultActions": [
                               {
                                 "targetGroupArn": {
-                                  "Ref": "sampleappLBPublicListenerECSGroup525A567D"
+                                  "Ref": "MyFargateServiceLBPublicListenerECSGroup4A3EDF05"
                                 },
                                 "type": "forward"
                               }
                             ],
                             "loadBalancerArn": {
-                              "Ref": "sampleappLBBDE1D276"
+                              "Ref": "MyFargateServiceLBDE830E97"
                             },
                             "port": 80,
-                            "protocol": "TCP"
+                            "protocol": "HTTP"
                           }
                         }
                       },
                       "ECSGroup": {
                         "id": "ECSGroup",
-                        "path": "hi-avail-cdk-west/sample-app/LB/PublicListener/ECSGroup",
+                        "path": "hi-avail-cdk-west/MyFargateService/LB/PublicListener/ECSGroup",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-west/sample-app/LB/PublicListener/ECSGroup/Resource",
+                            "path": "hi-avail-cdk-west/MyFargateService/LB/PublicListener/ECSGroup/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::TargetGroup",
                               "aws:cdk:cloudformation:props": {
                                 "port": 80,
-                                "protocol": "TCP",
+                                "protocol": "HTTP",
                                 "targetType": "ip",
                                 "vpcId": {
                                   "Ref": "Vpc8378EB38"
@@ -1600,19 +2290,23 @@
               },
               "LoadBalancerDNS": {
                 "id": "LoadBalancerDNS",
-                "path": "hi-avail-cdk-west/sample-app/LoadBalancerDNS"
+                "path": "hi-avail-cdk-west/MyFargateService/LoadBalancerDNS"
+              },
+              "ServiceURL": {
+                "id": "ServiceURL",
+                "path": "hi-avail-cdk-west/MyFargateService/ServiceURL"
               },
               "TaskDef": {
                 "id": "TaskDef",
-                "path": "hi-avail-cdk-west/sample-app/TaskDef",
+                "path": "hi-avail-cdk-west/MyFargateService/TaskDef",
                 "children": {
                   "TaskRole": {
                     "id": "TaskRole",
-                    "path": "hi-avail-cdk-west/sample-app/TaskDef/TaskRole",
+                    "path": "hi-avail-cdk-west/MyFargateService/TaskDef/TaskRole",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-west/sample-app/TaskDef/TaskRole/Resource",
+                        "path": "hi-avail-cdk-west/MyFargateService/TaskDef/TaskRole/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                           "aws:cdk:cloudformation:props": {
@@ -1635,14 +2329,14 @@
                   },
                   "Resource": {
                     "id": "Resource",
-                    "path": "hi-avail-cdk-west/sample-app/TaskDef/Resource",
+                    "path": "hi-avail-cdk-west/MyFargateService/TaskDef/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ECS::TaskDefinition",
                       "aws:cdk:cloudformation:props": {
                         "containerDefinitions": [
                           {
                             "essential": true,
-                            "image": "amazon/amazon-ecs-sample",
+                            "image": "centos/httpd",
                             "name": "web",
                             "portMappings": [
                               {
@@ -1654,30 +2348,30 @@
                               "logDriver": "awslogs",
                               "options": {
                                 "awslogs-group": {
-                                  "Ref": "sampleappTaskDefwebLogGroup34BE8C79"
+                                  "Ref": "MyFargateServiceTaskDefwebLogGroup4A6C44E8"
                                 },
-                                "awslogs-stream-prefix": "sample-app",
+                                "awslogs-stream-prefix": "MyFargateService",
                                 "awslogs-region": "us-west-1"
                               }
                             }
                           }
                         ],
-                        "cpu": "256",
+                        "cpu": "512",
                         "executionRoleArn": {
                           "Fn::GetAtt": [
-                            "sampleappTaskDefExecutionRoleAD6F4C40",
+                            "MyFargateServiceTaskDefExecutionRoleD6305504",
                             "Arn"
                           ]
                         },
-                        "family": "hiavailcdkwestsampleappTaskDef851E339A",
-                        "memory": "512",
+                        "family": "hiavailcdkwestMyFargateServiceTaskDefB97378F5",
+                        "memory": "2048",
                         "networkMode": "awsvpc",
                         "requiresCompatibilities": [
                           "FARGATE"
                         ],
                         "taskRoleArn": {
                           "Fn::GetAtt": [
-                            "sampleappTaskDefTaskRoleB530CAC0",
+                            "MyFargateServiceTaskDefTaskRole62C7D397",
                             "Arn"
                           ]
                         }
@@ -1686,15 +2380,15 @@
                   },
                   "web": {
                     "id": "web",
-                    "path": "hi-avail-cdk-west/sample-app/TaskDef/web",
+                    "path": "hi-avail-cdk-west/MyFargateService/TaskDef/web",
                     "children": {
                       "LogGroup": {
                         "id": "LogGroup",
-                        "path": "hi-avail-cdk-west/sample-app/TaskDef/web/LogGroup",
+                        "path": "hi-avail-cdk-west/MyFargateService/TaskDef/web/LogGroup",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-west/sample-app/TaskDef/web/LogGroup/Resource",
+                            "path": "hi-avail-cdk-west/MyFargateService/TaskDef/web/LogGroup/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Logs::LogGroup",
                               "aws:cdk:cloudformation:props": {}
@@ -1706,11 +2400,11 @@
                   },
                   "ExecutionRole": {
                     "id": "ExecutionRole",
-                    "path": "hi-avail-cdk-west/sample-app/TaskDef/ExecutionRole",
+                    "path": "hi-avail-cdk-west/MyFargateService/TaskDef/ExecutionRole",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-west/sample-app/TaskDef/ExecutionRole/Resource",
+                        "path": "hi-avail-cdk-west/MyFargateService/TaskDef/ExecutionRole/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                           "aws:cdk:cloudformation:props": {
@@ -1731,11 +2425,11 @@
                       },
                       "DefaultPolicy": {
                         "id": "DefaultPolicy",
-                        "path": "hi-avail-cdk-west/sample-app/TaskDef/ExecutionRole/DefaultPolicy",
+                        "path": "hi-avail-cdk-west/MyFargateService/TaskDef/ExecutionRole/DefaultPolicy",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-west/sample-app/TaskDef/ExecutionRole/DefaultPolicy/Resource",
+                            "path": "hi-avail-cdk-west/MyFargateService/TaskDef/ExecutionRole/DefaultPolicy/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                               "aws:cdk:cloudformation:props": {
@@ -1749,7 +2443,7 @@
                                       "Effect": "Allow",
                                       "Resource": {
                                         "Fn::GetAtt": [
-                                          "sampleappTaskDefwebLogGroup34BE8C79",
+                                          "MyFargateServiceTaskDefwebLogGroup4A6C44E8",
                                           "Arn"
                                         ]
                                       }
@@ -1757,10 +2451,10 @@
                                   ],
                                   "Version": "2012-10-17"
                                 },
-                                "policyName": "sampleappTaskDefExecutionRoleDefaultPolicy0AD15374",
+                                "policyName": "MyFargateServiceTaskDefExecutionRoleDefaultPolicyEC22B20F",
                                 "roles": [
                                   {
-                                    "Ref": "sampleappTaskDefExecutionRoleAD6F4C40"
+                                    "Ref": "MyFargateServiceTaskDefExecutionRoleD6305504"
                                   }
                                 ]
                               }
@@ -1774,11 +2468,11 @@
               },
               "Service": {
                 "id": "Service",
-                "path": "hi-avail-cdk-west/sample-app/Service",
+                "path": "hi-avail-cdk-west/MyFargateService/Service",
                 "children": {
                   "Service": {
                     "id": "Service",
-                    "path": "hi-avail-cdk-west/sample-app/Service/Service",
+                    "path": "hi-avail-cdk-west/MyFargateService/Service/Service",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ECS::Service",
                       "aws:cdk:cloudformation:props": {
@@ -1789,14 +2483,14 @@
                           "maximumPercent": 200,
                           "minimumHealthyPercent": 50
                         },
-                        "desiredCount": 1,
+                        "desiredCount": 2,
                         "enableEcsManagedTags": false,
                         "healthCheckGracePeriodSeconds": 60,
                         "launchType": "FARGATE",
                         "loadBalancers": [
                           {
                             "targetGroupArn": {
-                              "Ref": "sampleappLBPublicListenerECSGroup525A567D"
+                              "Ref": "MyFargateServiceLBPublicListenerECSGroup4A3EDF05"
                             },
                             "containerName": "web",
                             "containerPort": 80
@@ -1816,7 +2510,7 @@
                             "securityGroups": [
                               {
                                 "Fn::GetAtt": [
-                                  "sampleappServiceSecurityGroup0ABF0D21",
+                                  "MyFargateServiceSecurityGroup7016792A",
                                   "GroupId"
                                 ]
                               }
@@ -1824,22 +2518,22 @@
                           }
                         },
                         "taskDefinition": {
-                          "Ref": "sampleappTaskDef6BF75736"
+                          "Ref": "MyFargateServiceTaskDef5DA17B39"
                         }
                       }
                     }
                   },
                   "SecurityGroup": {
                     "id": "SecurityGroup",
-                    "path": "hi-avail-cdk-west/sample-app/Service/SecurityGroup",
+                    "path": "hi-avail-cdk-west/MyFargateService/Service/SecurityGroup",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "hi-avail-cdk-west/sample-app/Service/SecurityGroup/Resource",
+                        "path": "hi-avail-cdk-west/MyFargateService/Service/SecurityGroup/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
                           "aws:cdk:cloudformation:props": {
-                            "groupDescription": "hi-avail-cdk-west/sample-app/Service/SecurityGroup",
+                            "groupDescription": "hi-avail-cdk-west/MyFargateService/Service/SecurityGroup",
                             "securityGroupEgress": [
                               {
                                 "cidrIp": "0.0.0.0/0",
@@ -1866,24 +2560,49 @@
                             }
                           }
                         }
+                      },
+                      "from hiavailcdkwestMyFargateServiceLBSecurityGroupAB691E33:80": {
+                        "id": "from hiavailcdkwestMyFargateServiceLBSecurityGroupAB691E33:80",
+                        "path": "hi-avail-cdk-west/MyFargateService/Service/SecurityGroup/from hiavailcdkwestMyFargateServiceLBSecurityGroupAB691E33:80",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                          "aws:cdk:cloudformation:props": {
+                            "ipProtocol": "tcp",
+                            "description": "Load balancer to target",
+                            "fromPort": 80,
+                            "groupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceSecurityGroup7016792A",
+                                "GroupId"
+                              ]
+                            },
+                            "sourceSecurityGroupId": {
+                              "Fn::GetAtt": [
+                                "MyFargateServiceLBSecurityGroup6FBF16F1",
+                                "GroupId"
+                              ]
+                            },
+                            "toPort": 80
+                          }
+                        }
                       }
                     }
                   },
                   "ScalingRole": {
                     "id": "ScalingRole",
-                    "path": "hi-avail-cdk-west/sample-app/Service/ScalingRole"
+                    "path": "hi-avail-cdk-west/MyFargateService/Service/ScalingRole"
                   },
                   "TaskCount": {
                     "id": "TaskCount",
-                    "path": "hi-avail-cdk-west/sample-app/Service/TaskCount",
+                    "path": "hi-avail-cdk-west/MyFargateService/Service/TaskCount",
                     "children": {
                       "Target": {
                         "id": "Target",
-                        "path": "hi-avail-cdk-west/sample-app/Service/TaskCount/Target",
+                        "path": "hi-avail-cdk-west/MyFargateService/Service/TaskCount/Target",
                         "children": {
                           "Resource": {
                             "id": "Resource",
-                            "path": "hi-avail-cdk-west/sample-app/Service/TaskCount/Target/Resource",
+                            "path": "hi-avail-cdk-west/MyFargateService/Service/TaskCount/Target/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApplicationAutoScaling::ScalableTarget",
                               "aws:cdk:cloudformation:props": {
@@ -1900,7 +2619,7 @@
                                       "/",
                                       {
                                         "Fn::GetAtt": [
-                                          "sampleappServiceE7504FDB",
+                                          "MyFargateServiceF490C034",
                                           "Name"
                                         ]
                                       }
@@ -1930,18 +2649,18 @@
                           },
                           "CpuScaling": {
                             "id": "CpuScaling",
-                            "path": "hi-avail-cdk-west/sample-app/Service/TaskCount/Target/CpuScaling",
+                            "path": "hi-avail-cdk-west/MyFargateService/Service/TaskCount/Target/CpuScaling",
                             "children": {
                               "Resource": {
                                 "id": "Resource",
-                                "path": "hi-avail-cdk-west/sample-app/Service/TaskCount/Target/CpuScaling/Resource",
+                                "path": "hi-avail-cdk-west/MyFargateService/Service/TaskCount/Target/CpuScaling/Resource",
                                 "attributes": {
                                   "aws:cdk:cloudformation:type": "AWS::ApplicationAutoScaling::ScalingPolicy",
                                   "aws:cdk:cloudformation:props": {
-                                    "policyName": "hiavailcdkwestsampleappServiceTaskCountTargetCpuScalingBB25E8AB",
+                                    "policyName": "hiavailcdkwestMyFargateServiceTaskCountTargetCpuScaling9B6B4969",
                                     "policyType": "TargetTrackingScaling",
                                     "scalingTargetId": {
-                                      "Ref": "sampleappServiceTaskCountTargetE827DC30"
+                                      "Ref": "MyFargateServiceTaskCountTargetFD19DCA5"
                                     },
                                     "targetTrackingScalingPolicyConfiguration": {
                                       "predefinedMetricSpecification": {
@@ -1954,6 +2673,545 @@
                                   }
                                 }
                               }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "HelloHandler": {
+            "id": "HelloHandler",
+            "path": "hi-avail-cdk-west/HelloHandler",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "hi-avail-cdk-west/HelloHandler/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-west/HelloHandler/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "hi-avail-cdk-west/HelloHandler/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "hi-avail-cdk-west/HelloHandler/Code/Stage"
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "hi-avail-cdk-west/HelloHandler/Code/AssetBucket"
+                  }
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-west/HelloHandler/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Ref": "AssetParametersd8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699S3Bucket9E5FF666"
+                      },
+                      "s3Key": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            {
+                              "Fn::Select": [
+                                0,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParametersd8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699S3VersionKey7AA6D727"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::Select": [
+                                1,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParametersd8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699S3VersionKey7AA6D727"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    "handler": "hello.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "HelloHandlerServiceRole11EF7C63",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.7"
+                  }
+                }
+              }
+            }
+          },
+          "AssetParameters": {
+            "id": "AssetParameters",
+            "path": "hi-avail-cdk-west/AssetParameters",
+            "children": {
+              "d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699": {
+                "id": "d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699",
+                "path": "hi-avail-cdk-west/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "hi-avail-cdk-west/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699/S3Bucket"
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "hi-avail-cdk-west/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699/S3VersionKey"
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "hi-avail-cdk-west/AssetParameters/d8386ac369b1d6dbaf04747d69aca282ab1039da3707a6530525dadebf197699/ArtifactHash"
+                  }
+                }
+              }
+            }
+          },
+          "Endpoint": {
+            "id": "Endpoint",
+            "path": "hi-avail-cdk-west/Endpoint",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-west/Endpoint/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "Endpoint"
+                  }
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "hi-avail-cdk-west/Endpoint/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-west/Endpoint/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "EndpointEEF1FD8F"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    }
+                  }
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "hi-avail-cdk-west/Endpoint/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-west/Endpoint/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "EndpointEEF1FD8F"
+                        },
+                        "deploymentId": {
+                          "Ref": "EndpointDeployment318525DA718bbffe4ce2dcbbf69ad6721bd9ea2a"
+                        },
+                        "stageName": "prod"
+                      }
+                    }
+                  }
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "hi-avail-cdk-west/Endpoint/Endpoint"
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "hi-avail-cdk-west/Endpoint/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-west/Endpoint/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "hi-avail-cdk-west/Endpoint/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "EndpointCloudWatchRoleC3C64E0F",
+                        "Arn"
+                      ]
+                    }
+                  }
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "hi-avail-cdk-west/Endpoint/Default",
+                "children": {
+                  "{proxy+}": {
+                    "id": "{proxy+}",
+                    "path": "hi-avail-cdk-west/Endpoint/Default/{proxy+}",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-west/Endpoint/Default/{proxy+}/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "EndpointEEF1FD8F",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "{proxy+}",
+                            "restApiId": {
+                              "Ref": "EndpointEEF1FD8F"
+                            }
+                          }
+                        }
+                      },
+                      "ANY": {
+                        "id": "ANY",
+                        "path": "hi-avail-cdk-west/Endpoint/Default/{proxy+}/ANY",
+                        "children": {
+                          "ApiPermission.hiavailcdkwestEndpoint0CB95757.ANY..{proxy+}": {
+                            "id": "ApiPermission.hiavailcdkwestEndpoint0CB95757.ANY..{proxy+}",
+                            "path": "hi-avail-cdk-west/Endpoint/Default/{proxy+}/ANY/ApiPermission.hiavailcdkwestEndpoint0CB95757.ANY..{proxy+}",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HelloHandler2E4FBA4D",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-west-1:",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "EndpointEEF1FD8F"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "EndpointDeploymentStageprodB78BEEA0"
+                                      },
+                                      "/*/{proxy+}"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "ApiPermission.Test.hiavailcdkwestEndpoint0CB95757.ANY..{proxy+}": {
+                            "id": "ApiPermission.Test.hiavailcdkwestEndpoint0CB95757.ANY..{proxy+}",
+                            "path": "hi-avail-cdk-west/Endpoint/Default/{proxy+}/ANY/ApiPermission.Test.hiavailcdkwestEndpoint0CB95757.ANY..{proxy+}",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HelloHandler2E4FBA4D",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-west-1:",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "EndpointEEF1FD8F"
+                                      },
+                                      "/test-invoke-stage/*/{proxy+}"
+                                    ]
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "hi-avail-cdk-west/Endpoint/Default/{proxy+}/ANY/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "ANY",
+                                "resourceId": {
+                                  "Ref": "Endpointproxy39E2174E"
+                                },
+                                "restApiId": {
+                                  "Ref": "EndpointEEF1FD8F"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-west-1:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "HelloHandler2E4FBA4D",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ANY": {
+                    "id": "ANY",
+                    "path": "hi-avail-cdk-west/Endpoint/Default/ANY",
+                    "children": {
+                      "ApiPermission.hiavailcdkwestEndpoint0CB95757.ANY..": {
+                        "id": "ApiPermission.hiavailcdkwestEndpoint0CB95757.ANY..",
+                        "path": "hi-avail-cdk-west/Endpoint/Default/ANY/ApiPermission.hiavailcdkwestEndpoint0CB95757.ANY..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "HelloHandler2E4FBA4D",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-west-1:",
+                                  {
+                                    "Ref": "AWS::AccountId"
+                                  },
+                                  ":",
+                                  {
+                                    "Ref": "EndpointEEF1FD8F"
+                                  },
+                                  "/",
+                                  {
+                                    "Ref": "EndpointDeploymentStageprodB78BEEA0"
+                                  },
+                                  "/*/"
+                                ]
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "ApiPermission.Test.hiavailcdkwestEndpoint0CB95757.ANY..": {
+                        "id": "ApiPermission.Test.hiavailcdkwestEndpoint0CB95757.ANY..",
+                        "path": "hi-avail-cdk-west/Endpoint/Default/ANY/ApiPermission.Test.hiavailcdkwestEndpoint0CB95757.ANY..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "HelloHandler2E4FBA4D",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:",
+                                  {
+                                    "Ref": "AWS::Partition"
+                                  },
+                                  ":execute-api:us-west-1:",
+                                  {
+                                    "Ref": "AWS::AccountId"
+                                  },
+                                  ":",
+                                  {
+                                    "Ref": "EndpointEEF1FD8F"
+                                  },
+                                  "/test-invoke-stage/*/"
+                                ]
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-west/Endpoint/Default/ANY/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "ANY",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "EndpointEEF1FD8F",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "EndpointEEF1FD8F"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "AWS_PROXY",
+                              "uri": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":apigateway:us-west-1:lambda:path/2015-03-31/functions/",
+                                    {
+                                      "Fn::GetAtt": [
+                                        "HelloHandler2E4FBA4D",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "/invocations"
+                                  ]
+                                ]
+                              },
+                              "integrationHttpMethod": "POST"
                             }
                           }
                         }
