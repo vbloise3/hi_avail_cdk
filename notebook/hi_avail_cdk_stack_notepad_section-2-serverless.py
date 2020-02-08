@@ -27,17 +27,6 @@ class HiAvailCdkStack(core.Stack):
             self, 'fargate-service-autoscaling',
             vpc=vpc
         )
-        ========================================================================================================
-        # Create the task
-        my_task_definition = ecs.FargateTaskDefinition(self, "TaskDef", cpu=256, memory_limit_mib=512)
-        # Create container
-        the_container = ecs.ContainerDefinition(self, "httpdContainer",
-            image=ecs.ContainerImage.from_registry("centos/httpd"),
-            task_definition=my_task_definition,
-            command=['/bin/sh -c "echo \'<html> <head> <title>Soeldner Consult AWS Demo</title><style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS - Sample Web Server </h1> <h2>Congratulations!</h2> <p>You successfully set up your ECS cluster.</p> </div></body></html>\' > /usr/local/apache2/htdocs/index.html && httpd-foreground"'],
-        )
-        the_container.add_port_mappings(ecs.PortMapping(container_port=8080,protocol=ecs.Protocol.TCP))
-        ========================================================================================================
         # Create Fargate service
         fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(self, "MyFargateService",
             cluster=cluster,            # Required
@@ -54,7 +43,6 @@ class HiAvailCdkStack(core.Stack):
             connection = ec2.Port.tcp(80),
             description="Allow http inbound from VPC"
         )
-
         # Setup AutoScaling policy
         scaling = fargate_service.service.auto_scale_task_count(
             max_capacity=2
@@ -80,5 +68,3 @@ class HiAvailCdkStack(core.Stack):
             self, 'Endpoint',
             handler=my_lambda,
         )
-
-        
