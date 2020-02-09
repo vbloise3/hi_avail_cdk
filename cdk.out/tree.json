@@ -184,7 +184,7 @@
                                           },
                                           ":s3:::",
                                           {
-                                            "Ref": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3BucketF13A7447"
+                                            "Ref": "AssetParameters6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1S3Bucket3E14DBC1"
                                           }
                                         ]
                                       ]
@@ -199,7 +199,7 @@
                                           },
                                           ":s3:::",
                                           {
-                                            "Ref": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3BucketF13A7447"
+                                            "Ref": "AssetParameters6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1S3Bucket3E14DBC1"
                                           },
                                           "/*"
                                         ]
@@ -350,21 +350,21 @@
                   }
                 }
               },
-              "647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc": {
-                "id": "647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc",
-                "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc",
+              "6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1": {
+                "id": "6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1",
+                "path": "hi-avail-cdk-east/AssetParameters/6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/S3Bucket"
+                    "path": "hi-avail-cdk-east/AssetParameters/6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1/S3Bucket"
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/S3VersionKey"
+                    "path": "hi-avail-cdk-east/AssetParameters/6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1/S3VersionKey"
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/ArtifactHash"
+                    "path": "hi-avail-cdk-east/AssetParameters/6b2fab68b44db869760797307b0a5325048817b94fd47c1ade61eaa1634ddfc1/ArtifactHash"
                   }
                 }
               }
