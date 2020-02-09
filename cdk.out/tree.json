@@ -184,7 +184,7 @@
                                           },
                                           ":s3:::",
                                           {
-                                            "Ref": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858S3Bucket4D9C92FB"
+                                            "Ref": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3BucketF13A7447"
                                           }
                                         ]
                                       ]
@@ -199,7 +199,7 @@
                                           },
                                           ":s3:::",
                                           {
-                                            "Ref": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858S3Bucket4D9C92FB"
+                                            "Ref": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3BucketF13A7447"
                                           },
                                           "/*"
                                         ]
@@ -350,21 +350,21 @@
                   }
                 }
               },
-              "8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858": {
-                "id": "8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858",
-                "path": "hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858",
+              "647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc": {
+                "id": "647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc",
+                "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858/S3Bucket"
+                    "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/S3Bucket"
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858/S3VersionKey"
+                    "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/S3VersionKey"
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858/ArtifactHash"
+                    "path": "hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/ArtifactHash"
                   }
                 }
               }
@@ -405,6 +405,782 @@
                     "hostedZoneId": {
                       "Ref": "HostedZoneDB99F866"
                     }
+                  }
+                }
+              }
+            }
+          },
+          "MyVpcWithEndpoints": {
+            "id": "MyVpcWithEndpoints",
+            "path": "hi-avail-cdk-east/MyVpcWithEndpoints",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
+                  "aws:cdk:cloudformation:props": {
+                    "cidrBlock": "10.0.0.0/16",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "hi-avail-cdk-east/MyVpcWithEndpoints"
+                      }
+                    ]
+                  }
+                }
+              },
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.0.0.0/18",
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet1RouteTable2BD73FB3"
+                        },
+                        "subnetId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet1Subnet1AFBEF75"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet1RouteTable2BD73FB3"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "MyVpcWithEndpointsIGW95EB2EDB"
+                        }
+                      }
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "MyVpcWithEndpointsPublicSubnet1EIP1B55ADBB",
+                            "AllocationId"
+                          ]
+                        },
+                        "subnetId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet1Subnet1AFBEF75"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.0.64.0/18",
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet2RouteTableDED37F52"
+                        },
+                        "subnetId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet2Subnet497F4A27"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet2RouteTableDED37F52"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "MyVpcWithEndpointsIGW95EB2EDB"
+                        }
+                      }
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "MyVpcWithEndpointsPublicSubnet2EIPECE4B9E3",
+                            "AllocationId"
+                          ]
+                        },
+                        "subnetId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet2Subnet497F4A27"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "PrivateSubnet1": {
+                "id": "PrivateSubnet1",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.0.128.0/18",
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPrivateSubnet1RouteTableA5F14651"
+                        },
+                        "subnetId": {
+                          "Ref": "MyVpcWithEndpointsPrivateSubnet1Subnet89E98217"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPrivateSubnet1RouteTableA5F14651"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet1NATGateway243FFCB1"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "PrivateSubnet2": {
+                "id": "PrivateSubnet2",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.0.192.0/18",
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPrivateSubnet2RouteTable44FD820A"
+                        },
+                        "subnetId": {
+                          "Ref": "MyVpcWithEndpointsPrivateSubnet2SubnetEEA32292"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "MyVpcWithEndpointsPrivateSubnet2RouteTable44FD820A"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "MyVpcWithEndpointsPublicSubnet2NATGatewayF00202BF"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "hi-avail-cdk-east/MyVpcWithEndpoints"
+                      }
+                    ]
+                  }
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "vpcId": {
+                      "Ref": "MyVpcWithEndpoints759B67FE"
+                    },
+                    "internetGatewayId": {
+                      "Ref": "MyVpcWithEndpointsIGW95EB2EDB"
+                    }
+                  }
+                }
+              },
+              "S3": {
+                "id": "S3",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/S3",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/S3/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".s3"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "routeTableIds": [
+                          {
+                            "Ref": "MyVpcWithEndpointsPrivateSubnet1RouteTableA5F14651"
+                          },
+                          {
+                            "Ref": "MyVpcWithEndpointsPrivateSubnet2RouteTable44FD820A"
+                          }
+                        ],
+                        "vpcEndpointType": "Gateway"
+                      }
+                    }
+                  }
+                }
+              },
+              "DynamoDbEndpoint": {
+                "id": "DynamoDbEndpoint",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/DynamoDbEndpoint",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/DynamoDbEndpoint/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".dynamodb"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "dynamodb:DescribeTable",
+                                "dynamodb:ListTables"
+                              ],
+                              "Effect": "Allow",
+                              "Principal": "*",
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "routeTableIds": [
+                          {
+                            "Ref": "MyVpcWithEndpointsPrivateSubnet1RouteTableA5F14651"
+                          },
+                          {
+                            "Ref": "MyVpcWithEndpointsPrivateSubnet2RouteTable44FD820A"
+                          }
+                        ],
+                        "vpcEndpointType": "Gateway"
+                      }
+                    }
+                  }
+                }
+              },
+              "EcrDockerEndpoint": {
+                "id": "EcrDockerEndpoint",
+                "path": "hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": {
+                                  "Fn::GetAtt": [
+                                    "MyVpcWithEndpoints759B67FE",
+                                    "CidrBlock"
+                                  ]
+                                },
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "from ",
+                                      {
+                                        "Fn::GetAtt": [
+                                          "MyVpcWithEndpoints759B67FE",
+                                          "CidrBlock"
+                                        ]
+                                      },
+                                      ":443"
+                                    ]
+                                  ]
+                                }
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "hi-avail-cdk-east/MyVpcWithEndpoints"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "MyVpcWithEndpoints759B67FE"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ecr.dkr"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "MyVpcWithEndpoints759B67FE"
+                        },
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "MyVpcWithEndpointsEcrDockerEndpointSecurityGroup749CA1F1",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          {
+                            "Ref": "MyVpcWithEndpointsPrivateSubnet1Subnet89E98217"
+                          },
+                          {
+                            "Ref": "MyVpcWithEndpointsPrivateSubnet2SubnetEEA32292"
+                          }
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "LB_SaaS": {
+            "id": "LB_SaaS",
+            "path": "hi-avail-cdk-east/LB_SaaS",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-east/LB_SaaS/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                  "aws:cdk:cloudformation:props": {
+                    "scheme": "internet-facing",
+                    "subnets": [
+                      {
+                        "Ref": "MyVpcWithEndpointsPublicSubnet1Subnet1AFBEF75"
+                      },
+                      {
+                        "Ref": "MyVpcWithEndpointsPublicSubnet2Subnet497F4A27"
+                      }
+                    ],
+                    "type": "network"
+                  }
+                }
+              }
+            }
+          },
+          "EndpointService": {
+            "id": "EndpointService",
+            "path": "hi-avail-cdk-east/EndpointService",
+            "children": {
+              "EndpointService": {
+                "id": "EndpointService",
+                "path": "hi-avail-cdk-east/EndpointService/EndpointService",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpointService",
+                  "aws:cdk:cloudformation:props": {
+                    "networkLoadBalancerArns": [
+                      {
+                        "Ref": "LBSaaSD40AD18C"
+                      }
+                    ],
+                    "acceptanceRequired": true
+                  }
+                }
+              },
+              "Permissions": {
+                "id": "Permissions",
+                "path": "hi-avail-cdk-east/EndpointService/Permissions",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpointServicePermissions",
+                  "aws:cdk:cloudformation:props": {
+                    "serviceId": {
+                      "Ref": "EndpointServiceED36BE1F"
+                    },
+                    "allowedPrincipals": [
+                      "arn:aws:iam::123456789012:root"
+                    ]
                   }
                 }
               }

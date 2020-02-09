@@ -27,13 +27,13 @@
               "artifactHashParameter": "AssetParametersa9125fa9a40550c71cde90bd478cc23091e868067a12380c1df0827d013ad2ffArtifactHash08605F5E"
             },
             "trace": [
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:370:23)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
-              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
-              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
-              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:370:23)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
+              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
+              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
+              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -47,21 +47,21 @@
           {
             "type": "aws:cdk:asset",
             "data": {
-              "path": "asset.8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858.zip",
-              "id": "8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858",
+              "path": "asset.647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc.zip",
+              "id": "647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc",
               "packaging": "file",
-              "sourceHash": "8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858",
-              "s3BucketParameter": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858S3Bucket4D9C92FB",
-              "s3KeyParameter": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858S3VersionKeyCB77792D",
-              "artifactHashParameter": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858ArtifactHashC7EDFB23"
+              "sourceHash": "647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc",
+              "s3BucketParameter": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3BucketF13A7447",
+              "s3KeyParameter": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3VersionKey0740E943",
+              "artifactHashParameter": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcArtifactHash3C0DFA4C"
             },
             "trace": [
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:370:23)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
-              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:370:23)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
               "Array.map (<anonymous>)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -78,7 +78,7 @@
             "type": "aws:cdk:logicalId",
             "data": "BucketWebsite189A8F5D",
             "trace": [
-              "new Bucket (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket.js:366:26)",
+              "new Bucket (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket.js:366:26)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -95,11 +95,11 @@
             "type": "aws:cdk:logicalId",
             "data": "BucketWebsitePolicyF24AE0DA",
             "trace": [
-              "new BucketPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket-policy.js:21:9)",
-              "Bucket.addToResourcePolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket.js:125:27)",
-              "Function.addToPrincipalOrResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-iam/lib/grant.js:43:26)",
-              "Bucket.grantPublicAccess (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket.js:253:26)",
-              "new Bucket (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket.js:408:18)",
+              "new BucketPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket-policy.js:21:9)",
+              "Bucket.addToResourcePolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket.js:125:27)",
+              "Function.addToPrincipalOrResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-iam/lib/grant.js:43:26)",
+              "Bucket.grantPublicAccess (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket.js:253:26)",
+              "new Bucket (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket.js:408:18)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -116,8 +116,8 @@
             "type": "aws:cdk:logicalId",
             "data": "DeployWebsiteCustomResourceD116527B",
             "trace": [
-              "new CustomResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-cloudformation/lib/custom-resource.js:56:25)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:40:9)",
+              "new CustomResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-cloudformation/lib/custom-resource.js:56:25)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:40:9)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -134,11 +134,11 @@
             "type": "aws:cdk:logicalId",
             "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
             "trace": [
-              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-iam/lib/role.js:36:22)",
-              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/function.js:59:35)",
-              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
-              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
+              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-iam/lib/role.js:36:22)",
+              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/function.js:59:35)",
+              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
+              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -155,15 +155,15 @@
             "type": "aws:cdk:logicalId",
             "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
             "trace": [
-              "new Policy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-iam/lib/policy.js:30:26)",
-              "Role.addToPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-iam/lib/role.js:146:34)",
-              "Function.addToPrincipal (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-iam/lib/grant.js:57:65)",
-              "Function.addToPrincipalOrResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-iam/lib/grant.js:31:30)",
-              "Import.grant (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket.js:275:29)",
-              "Import.grantRead (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3/lib/bucket.js:176:21)",
-              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:31:49",
+              "new Policy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-iam/lib/policy.js:30:26)",
+              "Role.addToPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-iam/lib/role.js:146:34)",
+              "Function.addToPrincipal (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-iam/lib/grant.js:57:65)",
+              "Function.addToPrincipalOrResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-iam/lib/grant.js:31:30)",
+              "Import.grant (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket.js:275:29)",
+              "Import.grantRead (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3/lib/bucket.js:176:21)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:31:49",
               "Array.forEach (<anonymous>)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:31:17)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:31:17)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -180,10 +180,10 @@
             "type": "aws:cdk:logicalId",
             "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
             "trace": [
-              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/function.js:69:26)",
-              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
-              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
+              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/function.js:69:26)",
+              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
+              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -200,14 +200,14 @@
             "type": "aws:cdk:logicalId",
             "data": "AssetParametersa9125fa9a40550c71cde90bd478cc23091e868067a12380c1df0827d013ad2ffS3Bucket848A1F31",
             "trace": [
-              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:11:36)",
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
-              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
-              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
-              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
+              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:11:36)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
+              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
+              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
+              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -224,14 +224,14 @@
             "type": "aws:cdk:logicalId",
             "data": "AssetParametersa9125fa9a40550c71cde90bd478cc23091e868067a12380c1df0827d013ad2ffS3VersionKey983DBE96",
             "trace": [
-              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:15:35)",
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
-              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
-              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
-              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
+              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:15:35)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
+              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
+              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
+              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -248,14 +248,14 @@
             "type": "aws:cdk:logicalId",
             "data": "AssetParametersa9125fa9a40550c71cde90bd478cc23091e868067a12380c1df0827d013ad2ffArtifactHash08605F5E",
             "trace": [
-              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:19:38)",
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
-              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
-              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
-              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
+              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:19:38)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "AssetCode.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/code.js:135:26)",
+              "new Function (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/function.js:67:33)",
+              "SingletonFunction.ensureLambda (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:35:16)",
+              "new SingletonFunction (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-lambda/lib/singleton-lambda.js:17:36)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:20:25)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -267,18 +267,18 @@
             ]
           }
         ],
-        "/hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858/S3Bucket": [
+        "/hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858S3Bucket4D9C92FB",
+            "data": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3BucketF13A7447",
             "trace": [
-              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:11:36)",
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
-              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
+              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:11:36)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
               "Array.map (<anonymous>)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -290,18 +290,18 @@
             ]
           }
         ],
-        "/hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858/S3VersionKey": [
+        "/hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/S3VersionKey": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858S3VersionKeyCB77792D",
+            "data": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcS3VersionKey0740E943",
             "trace": [
-              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:15:35)",
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
-              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
+              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:15:35)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
               "Array.map (<anonymous>)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -313,18 +313,18 @@
             ]
           }
         ],
-        "/hi-avail-cdk-east/AssetParameters/8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858/ArtifactHash": [
+        "/hi-avail-cdk-east/AssetParameters/647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdc/ArtifactHash": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters8b543c72dbc5153e7b95cb0627b26dda2c53d1765f1753ffffdd8a149edc6858ArtifactHashC7EDFB23",
+            "data": "AssetParameters647c9011f6d90c183234cd93a640368a3930f4ce391dc3dd46d05af787b3ecdcArtifactHash3C0DFA4C",
             "trace": [
-              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:19:38)",
-              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
-              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
-              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
-              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
+              "new FileAssetParameters (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/private/asset-parameters.js:19:38)",
+              "Stack.addFileAsset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/core/lib/stack.js:360:22)",
+              "new Asset (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-assets/lib/asset.js:30:32)",
+              "Object.bind (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/source.js:36:31)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:62",
               "Array.map (<anonymous>)",
-              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
+              "new BucketDeployment (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-s3-deployment/lib/bucket-deployment.js:30:39)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -341,8 +341,8 @@
             "type": "aws:cdk:logicalId",
             "data": "HostedZoneDB99F866",
             "trace": [
-              "new HostedZone (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-route53/lib/hosted-zone.js:16:26)",
-              "new PublicHostedZone (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-route53/lib/hosted-zone.js:116:9)",
+              "new HostedZone (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-route53/lib/hosted-zone.js:16:26)",
+              "new PublicHostedZone (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-route53/lib/hosted-zone.js:116:9)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -359,8 +359,626 @@
             "type": "aws:cdk:logicalId",
             "data": "AlaisRecordCBFE2DF5",
             "trace": [
-              "new RecordSet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-route53/lib/record-set.js:59:27)",
-              "new ARecord (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-vKXsrC/node_modules/@aws-cdk/aws-route53/lib/record-set.js:85:9)",
+              "new RecordSet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-route53/lib/record-set.js:59:27)",
+              "new ARecord (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-route53/lib/record-set.js:85:9)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpoints759B67FE",
+            "trace": [
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:266:25)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet1Subnet1AFBEF75",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:547:24)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:697:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet1RouteTable2BD73FB3",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:23)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:697:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet1RouteTableAssociationB80B8BE1",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:9)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:697:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet1DefaultRoute44F59939",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:587:23)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:297:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:296:32)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet1EIP1B55ADBB",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:708:27)",
+              "NatGateway.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:52:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:434:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:302:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet1NATGateway243FFCB1",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:706:21)",
+              "NatGateway.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:52:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:434:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:302:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet2Subnet497F4A27",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:547:24)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:697:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet2RouteTableDED37F52",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:23)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:697:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet2RouteTableAssociationDB08F41F",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:9)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:697:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:476:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet2DefaultRoute797F9EED",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:587:23)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:297:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:296:32)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet2EIPECE4B9E3",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:708:27)",
+              "NatGateway.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:52:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:434:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:302:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PublicSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPublicSubnet2NATGatewayF00202BF",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:706:21)",
+              "NatGateway.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:52:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:434:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:302:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet1Subnet89E98217",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:547:24)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:724:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:481:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet1RouteTableA5F14651",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:23)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:724:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:481:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet1RouteTableAssociation918F18C7",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:9)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:724:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:481:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet1DefaultRoute558B1B86",
+            "trace": [
+              "PrivateSubnet.addRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:628:23)",
+              "NatGateway.configureSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:63:16)",
+              "NatGateway.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:57:18)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:434:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:302:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet2SubnetEEA32292",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:547:24)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:724:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:481:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet2RouteTable44FD820A",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:23)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:724:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:481:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet2RouteTableAssociation9C22FD5B",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:9)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:724:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:481:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:460:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:456:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:286:14)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsPrivateSubnet2DefaultRoute085B6FE2",
+            "trace": [
+              "PrivateSubnet.addRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:628:23)",
+              "NatGateway.configureSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:63:16)",
+              "NatGateway.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/nat.js:57:18)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:434:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:302:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsIGW95EB2EDB",
+            "trace": [
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:290:25)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsVPCGWF0826CC2",
+            "trace": [
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:292:25)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/S3/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsS329B0E466",
+            "trace": [
+              "new GatewayVpcEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc-endpoint.js:77:26)",
+              "Vpc.addGatewayEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:102:16)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:340:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/DynamoDbEndpoint/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsDynamoDbEndpoint9CA02BDE",
+            "trace": [
+              "new GatewayVpcEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc-endpoint.js:77:26)",
+              "Vpc.addGatewayEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:102:16)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7589:51",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7589:25",
+              "Kernel._ensureSync (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8198:20)",
+              "Kernel.invoke (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7588:26)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsEcrDockerEndpointSecurityGroup749CA1F1",
+            "trace": [
+              "new SecurityGroup (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/security-group.js:173:30)",
+              "new InterfaceVpcEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc-endpoint.js:167:57)",
+              "Vpc.addInterfaceEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:93:16)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7589:51",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7589:25",
+              "Kernel._ensureSync (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8198:20)",
+              "Kernel.invoke (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7588:26)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/MyVpcWithEndpoints/EcrDockerEndpoint/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyVpcWithEndpointsEcrDockerEndpoint4107FF8F",
+            "trace": [
+              "new InterfaceVpcEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc-endpoint.js:180:26)",
+              "Vpc.addInterfaceEndpoint (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:93:16)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7589:51",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7589:25",
+              "Kernel._ensureSync (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8198:20)",
+              "Kernel.invoke (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7588:26)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/LB_SaaS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LBSaaSD40AD18C",
+            "trace": [
+              "new BaseLoadBalancer (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-load-balancer.js:23:26)",
+              "new NetworkLoadBalancer (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/nlb/network-load-balancer.js:44:9)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/EndpointService/EndpointService": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointServiceED36BE1F",
+            "trace": [
+              "new VpcEndpointService (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc-endpoint-service.js:19:32)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/EndpointService/Permissions": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "EndpointServicePermissions4FA144AE",
+            "trace": [
+              "new VpcEndpointService (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-IX27FL/node_modules/@aws-cdk/aws-ec2/lib/vpc-endpoint-service.js:24:13)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
