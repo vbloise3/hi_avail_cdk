@@ -14,7 +14,6 @@ class HiAvailCdkStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, *, stack_tag="default", **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
-
         # Route 53 example
         website_bucket = s3.Bucket(self, "BucketWebsite",
             bucket_name="www.portfoliovbl.com",
@@ -27,11 +26,11 @@ class HiAvailCdkStack(core.Stack):
             destination_bucket=website_bucket,
             # destination_key_prefix="web/static"
         )
-        
+
         my_zone = route53.PublicHostedZone(self, "HostedZone",
             zone_name="portfoliovbl.com"
         )
-
+        
         route53.ARecord(self, "AlaisRecord",
             zone=my_zone,
             record_name="www",
