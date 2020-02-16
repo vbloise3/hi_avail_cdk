@@ -18,7 +18,7 @@
         "aws:cdk:path": "hi-avail-cdk-east/TheVPC/Resource"
       }
     },
-    "TheVPCNATSubnet1Subnet1A2869D8": {
+    "TheVPCPubSubnet1SubnetB7756B9D": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.0.0.0/24",
@@ -30,11 +30,11 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet1"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet1"
           },
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "NAT"
+            "Value": "Pub"
           },
           {
             "Key": "aws-cdk:subnet-type",
@@ -43,10 +43,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet1/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet1/Subnet"
       }
     },
-    "TheVPCNATSubnet1RouteTableA13113EC": {
+    "TheVPCPubSubnet1RouteTable2391BC98": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -55,33 +55,33 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet1"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet1/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet1/RouteTable"
       }
     },
-    "TheVPCNATSubnet1RouteTableAssociation6F9EA303": {
+    "TheVPCPubSubnet1RouteTableAssociationF7DD831A": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "TheVPCNATSubnet1RouteTableA13113EC"
+          "Ref": "TheVPCPubSubnet1RouteTable2391BC98"
         },
         "SubnetId": {
-          "Ref": "TheVPCNATSubnet1Subnet1A2869D8"
+          "Ref": "TheVPCPubSubnet1SubnetB7756B9D"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet1/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet1/RouteTableAssociation"
       }
     },
-    "TheVPCNATSubnet1DefaultRoute6F1ACF3A": {
+    "TheVPCPubSubnet1DefaultRouteD7C544E3": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "TheVPCNATSubnet1RouteTableA13113EC"
+          "Ref": "TheVPCPubSubnet1RouteTable2391BC98"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
@@ -92,61 +92,48 @@
         "TheVPCVPCGWC9B93E30"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet1/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet1/DefaultRoute"
       }
     },
-    "TheVPCNATSubnet1NatInstanceInstanceProfileB5364EB3": {
-      "Type": "AWS::IAM::InstanceProfile",
+    "TheVPCPubSubnet1EIPA45E3B39": {
+      "Type": "AWS::EC2::EIP",
       "Properties": {
-        "Roles": [
+        "Domain": "vpc",
+        "Tags": [
           {
-            "Ref": "TheVPCNatRole4FB2AB33"
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet1"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet1/NatInstance/InstanceProfile"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet1/EIP"
       }
     },
-    "TheVPCNATSubnet1NatInstanceE0AEDDB0": {
-      "Type": "AWS::EC2::Instance",
+    "TheVPCPubSubnet1NATGateway1AB20A7F": {
+      "Type": "AWS::EC2::NatGateway",
       "Properties": {
-        "AvailabilityZone": "us-east-1a",
-        "IamInstanceProfile": {
-          "Ref": "TheVPCNATSubnet1NatInstanceInstanceProfileB5364EB3"
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "TheVPCPubSubnet1EIPA45E3B39",
+            "AllocationId"
+          ]
         },
-        "ImageId": "ami-0f482d2adde2d9206",
-        "InstanceType": "t3.small",
-        "SecurityGroupIds": [
-          {
-            "Fn::GetAtt": [
-              "TheVPCNatSecurityGroupC2ACC51D",
-              "GroupId"
-            ]
-          }
-        ],
-        "SourceDestCheck": false,
         "SubnetId": {
-          "Ref": "TheVPCNATSubnet1Subnet1A2869D8"
+          "Ref": "TheVPCPubSubnet1SubnetB7756B9D"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet1/NatInstance"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet1"
           }
-        ],
-        "UserData": {
-          "Fn::Base64": "#!/bin/bash"
-        }
+        ]
       },
-      "DependsOn": [
-        "TheVPCNatRole4FB2AB33"
-      ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet1/NatInstance/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet1/NATGateway"
       }
     },
-    "TheVPCNATSubnet2Subnet50EDE2A0": {
+    "TheVPCPubSubnet2SubnetAA2580CE": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.0.1.0/24",
@@ -158,11 +145,11 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet2"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet2"
           },
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "NAT"
+            "Value": "Pub"
           },
           {
             "Key": "aws-cdk:subnet-type",
@@ -171,10 +158,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet2/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet2/Subnet"
       }
     },
-    "TheVPCNATSubnet2RouteTable4CEA11D6": {
+    "TheVPCPubSubnet2RouteTableF8B26EE8": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -183,33 +170,33 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet2"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet2/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet2/RouteTable"
       }
     },
-    "TheVPCNATSubnet2RouteTableAssociation58528A8A": {
+    "TheVPCPubSubnet2RouteTableAssociationC69CE40A": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "TheVPCNATSubnet2RouteTable4CEA11D6"
+          "Ref": "TheVPCPubSubnet2RouteTableF8B26EE8"
         },
         "SubnetId": {
-          "Ref": "TheVPCNATSubnet2Subnet50EDE2A0"
+          "Ref": "TheVPCPubSubnet2SubnetAA2580CE"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet2/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet2/RouteTableAssociation"
       }
     },
-    "TheVPCNATSubnet2DefaultRoute845FD163": {
+    "TheVPCPubSubnet2DefaultRoute561FB3FD": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "TheVPCNATSubnet2RouteTable4CEA11D6"
+          "Ref": "TheVPCPubSubnet2RouteTableF8B26EE8"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
@@ -220,61 +207,48 @@
         "TheVPCVPCGWC9B93E30"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet2/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet2/DefaultRoute"
       }
     },
-    "TheVPCNATSubnet2NatInstanceInstanceProfile572D916C": {
-      "Type": "AWS::IAM::InstanceProfile",
+    "TheVPCPubSubnet2EIPD3B54AB5": {
+      "Type": "AWS::EC2::EIP",
       "Properties": {
-        "Roles": [
+        "Domain": "vpc",
+        "Tags": [
           {
-            "Ref": "TheVPCNatRole4FB2AB33"
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet2"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet2/NatInstance/InstanceProfile"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet2/EIP"
       }
     },
-    "TheVPCNATSubnet2NatInstance29120E7E": {
-      "Type": "AWS::EC2::Instance",
+    "TheVPCPubSubnet2NATGatewayF06F9C06": {
+      "Type": "AWS::EC2::NatGateway",
       "Properties": {
-        "AvailabilityZone": "us-east-1b",
-        "IamInstanceProfile": {
-          "Ref": "TheVPCNATSubnet2NatInstanceInstanceProfile572D916C"
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "TheVPCPubSubnet2EIPD3B54AB5",
+            "AllocationId"
+          ]
         },
-        "ImageId": "ami-0f482d2adde2d9206",
-        "InstanceType": "t3.small",
-        "SecurityGroupIds": [
-          {
-            "Fn::GetAtt": [
-              "TheVPCNatSecurityGroupC2ACC51D",
-              "GroupId"
-            ]
-          }
-        ],
-        "SourceDestCheck": false,
         "SubnetId": {
-          "Ref": "TheVPCNATSubnet2Subnet50EDE2A0"
+          "Ref": "TheVPCPubSubnet2SubnetAA2580CE"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet2/NatInstance"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet2"
           }
-        ],
-        "UserData": {
-          "Fn::Base64": "#!/bin/bash"
-        }
+        ]
       },
-      "DependsOn": [
-        "TheVPCNatRole4FB2AB33"
-      ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet2/NatInstance/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet2/NATGateway"
       }
     },
-    "TheVPCNATSubnet3Subnet1BAE1FD5": {
+    "TheVPCPubSubnet3Subnet0882F545": {
       "Type": "AWS::EC2::Subnet",
       "Properties": {
         "CidrBlock": "10.0.2.0/24",
@@ -286,11 +260,11 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet3"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet3"
           },
           {
             "Key": "aws-cdk:subnet-name",
-            "Value": "NAT"
+            "Value": "Pub"
           },
           {
             "Key": "aws-cdk:subnet-type",
@@ -299,10 +273,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet3/Subnet"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet3/Subnet"
       }
     },
-    "TheVPCNATSubnet3RouteTable7EFC2E07": {
+    "TheVPCPubSubnet3RouteTableA6623489": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {
@@ -311,33 +285,33 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet3"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet3"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet3/RouteTable"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet3/RouteTable"
       }
     },
-    "TheVPCNATSubnet3RouteTableAssociationD033C92E": {
+    "TheVPCPubSubnet3RouteTableAssociation4315971C": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
       "Properties": {
         "RouteTableId": {
-          "Ref": "TheVPCNATSubnet3RouteTable7EFC2E07"
+          "Ref": "TheVPCPubSubnet3RouteTableA6623489"
         },
         "SubnetId": {
-          "Ref": "TheVPCNATSubnet3Subnet1BAE1FD5"
+          "Ref": "TheVPCPubSubnet3Subnet0882F545"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet3/RouteTableAssociation"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet3/RouteTableAssociation"
       }
     },
-    "TheVPCNATSubnet3DefaultRoute98992D96": {
+    "TheVPCPubSubnet3DefaultRouteE2BE08F8": {
       "Type": "AWS::EC2::Route",
       "Properties": {
         "RouteTableId": {
-          "Ref": "TheVPCNATSubnet3RouteTable7EFC2E07"
+          "Ref": "TheVPCPubSubnet3RouteTableA6623489"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
         "GatewayId": {
@@ -348,58 +322,45 @@
         "TheVPCVPCGWC9B93E30"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet3/DefaultRoute"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet3/DefaultRoute"
       }
     },
-    "TheVPCNATSubnet3NatInstanceInstanceProfileEC8E19E6": {
-      "Type": "AWS::IAM::InstanceProfile",
+    "TheVPCPubSubnet3EIP46CC9050": {
+      "Type": "AWS::EC2::EIP",
       "Properties": {
-        "Roles": [
+        "Domain": "vpc",
+        "Tags": [
           {
-            "Ref": "TheVPCNatRole4FB2AB33"
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet3"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet3/NatInstance/InstanceProfile"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet3/EIP"
       }
     },
-    "TheVPCNATSubnet3NatInstance664266F1": {
-      "Type": "AWS::EC2::Instance",
+    "TheVPCPubSubnet3NATGateway51881A3E": {
+      "Type": "AWS::EC2::NatGateway",
       "Properties": {
-        "AvailabilityZone": "us-east-1c",
-        "IamInstanceProfile": {
-          "Ref": "TheVPCNATSubnet3NatInstanceInstanceProfileEC8E19E6"
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "TheVPCPubSubnet3EIP46CC9050",
+            "AllocationId"
+          ]
         },
-        "ImageId": "ami-0f482d2adde2d9206",
-        "InstanceType": "t3.small",
-        "SecurityGroupIds": [
-          {
-            "Fn::GetAtt": [
-              "TheVPCNatSecurityGroupC2ACC51D",
-              "GroupId"
-            ]
-          }
-        ],
-        "SourceDestCheck": false,
         "SubnetId": {
-          "Ref": "TheVPCNATSubnet3Subnet1BAE1FD5"
+          "Ref": "TheVPCPubSubnet3Subnet0882F545"
         },
         "Tags": [
           {
             "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC/NATSubnet3/NatInstance"
+            "Value": "hi-avail-cdk-east/TheVPC/PubSubnet3"
           }
-        ],
-        "UserData": {
-          "Fn::Base64": "#!/bin/bash"
-        }
+        ]
       },
-      "DependsOn": [
-        "TheVPCNatRole4FB2AB33"
-      ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NATSubnet3/NatInstance/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/PubSubnet3/NATGateway"
       }
     },
     "TheVPCAppSubnet1Subnet2B52725E": {
@@ -468,8 +429,8 @@
           "Ref": "TheVPCAppSubnet1RouteTable57A4915E"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
-        "InstanceId": {
-          "Ref": "TheVPCNATSubnet1NatInstanceE0AEDDB0"
+        "NatGatewayId": {
+          "Ref": "TheVPCPubSubnet1NATGateway1AB20A7F"
         }
       },
       "Metadata": {
@@ -542,8 +503,8 @@
           "Ref": "TheVPCAppSubnet2RouteTable26799C8A"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
-        "InstanceId": {
-          "Ref": "TheVPCNATSubnet2NatInstance29120E7E"
+        "NatGatewayId": {
+          "Ref": "TheVPCPubSubnet2NATGatewayF06F9C06"
         }
       },
       "Metadata": {
@@ -616,12 +577,189 @@
           "Ref": "TheVPCAppSubnet3RouteTable569A5FE1"
         },
         "DestinationCidrBlock": "0.0.0.0/0",
-        "InstanceId": {
-          "Ref": "TheVPCNATSubnet3NatInstance664266F1"
+        "NatGatewayId": {
+          "Ref": "TheVPCPubSubnet3NATGateway51881A3E"
         }
       },
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/TheVPC/AppSubnet3/DefaultRoute"
+      }
+    },
+    "TheVPCDBSubnet1SubnetA2FAD1C7": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.6.0/28",
+        "VpcId": {
+          "Ref": "TheVPC92636AB0"
+        },
+        "AvailabilityZone": "us-east-1a",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/DBSubnet1"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "DB"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Isolated"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet1/Subnet"
+      }
+    },
+    "TheVPCDBSubnet1RouteTable54A8FB74": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "TheVPC92636AB0"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/DBSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet1/RouteTable"
+      }
+    },
+    "TheVPCDBSubnet1RouteTableAssociationD567F0FC": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "TheVPCDBSubnet1RouteTable54A8FB74"
+        },
+        "SubnetId": {
+          "Ref": "TheVPCDBSubnet1SubnetA2FAD1C7"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet1/RouteTableAssociation"
+      }
+    },
+    "TheVPCDBSubnet2SubnetB8FDEBB1": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.6.16/28",
+        "VpcId": {
+          "Ref": "TheVPC92636AB0"
+        },
+        "AvailabilityZone": "us-east-1b",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/DBSubnet2"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "DB"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Isolated"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet2/Subnet"
+      }
+    },
+    "TheVPCDBSubnet2RouteTableDE1D574A": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "TheVPC92636AB0"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/DBSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet2/RouteTable"
+      }
+    },
+    "TheVPCDBSubnet2RouteTableAssociation1138D51B": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "TheVPCDBSubnet2RouteTableDE1D574A"
+        },
+        "SubnetId": {
+          "Ref": "TheVPCDBSubnet2SubnetB8FDEBB1"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet2/RouteTableAssociation"
+      }
+    },
+    "TheVPCDBSubnet3Subnet1FA6F36D": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.6.32/28",
+        "VpcId": {
+          "Ref": "TheVPC92636AB0"
+        },
+        "AvailabilityZone": "us-east-1c",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/DBSubnet3"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "DB"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Isolated"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet3/Subnet"
+      }
+    },
+    "TheVPCDBSubnet3RouteTableF4F27FE1": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "TheVPC92636AB0"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/TheVPC/DBSubnet3"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet3/RouteTable"
+      }
+    },
+    "TheVPCDBSubnet3RouteTableAssociationE2A0C58D": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "TheVPCDBSubnet3RouteTableF4F27FE1"
+        },
+        "SubnetId": {
+          "Ref": "TheVPCDBSubnet3Subnet1FA6F36D"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/DBSubnet3/RouteTableAssociation"
       }
     },
     "TheVPCIGWFA25CC08": {
@@ -650,66 +788,6 @@
       },
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/TheVPC/VPCGW"
-      }
-    },
-    "TheVPCNatSecurityGroupC2ACC51D": {
-      "Type": "AWS::EC2::SecurityGroup",
-      "Properties": {
-        "GroupDescription": "Security Group for NAT instances",
-        "SecurityGroupEgress": [
-          {
-            "CidrIp": "0.0.0.0/0",
-            "Description": "Allow all outbound traffic by default",
-            "IpProtocol": "-1"
-          }
-        ],
-        "SecurityGroupIngress": [
-          {
-            "CidrIp": "0.0.0.0/0",
-            "Description": "from 0.0.0.0/0:ALL PORTS",
-            "FromPort": 0,
-            "IpProtocol": "tcp",
-            "ToPort": 65535
-          }
-        ],
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC"
-          }
-        ],
-        "VpcId": {
-          "Ref": "TheVPC92636AB0"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NatSecurityGroup/Resource"
-      }
-    },
-    "TheVPCNatRole4FB2AB33": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "ec2.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": "hi-avail-cdk-east/TheVPC"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/TheVPC/NatRole/Resource"
       }
     },
     "BastionHostInstanceSecurityGroupE75D4274": {
@@ -905,21 +983,21 @@
         ],
         "Subnets": [
           {
-            "Ref": "TheVPCNATSubnet1Subnet1A2869D8"
+            "Ref": "TheVPCPubSubnet1SubnetB7756B9D"
           },
           {
-            "Ref": "TheVPCNATSubnet2Subnet50EDE2A0"
+            "Ref": "TheVPCPubSubnet2SubnetAA2580CE"
           },
           {
-            "Ref": "TheVPCNATSubnet3Subnet1BAE1FD5"
+            "Ref": "TheVPCPubSubnet3Subnet0882F545"
           }
         ],
         "Type": "application"
       },
       "DependsOn": [
-        "TheVPCNATSubnet1DefaultRoute6F1ACF3A",
-        "TheVPCNATSubnet2DefaultRoute845FD163",
-        "TheVPCNATSubnet3DefaultRoute98992D96"
+        "TheVPCPubSubnet1DefaultRouteD7C544E3",
+        "TheVPCPubSubnet2DefaultRoute561FB3FD",
+        "TheVPCPubSubnet3DefaultRouteE2BE08F8"
       ],
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/myALB/Resource"

@@ -20,15 +20,8 @@ class HiAvailCdkStack(core.Stack):
     def __init__(self, scope: core.Construct, id: str, *, stack_tag="default", **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # Define our NAT Gateways
-        nat_gateway_provider = ec2.NatProvider.instance(
-            instance_type=ec2.InstanceType("t3.small")
-        )
-
         # Configure the natGatewayProvider when defining a Vpc
         vpc = ec2.Vpc(self, "TheVPC",
-            nat_gateway_provider=nat_gateway_provider,
-            # The 'natGateways' parameter now controls the number of NAT instances
             nat_gateways=3,
             # Define our VPC
             # 'cidr' configures the IP range and size of the entire VPC.
@@ -41,14 +34,14 @@ class HiAvailCdkStack(core.Stack):
             # 'subnetConfiguration' specifies the "subnet groups" to create.
             # Every subnet group will have a subnet for each AZ, so this
             # configuration will create 3 groups × 3 AZs = 9 subnets.
-            subnet_configuration=[SubnetConfiguration(
+            subnet_configuration=[ec2.SubnetConfiguration(
                 # 'subnetType' controls Internet access, as described above.
                 subnet_type=ec2.SubnetType.PUBLIC,
 
                 # 'name' is used to name this particular subnet group. You will have to
                 # use the name for subnet selection if you have more than one subnet
                 # group of the same type.
-                name="NAT",
+                name="Pub",
 
                 # 'cidrMask' specifies the IP addresses in the range of of individual
                 # subnets in the group. Each of the subnets in this group will contain
@@ -58,11 +51,11 @@ class HiAvailCdkStack(core.Stack):
                 # If 'cidrMask' is left out the available address space is evenly
                 # divided across the remaining subnet groups.
                 cidr_mask=24
-            ), SubnetConfiguration(
+            ), ec2.SubnetConfiguration(
                 cidr_mask=24,
                 name="App",
                 subnet_type=ec2.SubnetType.PRIVATE
-            ), SubnetConfiguration(
+            ), ec2.SubnetConfiguration(
                 cidr_mask=28,
                 name="DB",
                 subnet_type=ec2.SubnetType.ISOLATED,
@@ -70,7 +63,7 @@ class HiAvailCdkStack(core.Stack):
                 # 'reserved' can be used to reserve IP address space. No resources will
                 # be created for this subnet, but the IP range will be kept available for
                 # future creation of this subnet, or even for future subdivision.
-                reserved=True
+                # reserved=True
             )
             ]
         )
@@ -84,7 +77,7 @@ class HiAvailCdkStack(core.Stack):
 
         # Use Bastion host with SSM
         host = ec2.BastionHostLinux(self, "BastionHost", vpc=vpc)
-
+        
         # Define the IAM role that will allow the EC2 instance to communicate with SSM
         role = iam.Role(self, "Role", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
         # arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore

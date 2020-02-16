@@ -14,21 +14,13 @@ linux_ami=ec2.AmazonLinuxImage()
 with open("./user_data/user_data.sh") as f:
     user_data = f.read()
 
-
 class HiAvailCdkStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, *, stack_tag="default", **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # Define our NAT Gateways
-        nat_gateway_provider = ec2.NatProvider.instance(
-            instance_type=ec2.InstanceType("t3.small")
-        )
-
         # Configure the natGatewayProvider when defining a Vpc
         vpc = ec2.Vpc(self, "TheVPC",
-            nat_gateway_provider=nat_gateway_provider,
-            # The 'natGateways' parameter now controls the number of NAT instances
             nat_gateways=3,
             # Define our VPC
             # 'cidr' configures the IP range and size of the entire VPC.
@@ -48,7 +40,7 @@ class HiAvailCdkStack(core.Stack):
                 # 'name' is used to name this particular subnet group. You will have to
                 # use the name for subnet selection if you have more than one subnet
                 # group of the same type.
-                name="NAT",
+                name="Pub",
 
                 # 'cidrMask' specifies the IP addresses in the range of of individual
                 # subnets in the group. Each of the subnets in this group will contain
@@ -70,7 +62,7 @@ class HiAvailCdkStack(core.Stack):
                 # 'reserved' can be used to reserve IP address space. No resources will
                 # be created for this subnet, but the IP range will be kept available for
                 # future creation of this subnet, or even for future subdivision.
-                reserved=True
+                # reserved=True
             )
             ]
         )
