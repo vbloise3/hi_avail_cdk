@@ -41,7 +41,7 @@ class HiAvailCdkStack(core.Stack):
             # 'subnetConfiguration' specifies the "subnet groups" to create.
             # Every subnet group will have a subnet for each AZ, so this
             # configuration will create 3 groups × 3 AZs = 9 subnets.
-            subnet_configuration=[ec2.SubnetConfiguration(
+            subnet_configuration=[SubnetConfiguration(
                 # 'subnetType' controls Internet access, as described above.
                 subnet_type=ec2.SubnetType.PUBLIC,
 
@@ -58,11 +58,11 @@ class HiAvailCdkStack(core.Stack):
                 # If 'cidrMask' is left out the available address space is evenly
                 # divided across the remaining subnet groups.
                 cidr_mask=24
-            ), ec2.SubnetConfiguration(
+            ), SubnetConfiguration(
                 cidr_mask=24,
                 name="App",
                 subnet_type=ec2.SubnetType.PRIVATE
-            ), ec2.SubnetConfiguration(
+            ), SubnetConfiguration(
                 cidr_mask=28,
                 name="DB",
                 subnet_type=ec2.SubnetType.ISOLATED,
