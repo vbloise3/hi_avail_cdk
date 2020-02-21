@@ -1,0 +1,27 @@
+# Queries
+query GetAllItems {
+    all(limit:10){
+        items{
+            name
+            itemsId
+        }
+    }
+}
+
+mutation PutItem($name:String!) {
+    save(name:$name) {
+        itemsId
+    }
+}
+
+query GetOneItem($id:ID!) {
+    getOne(itemsId:$id) {
+        itemsId
+    		name
+    }
+}
+
+# Query variables
+{
+    "id": "be331aef-804d-4886-9143-80e5ec801b08"
+}
