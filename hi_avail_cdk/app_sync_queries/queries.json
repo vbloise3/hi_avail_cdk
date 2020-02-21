@@ -14,6 +14,12 @@ mutation PutItem($name:String!) {
     }
 }
 
+mutation DeleteItem($id:ID!) {
+    delete(items2Id:$id) {
+        items2Id
+    }
+}
+
 query GetOneItem($id:ID!) {
     getOne(items2Id:$id) {
         items2Id
