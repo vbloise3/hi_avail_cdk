@@ -1,22 +1,22 @@
 # Queries
 query GetAllItems {
     all(limit:10){
-        items{
+        items2{
             name
-            itemsId
+            items2Id
         }
     }
 }
 
 mutation PutItem($name:String!) {
     save(name:$name) {
-        itemsId
+        items2Id
     }
 }
 
 query GetOneItem($id:ID!) {
-    getOne(itemsId:$id) {
-        itemsId
+    getOne(items2Id:$id) {
+        items2Id
     		name
     }
 }

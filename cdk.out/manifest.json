@@ -67,7 +67,7 @@
             "type": "aws:cdk:hasPhysicalName",
             "data": "items2",
             "trace": [
-              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Gwh8TG/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:196:23)",
+              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-9SspkE/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:196:23)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -84,7 +84,7 @@
             "type": "aws:cdk:logicalId",
             "data": "Items2Table40B35551",
             "trace": [
-              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Gwh8TG/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:178:22)",
+              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-9SspkE/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:178:22)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -101,7 +101,7 @@
             "type": "aws:cdk:logicalId",
             "data": "ItemsDynamoDBRole7D2E3F6D",
             "trace": [
-              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Gwh8TG/node_modules/@aws-cdk/aws-iam/lib/role.js:41:22)",
+              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-9SspkE/node_modules/@aws-cdk/aws-iam/lib/role.js:41:22)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -118,7 +118,7 @@
             "type": "aws:cdk:logicalId",
             "data": "mpUsEastStack53DA23A2",
             "trace": [
-              "new ManagedPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Gwh8TG/node_modules/@aws-cdk/aws-iam/lib/managed-policy.js:25:26)",
+              "new ManagedPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-9SspkE/node_modules/@aws-cdk/aws-iam/lib/managed-policy.js:25:26)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
