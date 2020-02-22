@@ -20,6 +20,7 @@ from aws_cdk.aws_iam import (
     PolicyStatement
 )
 
+
 class HiAvailCdkStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, *, stack_tag="default", **kwargs) -> None:

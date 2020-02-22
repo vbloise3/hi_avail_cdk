@@ -1,7 +1,7 @@
 # Queries
 query GetAllItems {
     all(limit:10){
-        items2{
+        items{
             name
             items2Id
         }
@@ -29,5 +29,8 @@ query GetOneItem($id:ID!) {
 
 # Query variables
 {
-    "id": "be331aef-804d-4886-9143-80e5ec801b08"
+    "name": "Automobile"
 }
+
+# path 
+# python hi_avail_cdk/app_sync_queries/app_sync_client.py
