@@ -1,8 +1,3 @@
-""" make sure you run these commands in your environment before trying the client app
-pip install paho-mqtt
-pip install requests
-pip install appsync-client
-"""
 from aws_cdk import core
 from aws_cdk.aws_appsync import (
     CfnGraphQLSchema,
@@ -24,6 +19,7 @@ from aws_cdk.aws_iam import (
     ManagedPolicy,
     PolicyStatement
 )
+
 
 class HiAvailCdkStack(core.Stack):
 
