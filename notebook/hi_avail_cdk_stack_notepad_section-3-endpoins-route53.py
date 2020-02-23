@@ -1,3 +1,10 @@
+""" 
+Make sure you install all of the aws packages listed in the import statement 
+by running pip install commands following this pattern:
+pip install aws_cdk.aws_<service name> 
+where <service name> is the name of each package, such as ec2
+"""
+
 from aws_cdk import (
     aws_ec2 as ec2,
     aws_iam as iam,

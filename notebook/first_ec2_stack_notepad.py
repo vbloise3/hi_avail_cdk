@@ -1,3 +1,8 @@
+""" 
+Make sure you run these commands to setup your environment
+pip install aws_cdk.ec2
+"""
+
 from aws_cdk import (
     aws_ec2 as ec2,
     core

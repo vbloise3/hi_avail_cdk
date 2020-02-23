@@ -1,3 +1,11 @@
+""" 
+Make sure you run these commands to setup your environment
+pip install aws_cdk.aws_ec2
+pip install aws_cdk.aws_iam
+pip install aws_cdk.aws_elasticloadbalancingv2
+pip install aws_cdk.aws_autoscaling
+"""
+
 from aws_cdk import (
     aws_ec2 as ec2,
     aws_iam as iam,
