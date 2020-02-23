@@ -1,4 +1,4 @@
-# Queries
+# Queries items
 query GetAllItems {
     all(limit:10){
         items{
@@ -23,6 +23,35 @@ mutation DeleteItem($id:ID!) {
 query GetOneItem($id:ID!) {
     getOne(items2Id:$id) {
         items2Id
+    		name
+    }
+}
+
+# Queries Products
+query GetAll {
+    all(limit:10){
+        items{
+            name
+            productsId
+        }
+    }
+}
+
+mutation PutItem($name:String!) {
+    save(name:$name) {
+        productsId
+    }
+}
+
+mutation DeleteItem($id:ID!) {
+    delete(productsId:$id) {
+        productsId
+    }
+}
+
+query GetOne($id:ID!) {
+    getOne(productsId:$id) {
+        productsId
     		name
     }
 }

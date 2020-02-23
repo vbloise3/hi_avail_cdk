@@ -10,6 +10,16 @@
         "aws:cdk:path": "hi-avail-cdk-east/Items2Api"
       }
     },
+    "ProductsApi": {
+      "Type": "AWS::AppSync::GraphQLApi",
+      "Properties": {
+        "AuthenticationType": "API_KEY",
+        "Name": "products-api"
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/ProductsApi"
+      }
+    },
     "Items2ApiKey": {
       "Type": "AWS::AppSync::ApiKey",
       "Properties": {
@@ -22,6 +32,20 @@
       },
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/Items2ApiKey"
+      }
+    },
+    "ProductsApiKey": {
+      "Type": "AWS::AppSync::ApiKey",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/ProductsApiKey"
       }
     },
     "Items2Schema": {
@@ -37,6 +61,21 @@
       },
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/Items2Schema"
+      }
+    },
+    "ProductsSchema": {
+      "Type": "AWS::AppSync::GraphQLSchema",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        },
+        "Definition": "                type products {\n                    productsId: ID!\n                    name: String\n                }\n                type Paginatedproducts {\n                    items: [products!]!\n                    nextToken: String\n                }\n                type Query {\n                    all(limit: Int, nextToken: String): Paginatedproducts!\n                    getOne(productsId: ID!): products\n                }\n                type Mutation {\n                    save(name: String!): products\n                    delete(productsId: ID!): products\n                }\n                type Schema {\n                    query: Query\n                    mutation: Mutation\n                }"
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/ProductsSchema"
       }
     },
     "Items2Table40B35551": {
@@ -64,6 +103,33 @@
       "DeletionPolicy": "Delete",
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/Items2Table/Resource"
+      }
+    },
+    "ProductsTable241ADBFF": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "productsId",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "productsId",
+            "AttributeType": "S"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "StreamSpecification": {
+          "StreamViewType": "NEW_IMAGE"
+        },
+        "TableName": "products"
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/ProductsTable/Resource"
       }
     },
     "ItemsDynamoDBRole7D2E3F6D": {
@@ -226,6 +292,122 @@
       ],
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/DeleteMutationResolver"
+      }
+    },
+    "ProductsDataSource": {
+      "Type": "AWS::AppSync::DataSource",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        },
+        "Name": "ProductsDynamoDataSource",
+        "Type": "AMAZON_DYNAMODB",
+        "DynamoDBConfig": {
+          "AwsRegion": "us-east-1",
+          "TableName": {
+            "Ref": "ProductsTable241ADBFF"
+          }
+        },
+        "ServiceRoleArn": {
+          "Fn::GetAtt": [
+            "ItemsDynamoDBRole7D2E3F6D",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/ProductsDataSource"
+      }
+    },
+    "GetOneProductQueryResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        },
+        "FieldName": "getOne",
+        "TypeName": "Query",
+        "DataSourceName": "ProductsDynamoDataSource",
+        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"GetItem\",\n                \"key\": {\n                \"productsId\": $util.dynamodb.toDynamoDBJson($ctx.args.productsId)\n                }\n            }",
+        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+      },
+      "DependsOn": [
+        "ProductsSchema"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/GetOneProductQueryResolver"
+      }
+    },
+    "GetAllProductsQueryResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        },
+        "FieldName": "all",
+        "TypeName": "Query",
+        "DataSourceName": "ProductsDynamoDataSource",
+        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"Scan\",\n                \"limit\": $util.defaultIfNull($ctx.args.limit, 20),\n                \"nextToken\": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null))\n            }",
+        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+      },
+      "DependsOn": [
+        "ProductsSchema"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/GetAllProductsQueryResolver"
+      }
+    },
+    "SaveProductMutationResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        },
+        "FieldName": "save",
+        "TypeName": "Mutation",
+        "DataSourceName": "ProductsDynamoDataSource",
+        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"PutItem\",\n                \"key\": {\n                    \"productsId\": { \"S\": \"$util.autoId()\" }\n                },\n                \"attributeValues\": {\n                    \"name\": $util.dynamodb.toDynamoDBJson($ctx.args.name)\n                }\n            }",
+        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+      },
+      "DependsOn": [
+        "ProductsSchema"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/SaveProductMutationResolver"
+      }
+    },
+    "DeleteProductMutationResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Fn::GetAtt": [
+            "ProductsApi",
+            "ApiId"
+          ]
+        },
+        "FieldName": "delete",
+        "TypeName": "Mutation",
+        "DataSourceName": "ProductsDynamoDataSource",
+        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"DeleteItem\",\n                \"key\": {\n                \"productsId\": $util.dynamodb.toDynamoDBJson($ctx.args.productsId)\n                }\n            }",
+        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+      },
+      "DependsOn": [
+        "ProductsSchema"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/DeleteProductMutationResolver"
       }
     }
   }

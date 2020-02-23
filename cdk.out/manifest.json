@@ -30,10 +30,42 @@
             ]
           }
         ],
+        "/hi-avail-cdk-east/ProductsApi": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductsApi",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
         "/hi-avail-cdk-east/Items2ApiKey": [
           {
             "type": "aws:cdk:logicalId",
             "data": "Items2ApiKey",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/ProductsApiKey": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductsApiKey",
             "trace": [
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
@@ -62,12 +94,28 @@
             ]
           }
         ],
+        "/hi-avail-cdk-east/ProductsSchema": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductsSchema",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
         "/hi-avail-cdk-east/Items2Table": [
           {
             "type": "aws:cdk:hasPhysicalName",
             "data": "items2",
             "trace": [
-              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-ILSHrY/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:196:23)",
+              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-WL4rAN/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:196:23)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -84,7 +132,41 @@
             "type": "aws:cdk:logicalId",
             "data": "Items2Table40B35551",
             "trace": [
-              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-ILSHrY/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:178:22)",
+              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-WL4rAN/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:178:22)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/ProductsTable": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": "products",
+            "trace": [
+              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-WL4rAN/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:196:23)",
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/ProductsTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductsTable241ADBFF",
+            "trace": [
+              "new Table (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-WL4rAN/node_modules/@aws-cdk/aws-dynamodb/lib/table.js:178:22)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -101,7 +183,7 @@
             "type": "aws:cdk:logicalId",
             "data": "ItemsDynamoDBRole7D2E3F6D",
             "trace": [
-              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-ILSHrY/node_modules/@aws-cdk/aws-iam/lib/role.js:41:22)",
+              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-WL4rAN/node_modules/@aws-cdk/aws-iam/lib/role.js:41:22)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -118,7 +200,7 @@
             "type": "aws:cdk:logicalId",
             "data": "mpUsEastStack53DA23A2",
             "trace": [
-              "new ManagedPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-ILSHrY/node_modules/@aws-cdk/aws-iam/lib/managed-policy.js:25:26)",
+              "new ManagedPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-WL4rAN/node_modules/@aws-cdk/aws-iam/lib/managed-policy.js:25:26)",
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
               "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
@@ -198,6 +280,86 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "DeleteMutationResolver",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/ProductsDataSource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProductsDataSource",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/GetOneProductQueryResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetOneProductQueryResolver",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/GetAllProductsQueryResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllProductsQueryResolver",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/SaveProductMutationResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SaveProductMutationResolver",
+            "trace": [
+              "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
+              "Kernel._create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:26)",
+              "Kernel.create (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7509:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7296:28)",
+              "KernelHost.run (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7236:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7239:37)",
+              "processImmediate (internal/timers.js:439:21)"
+            ]
+          }
+        ],
+        "/hi-avail-cdk-east/DeleteProductMutationResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeleteProductMutationResolver",
             "trace": [
               "/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7762:49",
               "Kernel._wrapSandboxCode (/usr/local/lib/python3.7/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8222:20)",
