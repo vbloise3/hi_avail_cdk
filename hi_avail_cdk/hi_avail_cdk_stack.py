@@ -1,15 +1,12 @@
 """ 
 Make sure you run these commands to setup your environment
-pip install paho-mqtt 
-pip install requests
-pip install appsync-client
-pip install aws_cdk.aws_appsync
 pip install aws_cdk.aws_iam
-pip install aws_cdk.aws_dynamodb
+pip install aws_cdk.aws_elasticache
+pip install redis
 
-Exercise for lab user: use the 'products' set of queries and load data
-into the products table using the suplied GraphQL api. Then aggregate the data
-from the Items and Products table in additional resolver code
+Exercise for lab user: add Redis client code to put a key/value pair to the
+Redis cluster and then do a get to retrieve your value by passing the key to your get 
+api call
 """
 from aws_cdk import (
     core,
@@ -30,7 +27,7 @@ class HiAvailCdkStack(core.Stack):
     def __init__(self, scope: core.Construct, id: str, *, stack_tag="default", **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # create VPC w/ public and private subnets in 2 AZs
+        # create VPC w/ public, private, and isolated subnets in 2 AZs
         #     this also creates NAT Gateways in our public subnets
         vpc = ec2.Vpc(
             self, stack_tag,
@@ -60,17 +57,18 @@ class HiAvailCdkStack(core.Stack):
             subnet_type=ec2.SubnetType.ISOLATED
         )
 
+        # Create our subnet group for our Redis cluster
         redis_subnet_group = elasti.CfnSubnetGroup(self, 'redis-subnet-group',
             description='The redis subnet group id',
             subnet_ids=selection.subnet_ids,
             cache_subnet_group_name='redis-subnet-group'
         )
 
+        # Create our security group for our Redis cluster
         redis_security_group = ec2.SecurityGroup(self, 'redis-security-group', vpc=vpc,
         description="allow access to cluster", allow_all_outbound=True)
         
-        redis_connections = ec2.Connections(default_port=ec2.Port.tcp(6379), security_groups=[redis_security_group])
-
+        # Create our Redis cluster
         redis = elasti.CfnCacheCluster(self, "redis-cluster", 
                 cache_node_type='cache.t2.micro',
                 engine='redis',
@@ -81,6 +79,3 @@ class HiAvailCdkStack(core.Stack):
                 vpc_security_group_ids=[redis_security_group.security_group_id]
                 )
         redis.add_depends_on(redis_subnet_group)
-
-        redisUrl = "redis://" + redis.attr_redis_endpoint_address + ":" + redis.attr_redis_endpoint_port
-        print(redisUrl)
