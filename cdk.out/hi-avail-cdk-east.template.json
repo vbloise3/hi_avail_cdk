@@ -1,413 +1,605 @@
 {
   "Resources": {
-    "Items2Api": {
-      "Type": "AWS::AppSync::GraphQLApi",
+    "UsEastStack142C3F03": {
+      "Type": "AWS::EC2::VPC",
       "Properties": {
-        "AuthenticationType": "API_KEY",
-        "Name": "items2-api"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/Items2Api"
-      }
-    },
-    "ProductsApi": {
-      "Type": "AWS::AppSync::GraphQLApi",
-      "Properties": {
-        "AuthenticationType": "API_KEY",
-        "Name": "products-api"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/ProductsApi"
-      }
-    },
-    "Items2ApiKey": {
-      "Type": "AWS::AppSync::ApiKey",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/Items2ApiKey"
-      }
-    },
-    "ProductsApiKey": {
-      "Type": "AWS::AppSync::ApiKey",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
-          ]
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/ProductsApiKey"
-      }
-    },
-    "Items2Schema": {
-      "Type": "AWS::AppSync::GraphQLSchema",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
-        },
-        "Definition": "                type items2 {\n                    items2Id: ID!\n                    name: String\n                }\n                type Paginateditems2 {\n                    items: [items2!]!\n                    nextToken: String\n                }\n                type Query {\n                    all(limit: Int, nextToken: String): Paginateditems2!\n                    getOne(items2Id: ID!): items2\n                }\n                type Mutation {\n                    save(name: String!): items2\n                    delete(items2Id: ID!): items2\n                }\n                type Schema {\n                    query: Query\n                    mutation: Mutation\n                }"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/Items2Schema"
-      }
-    },
-    "ProductsSchema": {
-      "Type": "AWS::AppSync::GraphQLSchema",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
-          ]
-        },
-        "Definition": "                type products {\n                    productsId: ID!\n                    name: String\n                }\n                type Paginatedproducts {\n                    items: [products!]!\n                    nextToken: String\n                }\n                type Query {\n                    all(limit: Int, nextToken: String): Paginatedproducts!\n                    getOne(productsId: ID!): products\n                }\n                type Mutation {\n                    save(name: String!): products\n                    delete(productsId: ID!): products\n                }\n                type Schema {\n                    query: Query\n                    mutation: Mutation\n                }"
-      },
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/ProductsSchema"
-      }
-    },
-    "Items2Table40B35551": {
-      "Type": "AWS::DynamoDB::Table",
-      "Properties": {
-        "KeySchema": [
+        "CidrBlock": "10.10.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
           {
-            "AttributeName": "items2Id",
-            "KeyType": "HASH"
-          }
-        ],
-        "AttributeDefinitions": [
-          {
-            "AttributeName": "items2Id",
-            "AttributeType": "S"
-          }
-        ],
-        "BillingMode": "PAY_PER_REQUEST",
-        "StreamSpecification": {
-          "StreamViewType": "NEW_IMAGE"
-        },
-        "TableName": "items2"
-      },
-      "UpdateReplacePolicy": "Delete",
-      "DeletionPolicy": "Delete",
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/Items2Table/Resource"
-      }
-    },
-    "ProductsTable241ADBFF": {
-      "Type": "AWS::DynamoDB::Table",
-      "Properties": {
-        "KeySchema": [
-          {
-            "AttributeName": "productsId",
-            "KeyType": "HASH"
-          }
-        ],
-        "AttributeDefinitions": [
-          {
-            "AttributeName": "productsId",
-            "AttributeType": "S"
-          }
-        ],
-        "BillingMode": "PAY_PER_REQUEST",
-        "StreamSpecification": {
-          "StreamViewType": "NEW_IMAGE"
-        },
-        "TableName": "products"
-      },
-      "UpdateReplacePolicy": "Delete",
-      "DeletionPolicy": "Delete",
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/ProductsTable/Resource"
-      }
-    },
-    "ItemsDynamoDBRole7D2E3F6D": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "appsync.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "ManagedPolicyArns": [
-          {
-            "Ref": "mpUsEastStack53DA23A2"
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/ItemsDynamoDBRole/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/Resource"
       }
     },
-    "mpUsEastStack53DA23A2": {
-      "Type": "AWS::IAM::ManagedPolicy",
+    "UsEastStackPublicSubnet1SubnetD76FA3C4": {
+      "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "PolicyDocument": {
-          "Statement": [
+        "CidrBlock": "10.10.0.0/24",
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
             {
-              "Action": "*",
-              "Effect": "Allow",
-              "Resource": "*"
+              "Fn::GetAZs": ""
             }
-          ],
-          "Version": "2012-10-17"
+          ]
         },
-        "Description": "",
-        "ManagedPolicyName": "AmazonDynamoDBFullAccessUsEastStack",
-        "Path": "/"
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          }
+        ]
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/mpUsEastStack/Resource"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/Subnet"
       }
     },
-    "Items2DataSource": {
-      "Type": "AWS::AppSync::DataSource",
+    "UsEastStackPublicSubnet1RouteTable9D35AD8F": {
+      "Type": "AWS::EC2::RouteTable",
       "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
         },
-        "Name": "Items2DynamoDataSource",
-        "Type": "AMAZON_DYNAMODB",
-        "DynamoDBConfig": {
-          "AwsRegion": "us-east-1",
-          "TableName": {
-            "Ref": "Items2Table40B35551"
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
           }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/RouteTable"
+      }
+    },
+    "UsEastStackPublicSubnet1RouteTableAssociation90FF41E0": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackPublicSubnet1RouteTable9D35AD8F"
         },
-        "ServiceRoleArn": {
-          "Fn::GetAtt": [
-            "ItemsDynamoDBRole7D2E3F6D",
-            "Arn"
-          ]
+        "SubnetId": {
+          "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/Items2DataSource"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/RouteTableAssociation"
       }
     },
-    "GetOneQueryResolver": {
-      "Type": "AWS::AppSync::Resolver",
+    "UsEastStackPublicSubnet1DefaultRoute01DEF0D8": {
+      "Type": "AWS::EC2::Route",
       "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
+        "RouteTableId": {
+          "Ref": "UsEastStackPublicSubnet1RouteTable9D35AD8F"
         },
-        "FieldName": "getOne",
-        "TypeName": "Query",
-        "DataSourceName": "Items2DynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"GetItem\",\n                \"key\": {\n                \"items2Id\": $util.dynamodb.toDynamoDBJson($ctx.args.items2Id)\n                }\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "UsEastStackIGWA8A634B8"
+        }
       },
       "DependsOn": [
-        "Items2Schema"
+        "UsEastStackVPCGW1F0CA4E5"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/GetOneQueryResolver"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/DefaultRoute"
       }
     },
-    "GetAllQueryResolver": {
-      "Type": "AWS::AppSync::Resolver",
+    "UsEastStackPublicSubnet1EIPD8A1850E": {
+      "Type": "AWS::EC2::EIP",
       "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
-        },
-        "FieldName": "all",
-        "TypeName": "Query",
-        "DataSourceName": "Items2DynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"Scan\",\n                \"limit\": $util.defaultIfNull($ctx.args.limit, 20),\n                \"nextToken\": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null))\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
-      },
-      "DependsOn": [
-        "Items2Schema"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/GetAllQueryResolver"
-      }
-    },
-    "SaveMutationResolver": {
-      "Type": "AWS::AppSync::Resolver",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
-        },
-        "FieldName": "save",
-        "TypeName": "Mutation",
-        "DataSourceName": "Items2DynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"PutItem\",\n                \"key\": {\n                    \"items2Id\": { \"S\": \"$util.autoId()\" }\n                },\n                \"attributeValues\": {\n                    \"name\": $util.dynamodb.toDynamoDBJson($ctx.args.name)\n                }\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
-      },
-      "DependsOn": [
-        "Items2Schema"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/SaveMutationResolver"
-      }
-    },
-    "DeleteMutationResolver": {
-      "Type": "AWS::AppSync::Resolver",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "Items2Api",
-            "ApiId"
-          ]
-        },
-        "FieldName": "delete",
-        "TypeName": "Mutation",
-        "DataSourceName": "Items2DynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"DeleteItem\",\n                \"key\": {\n                \"items2Id\": $util.dynamodb.toDynamoDBJson($ctx.args.items2Id)\n                }\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
-      },
-      "DependsOn": [
-        "Items2Schema"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/DeleteMutationResolver"
-      }
-    },
-    "ProductsDataSource": {
-      "Type": "AWS::AppSync::DataSource",
-      "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
-          ]
-        },
-        "Name": "ProductsDynamoDataSource",
-        "Type": "AMAZON_DYNAMODB",
-        "DynamoDBConfig": {
-          "AwsRegion": "us-east-1",
-          "TableName": {
-            "Ref": "ProductsTable241ADBFF"
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
           }
-        },
-        "ServiceRoleArn": {
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/EIP"
+      }
+    },
+    "UsEastStackPublicSubnet1NATGatewayD7C91B9A": {
+      "Type": "AWS::EC2::NatGateway",
+      "Properties": {
+        "AllocationId": {
           "Fn::GetAtt": [
-            "ItemsDynamoDBRole7D2E3F6D",
-            "Arn"
+            "UsEastStackPublicSubnet1EIPD8A1850E",
+            "AllocationId"
           ]
+        },
+        "SubnetId": {
+          "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/NATGateway"
+      }
+    },
+    "UsEastStackPublicSubnet2Subnet5FA3B28C": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.10.1.0/24",
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/Subnet"
+      }
+    },
+    "UsEastStackPublicSubnet2RouteTableA0940589": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/RouteTable"
+      }
+    },
+    "UsEastStackPublicSubnet2RouteTableAssociation15459460": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackPublicSubnet2RouteTableA0940589"
+        },
+        "SubnetId": {
+          "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/ProductsDataSource"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/RouteTableAssociation"
       }
     },
-    "GetOneProductQueryResolver": {
-      "Type": "AWS::AppSync::Resolver",
+    "UsEastStackPublicSubnet2DefaultRoute3B723B11": {
+      "Type": "AWS::EC2::Route",
       "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
-          ]
+        "RouteTableId": {
+          "Ref": "UsEastStackPublicSubnet2RouteTableA0940589"
         },
-        "FieldName": "getOne",
-        "TypeName": "Query",
-        "DataSourceName": "ProductsDynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"GetItem\",\n                \"key\": {\n                \"productsId\": $util.dynamodb.toDynamoDBJson($ctx.args.productsId)\n                }\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "UsEastStackIGWA8A634B8"
+        }
       },
       "DependsOn": [
-        "ProductsSchema"
+        "UsEastStackVPCGW1F0CA4E5"
       ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/GetOneProductQueryResolver"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/DefaultRoute"
       }
     },
-    "GetAllProductsQueryResolver": {
-      "Type": "AWS::AppSync::Resolver",
+    "UsEastStackPublicSubnet2EIP33CFE250": {
+      "Type": "AWS::EC2::EIP",
       "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
-          ]
-        },
-        "FieldName": "all",
-        "TypeName": "Query",
-        "DataSourceName": "ProductsDynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"Scan\",\n                \"limit\": $util.defaultIfNull($ctx.args.limit, 20),\n                \"nextToken\": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null))\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+          }
+        ]
       },
-      "DependsOn": [
-        "ProductsSchema"
-      ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/GetAllProductsQueryResolver"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/EIP"
       }
     },
-    "SaveProductMutationResolver": {
-      "Type": "AWS::AppSync::Resolver",
+    "UsEastStackPublicSubnet2NATGatewayA2C8CA6C": {
+      "Type": "AWS::EC2::NatGateway",
       "Properties": {
-        "ApiId": {
+        "AllocationId": {
           "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
+            "UsEastStackPublicSubnet2EIP33CFE250",
+            "AllocationId"
           ]
         },
-        "FieldName": "save",
-        "TypeName": "Mutation",
-        "DataSourceName": "ProductsDynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"PutItem\",\n                \"key\": {\n                    \"productsId\": { \"S\": \"$util.autoId()\" }\n                },\n                \"attributeValues\": {\n                    \"name\": $util.dynamodb.toDynamoDBJson($ctx.args.name)\n                }\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+        "SubnetId": {
+          "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+          }
+        ]
       },
-      "DependsOn": [
-        "ProductsSchema"
-      ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/SaveProductMutationResolver"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/NATGateway"
       }
     },
-    "DeleteProductMutationResolver": {
-      "Type": "AWS::AppSync::Resolver",
+    "UsEastStackPrivateSubnet1SubnetF02F8685": {
+      "Type": "AWS::EC2::Subnet",
       "Properties": {
-        "ApiId": {
-          "Fn::GetAtt": [
-            "ProductsApi",
-            "ApiId"
+        "CidrBlock": "10.10.2.0/24",
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
           ]
         },
-        "FieldName": "delete",
-        "TypeName": "Mutation",
-        "DataSourceName": "ProductsDynamoDataSource",
-        "RequestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"DeleteItem\",\n                \"key\": {\n                \"productsId\": $util.dynamodb.toDynamoDBJson($ctx.args.productsId)\n                }\n            }",
-        "ResponseMappingTemplate": "$util.toJson($ctx.result)"
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          }
+        ]
       },
-      "DependsOn": [
-        "ProductsSchema"
-      ],
       "Metadata": {
-        "aws:cdk:path": "hi-avail-cdk-east/DeleteProductMutationResolver"
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/Subnet"
+      }
+    },
+    "UsEastStackPrivateSubnet1RouteTableC6AA2972": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/RouteTable"
+      }
+    },
+    "UsEastStackPrivateSubnet1RouteTableAssociation87AEA703": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackPrivateSubnet1RouteTableC6AA2972"
+        },
+        "SubnetId": {
+          "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/RouteTableAssociation"
+      }
+    },
+    "UsEastStackPrivateSubnet1DefaultRoute8D9621DE": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackPrivateSubnet1RouteTableC6AA2972"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "UsEastStackPublicSubnet1NATGatewayD7C91B9A"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/DefaultRoute"
+      }
+    },
+    "UsEastStackPrivateSubnet2Subnet20A8CD2F": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.10.3.0/24",
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/Subnet"
+      }
+    },
+    "UsEastStackPrivateSubnet2RouteTable4F4D81F5": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/RouteTable"
+      }
+    },
+    "UsEastStackPrivateSubnet2RouteTableAssociation1599D746": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackPrivateSubnet2RouteTable4F4D81F5"
+        },
+        "SubnetId": {
+          "Ref": "UsEastStackPrivateSubnet2Subnet20A8CD2F"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/RouteTableAssociation"
+      }
+    },
+    "UsEastStackPrivateSubnet2DefaultRoute3BCE4EA0": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackPrivateSubnet2RouteTable4F4D81F5"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "UsEastStackPublicSubnet2NATGatewayA2C8CA6C"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/DefaultRoute"
+      }
+    },
+    "UsEastStackDBSubnet1SubnetC32A02B2": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.10.4.0/24",
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet1"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "DB"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Isolated"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/Subnet"
+      }
+    },
+    "UsEastStackDBSubnet1RouteTable1BE046AF": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/RouteTable"
+      }
+    },
+    "UsEastStackDBSubnet1RouteTableAssociationAF8B6D22": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackDBSubnet1RouteTable1BE046AF"
+        },
+        "SubnetId": {
+          "Ref": "UsEastStackDBSubnet1SubnetC32A02B2"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/RouteTableAssociation"
+      }
+    },
+    "UsEastStackDBSubnet2Subnet4F7A8A16": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.10.5.0/24",
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet2"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "DB"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Isolated"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/Subnet"
+      }
+    },
+    "UsEastStackDBSubnet2RouteTableE33562E4": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack/DBSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/RouteTable"
+      }
+    },
+    "UsEastStackDBSubnet2RouteTableAssociationC8E1E9F3": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "UsEastStackDBSubnet2RouteTableE33562E4"
+        },
+        "SubnetId": {
+          "Ref": "UsEastStackDBSubnet2Subnet4F7A8A16"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/RouteTableAssociation"
+      }
+    },
+    "UsEastStackIGWA8A634B8": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "hi-avail-cdk-east/UsEastStack"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/IGW"
+      }
+    },
+    "UsEastStackVPCGW1F0CA4E5": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        },
+        "InternetGatewayId": {
+          "Ref": "UsEastStackIGWA8A634B8"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/UsEastStack/VPCGW"
+      }
+    },
+    "redissubnetgroup": {
+      "Type": "AWS::ElastiCache::SubnetGroup",
+      "Properties": {
+        "Description": "The redis subnet group id",
+        "SubnetIds": [
+          {
+            "Ref": "UsEastStackDBSubnet1SubnetC32A02B2"
+          },
+          {
+            "Ref": "UsEastStackDBSubnet2Subnet4F7A8A16"
+          }
+        ],
+        "CacheSubnetGroupName": "redis-subnet-group"
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/redis-subnet-group"
       }
     }
   }

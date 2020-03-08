@@ -12,437 +12,695 @@
         "id": "hi-avail-cdk-east",
         "path": "hi-avail-cdk-east",
         "children": {
-          "Items2Api": {
-            "id": "Items2Api",
-            "path": "hi-avail-cdk-east/Items2Api",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::GraphQLApi",
-              "aws:cdk:cloudformation:props": {
-                "authenticationType": "API_KEY",
-                "name": "items2-api"
-              }
-            }
-          },
-          "ProductsApi": {
-            "id": "ProductsApi",
-            "path": "hi-avail-cdk-east/ProductsApi",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::GraphQLApi",
-              "aws:cdk:cloudformation:props": {
-                "authenticationType": "API_KEY",
-                "name": "products-api"
-              }
-            }
-          },
-          "Items2ApiKey": {
-            "id": "Items2ApiKey",
-            "path": "hi-avail-cdk-east/Items2ApiKey",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::ApiKey",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                }
-              }
-            }
-          },
-          "ProductsApiKey": {
-            "id": "ProductsApiKey",
-            "path": "hi-avail-cdk-east/ProductsApiKey",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::ApiKey",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                }
-              }
-            }
-          },
-          "Items2Schema": {
-            "id": "Items2Schema",
-            "path": "hi-avail-cdk-east/Items2Schema",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::GraphQLSchema",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                },
-                "definition": "                type items2 {\n                    items2Id: ID!\n                    name: String\n                }\n                type Paginateditems2 {\n                    items: [items2!]!\n                    nextToken: String\n                }\n                type Query {\n                    all(limit: Int, nextToken: String): Paginateditems2!\n                    getOne(items2Id: ID!): items2\n                }\n                type Mutation {\n                    save(name: String!): items2\n                    delete(items2Id: ID!): items2\n                }\n                type Schema {\n                    query: Query\n                    mutation: Mutation\n                }"
-              }
-            }
-          },
-          "ProductsSchema": {
-            "id": "ProductsSchema",
-            "path": "hi-avail-cdk-east/ProductsSchema",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::GraphQLSchema",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                },
-                "definition": "                type products {\n                    productsId: ID!\n                    name: String\n                }\n                type Paginatedproducts {\n                    items: [products!]!\n                    nextToken: String\n                }\n                type Query {\n                    all(limit: Int, nextToken: String): Paginatedproducts!\n                    getOne(productsId: ID!): products\n                }\n                type Mutation {\n                    save(name: String!): products\n                    delete(productsId: ID!): products\n                }\n                type Schema {\n                    query: Query\n                    mutation: Mutation\n                }"
-              }
-            }
-          },
-          "Items2Table": {
-            "id": "Items2Table",
-            "path": "hi-avail-cdk-east/Items2Table",
+          "UsEastStack": {
+            "id": "UsEastStack",
+            "path": "hi-avail-cdk-east/UsEastStack",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "hi-avail-cdk-east/Items2Table/Resource",
+                "path": "hi-avail-cdk-east/UsEastStack/Resource",
                 "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
                   "aws:cdk:cloudformation:props": {
-                    "keySchema": [
+                    "cidrBlock": "10.10.0.0/16",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
                       {
-                        "attributeName": "items2Id",
-                        "keyType": "HASH"
-                      }
-                    ],
-                    "attributeDefinitions": [
-                      {
-                        "attributeName": "items2Id",
-                        "attributeType": "S"
-                      }
-                    ],
-                    "billingMode": "PAY_PER_REQUEST",
-                    "streamSpecification": {
-                      "streamViewType": "NEW_IMAGE"
-                    },
-                    "tableName": "items2"
-                  }
-                }
-              },
-              "ScalingRole": {
-                "id": "ScalingRole",
-                "path": "hi-avail-cdk-east/Items2Table/ScalingRole"
-              }
-            }
-          },
-          "ProductsTable": {
-            "id": "ProductsTable",
-            "path": "hi-avail-cdk-east/ProductsTable",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "hi-avail-cdk-east/ProductsTable/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
-                  "aws:cdk:cloudformation:props": {
-                    "keySchema": [
-                      {
-                        "attributeName": "productsId",
-                        "keyType": "HASH"
-                      }
-                    ],
-                    "attributeDefinitions": [
-                      {
-                        "attributeName": "productsId",
-                        "attributeType": "S"
-                      }
-                    ],
-                    "billingMode": "PAY_PER_REQUEST",
-                    "streamSpecification": {
-                      "streamViewType": "NEW_IMAGE"
-                    },
-                    "tableName": "products"
-                  }
-                }
-              },
-              "ScalingRole": {
-                "id": "ScalingRole",
-                "path": "hi-avail-cdk-east/ProductsTable/ScalingRole"
-              }
-            }
-          },
-          "ItemsDynamoDBRole": {
-            "id": "ItemsDynamoDBRole",
-            "path": "hi-avail-cdk-east/ItemsDynamoDBRole",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "hi-avail-cdk-east/ItemsDynamoDBRole/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                  "aws:cdk:cloudformation:props": {
-                    "assumeRolePolicyDocument": {
-                      "Statement": [
-                        {
-                          "Action": "sts:AssumeRole",
-                          "Effect": "Allow",
-                          "Principal": {
-                            "Service": "appsync.amazonaws.com"
-                          }
-                        }
-                      ],
-                      "Version": "2012-10-17"
-                    },
-                    "managedPolicyArns": [
-                      {
-                        "Ref": "mpUsEastStack53DA23A2"
+                        "key": "Name",
+                        "value": "hi-avail-cdk-east/UsEastStack"
                       }
                     ]
                   }
                 }
-              }
-            }
-          },
-          "mpUsEastStack": {
-            "id": "mpUsEastStack",
-            "path": "hi-avail-cdk-east/mpUsEastStack",
-            "children": {
-              "Resource": {
-                "id": "Resource",
-                "path": "hi-avail-cdk-east/mpUsEastStack/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::IAM::ManagedPolicy",
-                  "aws:cdk:cloudformation:props": {
-                    "policyDocument": {
-                      "Statement": [
-                        {
-                          "Action": "*",
-                          "Effect": "Allow",
-                          "Resource": "*"
+              },
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.0.0/24",
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPublicSubnet1RouteTable9D35AD8F"
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
                         }
-                      ],
-                      "Version": "2012-10-17"
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPublicSubnet1RouteTable9D35AD8F"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "UsEastStackIGWA8A634B8"
+                        }
+                      }
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "UsEastStackPublicSubnet1EIPD8A1850E",
+                            "AllocationId"
+                          ]
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackPublicSubnet1SubnetD76FA3C4"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.1.0/24",
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPublicSubnet2RouteTableA0940589"
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPublicSubnet2RouteTableA0940589"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "UsEastStackIGWA8A634B8"
+                        }
+                      }
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "hi-avail-cdk-east/UsEastStack/PublicSubnet2/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "UsEastStackPublicSubnet2EIP33CFE250",
+                            "AllocationId"
+                          ]
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackPublicSubnet2Subnet5FA3B28C"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PublicSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "PrivateSubnet1": {
+                "id": "PrivateSubnet1",
+                "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.2.0/24",
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPrivateSubnet1RouteTableC6AA2972"
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackPrivateSubnet1SubnetF02F8685"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPrivateSubnet1RouteTableC6AA2972"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "UsEastStackPublicSubnet1NATGatewayD7C91B9A"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "PrivateSubnet2": {
+                "id": "PrivateSubnet2",
+                "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.3.0/24",
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPrivateSubnet2RouteTable4F4D81F5"
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackPrivateSubnet2Subnet20A8CD2F"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "hi-avail-cdk-east/UsEastStack/PrivateSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackPrivateSubnet2RouteTable4F4D81F5"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "UsEastStackPublicSubnet2NATGatewayA2C8CA6C"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "DBSubnet1": {
+                "id": "DBSubnet1",
+                "path": "hi-avail-cdk-east/UsEastStack/DBSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.4.0/24",
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            0,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/DBSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "DB"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Isolated"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/DBSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackDBSubnet1RouteTable1BE046AF"
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackDBSubnet1SubnetC32A02B2"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "DBSubnet2": {
+                "id": "DBSubnet2",
+                "path": "hi-avail-cdk-east/UsEastStack/DBSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.5.0/24",
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "availabilityZone": {
+                          "Fn::Select": [
+                            1,
+                            {
+                              "Fn::GetAZs": ""
+                            }
+                          ]
+                        },
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/DBSubnet2"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "DB"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Isolated"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "UsEastStack142C3F03"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "hi-avail-cdk-east/UsEastStack/DBSubnet2"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "hi-avail-cdk-east/UsEastStack/DBSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "UsEastStackDBSubnet2RouteTableE33562E4"
+                        },
+                        "subnetId": {
+                          "Ref": "UsEastStackDBSubnet2Subnet4F7A8A16"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "hi-avail-cdk-east/UsEastStack/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "hi-avail-cdk-east/UsEastStack"
+                      }
+                    ]
+                  }
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "hi-avail-cdk-east/UsEastStack/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "vpcId": {
+                      "Ref": "UsEastStack142C3F03"
                     },
-                    "description": "",
-                    "managedPolicyName": "AmazonDynamoDBFullAccessUsEastStack",
-                    "path": "/"
+                    "internetGatewayId": {
+                      "Ref": "UsEastStackIGWA8A634B8"
+                    }
                   }
                 }
               }
             }
           },
-          "Items2DataSource": {
-            "id": "Items2DataSource",
-            "path": "hi-avail-cdk-east/Items2DataSource",
+          "redis-subnet-group": {
+            "id": "redis-subnet-group",
+            "path": "hi-avail-cdk-east/redis-subnet-group",
             "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::DataSource",
+              "aws:cdk:cloudformation:type": "AWS::ElastiCache::SubnetGroup",
               "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                },
-                "name": "Items2DynamoDataSource",
-                "type": "AMAZON_DYNAMODB",
-                "dynamoDbConfig": {
-                  "awsRegion": "us-east-1",
-                  "tableName": {
-                    "Ref": "Items2Table40B35551"
+                "description": "The redis subnet group id",
+                "subnetIds": [
+                  {
+                    "Ref": "UsEastStackDBSubnet1SubnetC32A02B2"
+                  },
+                  {
+                    "Ref": "UsEastStackDBSubnet2Subnet4F7A8A16"
                   }
-                },
-                "serviceRoleArn": {
-                  "Fn::GetAtt": [
-                    "ItemsDynamoDBRole7D2E3F6D",
-                    "Arn"
-                  ]
-                }
-              }
-            }
-          },
-          "GetOneQueryResolver": {
-            "id": "GetOneQueryResolver",
-            "path": "hi-avail-cdk-east/GetOneQueryResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "getOne",
-                "typeName": "Query",
-                "dataSourceName": "Items2DynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"GetItem\",\n                \"key\": {\n                \"items2Id\": $util.dynamodb.toDynamoDBJson($ctx.args.items2Id)\n                }\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "GetAllQueryResolver": {
-            "id": "GetAllQueryResolver",
-            "path": "hi-avail-cdk-east/GetAllQueryResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "all",
-                "typeName": "Query",
-                "dataSourceName": "Items2DynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"Scan\",\n                \"limit\": $util.defaultIfNull($ctx.args.limit, 20),\n                \"nextToken\": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null))\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "SaveMutationResolver": {
-            "id": "SaveMutationResolver",
-            "path": "hi-avail-cdk-east/SaveMutationResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "save",
-                "typeName": "Mutation",
-                "dataSourceName": "Items2DynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"PutItem\",\n                \"key\": {\n                    \"items2Id\": { \"S\": \"$util.autoId()\" }\n                },\n                \"attributeValues\": {\n                    \"name\": $util.dynamodb.toDynamoDBJson($ctx.args.name)\n                }\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "DeleteMutationResolver": {
-            "id": "DeleteMutationResolver",
-            "path": "hi-avail-cdk-east/DeleteMutationResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "Items2Api",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "delete",
-                "typeName": "Mutation",
-                "dataSourceName": "Items2DynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"DeleteItem\",\n                \"key\": {\n                \"items2Id\": $util.dynamodb.toDynamoDBJson($ctx.args.items2Id)\n                }\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "ProductsDataSource": {
-            "id": "ProductsDataSource",
-            "path": "hi-avail-cdk-east/ProductsDataSource",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::DataSource",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                },
-                "name": "ProductsDynamoDataSource",
-                "type": "AMAZON_DYNAMODB",
-                "dynamoDbConfig": {
-                  "awsRegion": "us-east-1",
-                  "tableName": {
-                    "Ref": "ProductsTable241ADBFF"
-                  }
-                },
-                "serviceRoleArn": {
-                  "Fn::GetAtt": [
-                    "ItemsDynamoDBRole7D2E3F6D",
-                    "Arn"
-                  ]
-                }
-              }
-            }
-          },
-          "GetOneProductQueryResolver": {
-            "id": "GetOneProductQueryResolver",
-            "path": "hi-avail-cdk-east/GetOneProductQueryResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "getOne",
-                "typeName": "Query",
-                "dataSourceName": "ProductsDynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"GetItem\",\n                \"key\": {\n                \"productsId\": $util.dynamodb.toDynamoDBJson($ctx.args.productsId)\n                }\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "GetAllProductsQueryResolver": {
-            "id": "GetAllProductsQueryResolver",
-            "path": "hi-avail-cdk-east/GetAllProductsQueryResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "all",
-                "typeName": "Query",
-                "dataSourceName": "ProductsDynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"Scan\",\n                \"limit\": $util.defaultIfNull($ctx.args.limit, 20),\n                \"nextToken\": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null))\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "SaveProductMutationResolver": {
-            "id": "SaveProductMutationResolver",
-            "path": "hi-avail-cdk-east/SaveProductMutationResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "save",
-                "typeName": "Mutation",
-                "dataSourceName": "ProductsDynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"PutItem\",\n                \"key\": {\n                    \"productsId\": { \"S\": \"$util.autoId()\" }\n                },\n                \"attributeValues\": {\n                    \"name\": $util.dynamodb.toDynamoDBJson($ctx.args.name)\n                }\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
-              }
-            }
-          },
-          "DeleteProductMutationResolver": {
-            "id": "DeleteProductMutationResolver",
-            "path": "hi-avail-cdk-east/DeleteProductMutationResolver",
-            "attributes": {
-              "aws:cdk:cloudformation:type": "AWS::AppSync::Resolver",
-              "aws:cdk:cloudformation:props": {
-                "apiId": {
-                  "Fn::GetAtt": [
-                    "ProductsApi",
-                    "ApiId"
-                  ]
-                },
-                "fieldName": "delete",
-                "typeName": "Mutation",
-                "dataSourceName": "ProductsDynamoDataSource",
-                "requestMappingTemplate": "            {\n                \"version\": \"2017-02-28\",\n                \"operation\": \"DeleteItem\",\n                \"key\": {\n                \"productsId\": $util.dynamodb.toDynamoDBJson($ctx.args.productsId)\n                }\n            }",
-                "responseMappingTemplate": "$util.toJson($ctx.result)"
+                ],
+                "cacheSubnetGroupName": "redis-subnet-group"
               }
             }
           }
