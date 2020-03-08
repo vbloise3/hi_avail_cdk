@@ -703,6 +703,55 @@
                 "cacheSubnetGroupName": "redis-subnet-group"
               }
             }
+          },
+          "redis-security-group": {
+            "id": "redis-security-group",
+            "path": "hi-avail-cdk-east/redis-security-group",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "hi-avail-cdk-east/redis-security-group/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "allow access to cluster",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "Allow all outbound traffic by default",
+                        "ipProtocol": "-1"
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "UsEastStack142C3F03"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "redis-cluster": {
+            "id": "redis-cluster",
+            "path": "hi-avail-cdk-east/redis-cluster",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::ElastiCache::CacheCluster",
+              "aws:cdk:cloudformation:props": {
+                "cacheNodeType": "cache.t2.micro",
+                "engine": "redis",
+                "numCacheNodes": 1,
+                "cacheSubnetGroupName": "redis-subnet-group",
+                "engineVersion": "5.0.6",
+                "port": 6379,
+                "vpcSecurityGroupIds": [
+                  {
+                    "Fn::GetAtt": [
+                      "redissecuritygroup23EB6E5D",
+                      "GroupId"
+                    ]
+                  }
+                ]
+              }
+            }
           }
         }
       }

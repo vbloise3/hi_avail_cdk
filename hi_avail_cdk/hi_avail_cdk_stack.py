@@ -60,9 +60,27 @@ class HiAvailCdkStack(core.Stack):
             subnet_type=ec2.SubnetType.ISOLATED
         )
 
-        redisSubnetGroup = elasti.CfnSubnetGroup(self, 'redis-subnet-group',
+        redis_subnet_group = elasti.CfnSubnetGroup(self, 'redis-subnet-group',
             description='The redis subnet group id',
             subnet_ids=selection.subnet_ids,
             cache_subnet_group_name='redis-subnet-group'
         )
+
+        redis_security_group = ec2.SecurityGroup(self, 'redis-security-group', vpc=vpc,
+        description="allow access to cluster", allow_all_outbound=True)
         
+        redis_connections = ec2.Connections(default_port=ec2.Port.tcp(6379), security_groups=[redis_security_group])
+
+        redis = elasti.CfnCacheCluster(self, "redis-cluster", 
+                cache_node_type='cache.t2.micro',
+                engine='redis',
+                engine_version='5.0.6',
+                num_cache_nodes=1,
+                port=6379,
+                cache_subnet_group_name=redis_subnet_group.cache_subnet_group_name,
+                vpc_security_group_ids=[redis_security_group.security_group_id]
+                )
+        redis.add_depends_on(redis_subnet_group)
+
+        redisUrl = "redis://" + redis.attr_redis_endpoint_address + ":" + redis.attr_redis_endpoint_port
+        print(redisUrl)

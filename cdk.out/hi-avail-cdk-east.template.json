@@ -601,6 +601,50 @@
       "Metadata": {
         "aws:cdk:path": "hi-avail-cdk-east/redis-subnet-group"
       }
+    },
+    "redissecuritygroup23EB6E5D": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "allow access to cluster",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "VpcId": {
+          "Ref": "UsEastStack142C3F03"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/redis-security-group/Resource"
+      }
+    },
+    "rediscluster": {
+      "Type": "AWS::ElastiCache::CacheCluster",
+      "Properties": {
+        "CacheNodeType": "cache.t2.micro",
+        "Engine": "redis",
+        "NumCacheNodes": 1,
+        "CacheSubnetGroupName": "redis-subnet-group",
+        "EngineVersion": "5.0.6",
+        "Port": 6379,
+        "VpcSecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "redissecuritygroup23EB6E5D",
+              "GroupId"
+            ]
+          }
+        ]
+      },
+      "DependsOn": [
+        "redissubnetgroup"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "hi-avail-cdk-east/redis-cluster"
+      }
     }
   }
 }
