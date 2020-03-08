@@ -6,7 +6,7 @@ pip install redis
 
 Exercise for lab user: add Redis client code to put a key/value pair to the
 Redis cluster and then do a get to retrieve your value by passing the key to your get 
-api call
+api call. Then add an RDS or DynamoDB database and connect your Redis cluster to your data store.
 """
 from aws_cdk import (
     core,
@@ -67,7 +67,7 @@ class HiAvailCdkStack(core.Stack):
         # Create our security group for our Redis cluster
         redis_security_group = ec2.SecurityGroup(self, 'redis-security-group', vpc=vpc,
         description="allow access to cluster", allow_all_outbound=True)
-        
+
         # Create our Redis cluster
         redis = elasti.CfnCacheCluster(self, "redis-cluster", 
                 cache_node_type='cache.t2.micro',
@@ -79,3 +79,4 @@ class HiAvailCdkStack(core.Stack):
                 vpc_security_group_ids=[redis_security_group.security_group_id]
                 )
         redis.add_depends_on(redis_subnet_group)
+        
