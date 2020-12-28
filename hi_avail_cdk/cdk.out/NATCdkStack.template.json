@@ -1,0 +1,685 @@
+{
+  "Resources": {
+    "NATVpc7C5DAAB1": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/Resource"
+      }
+    },
+    "NATVpcPublicSubnet1SubnetD1C51D76": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.0.0/18",
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          },
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet1/Subnet"
+      }
+    },
+    "NATVpcPublicSubnet1RouteTableB14FE3EC": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet1/RouteTable"
+      }
+    },
+    "NATVpcPublicSubnet1RouteTableAssociationD909FCEB": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPublicSubnet1RouteTableB14FE3EC"
+        },
+        "SubnetId": {
+          "Ref": "NATVpcPublicSubnet1SubnetD1C51D76"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet1/RouteTableAssociation"
+      }
+    },
+    "NATVpcPublicSubnet1DefaultRoute54637F45": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPublicSubnet1RouteTableB14FE3EC"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "NATVpcIGW0E85C1CA"
+        }
+      },
+      "DependsOn": [
+        "NATVpcVPCGW05D50887"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet1/DefaultRoute"
+      }
+    },
+    "NATVpcPublicSubnet1EIP9B3A7186": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet1/EIP"
+      }
+    },
+    "NATVpcPublicSubnet1NATGatewayD2AD8B25": {
+      "Type": "AWS::EC2::NatGateway",
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "NATVpcPublicSubnet1EIP9B3A7186",
+            "AllocationId"
+          ]
+        },
+        "SubnetId": {
+          "Ref": "NATVpcPublicSubnet1SubnetD1C51D76"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet1/NATGateway"
+      }
+    },
+    "NATVpcPublicSubnet2Subnet68C1F365": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.64.0/18",
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          },
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet2/Subnet"
+      }
+    },
+    "NATVpcPublicSubnet2RouteTable6755F190": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet2/RouteTable"
+      }
+    },
+    "NATVpcPublicSubnet2RouteTableAssociation9E6ED89E": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPublicSubnet2RouteTable6755F190"
+        },
+        "SubnetId": {
+          "Ref": "NATVpcPublicSubnet2Subnet68C1F365"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet2/RouteTableAssociation"
+      }
+    },
+    "NATVpcPublicSubnet2DefaultRouteA49E1BC9": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPublicSubnet2RouteTable6755F190"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "NATVpcIGW0E85C1CA"
+        }
+      },
+      "DependsOn": [
+        "NATVpcVPCGW05D50887"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet2/DefaultRoute"
+      }
+    },
+    "NATVpcPublicSubnet2EIPEC314181": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet2/EIP"
+      }
+    },
+    "NATVpcPublicSubnet2NATGatewayDE8B3536": {
+      "Type": "AWS::EC2::NatGateway",
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "NATVpcPublicSubnet2EIPEC314181",
+            "AllocationId"
+          ]
+        },
+        "SubnetId": {
+          "Ref": "NATVpcPublicSubnet2Subnet68C1F365"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PublicSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PublicSubnet2/NATGateway"
+      }
+    },
+    "NATVpcPrivateSubnet1SubnetC7440145": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.128.0/18",
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          },
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PrivateSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet1/Subnet"
+      }
+    },
+    "NATVpcPrivateSubnet1RouteTableE7D48BA7": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PrivateSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet1/RouteTable"
+      }
+    },
+    "NATVpcPrivateSubnet1RouteTableAssociation49057EB9": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPrivateSubnet1RouteTableE7D48BA7"
+        },
+        "SubnetId": {
+          "Ref": "NATVpcPrivateSubnet1SubnetC7440145"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet1/RouteTableAssociation"
+      }
+    },
+    "NATVpcPrivateSubnet1DefaultRoute606A0328": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPrivateSubnet1RouteTableE7D48BA7"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "NATVpcPublicSubnet1NATGatewayD2AD8B25"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet1/DefaultRoute"
+      }
+    },
+    "NATVpcPrivateSubnet2SubnetE0163A67": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.0.192.0/18",
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "AvailabilityZone": {
+          "Fn::Select": [
+            1,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          },
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PrivateSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet2/Subnet"
+      }
+    },
+    "NATVpcPrivateSubnet2RouteTable18423AB4": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc/PrivateSubnet2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet2/RouteTable"
+      }
+    },
+    "NATVpcPrivateSubnet2RouteTableAssociation324789A9": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPrivateSubnet2RouteTable18423AB4"
+        },
+        "SubnetId": {
+          "Ref": "NATVpcPrivateSubnet2SubnetE0163A67"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet2/RouteTableAssociation"
+      }
+    },
+    "NATVpcPrivateSubnet2DefaultRouteF2F81C4E": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "NATVpcPrivateSubnet2RouteTable18423AB4"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "NATVpcPublicSubnet2NATGatewayDE8B3536"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/PrivateSubnet2/DefaultRoute"
+      }
+    },
+    "NATVpcIGW0E85C1CA": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/NAT_Vpc"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/IGW"
+      }
+    },
+    "NATVpcVPCGW05D50887": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        },
+        "InternetGatewayId": {
+          "Ref": "NATVpcIGW0E85C1CA"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/NAT_Vpc/VPCGW"
+      }
+    },
+    "Role1ABCC5F0": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Ref": "mpF33C555B"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/Role/Resource"
+      }
+    },
+    "mpF33C555B": {
+      "Type": "AWS::IAM::ManagedPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "*",
+              "Effect": "Allow",
+              "Resource": "*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "Description": "",
+        "ManagedPolicyName": "AmazonSSMManagedInstanceCore",
+        "Path": "/"
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/mp/Resource"
+      }
+    },
+    "PrivateInstanceInstanceSecurityGroup181877AD": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "NATCdkStack/PrivateInstance/InstanceSecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/PrivateInstance"
+          }
+        ],
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/PrivateInstance/InstanceSecurityGroup/Resource"
+      }
+    },
+    "PrivateInstanceInstanceProfile81FB7A0C": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "Role1ABCC5F0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/PrivateInstance/InstanceProfile"
+      }
+    },
+    "PrivateInstance5CA423EB": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "IamInstanceProfile": {
+          "Ref": "PrivateInstanceInstanceProfile81FB7A0C"
+        },
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "t2.micro",
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "PrivateInstanceInstanceSecurityGroup181877AD",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetId": {
+          "Ref": "NATVpcPrivateSubnet1SubnetC7440145"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/PrivateInstance"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
+        }
+      },
+      "DependsOn": [
+        "Role1ABCC5F0"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/PrivateInstance/Resource"
+      }
+    },
+    "PublicInstanceInstanceSecurityGroup19199F6B": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "NATCdkStack/PublicInstance/InstanceSecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/PublicInstance"
+          }
+        ],
+        "VpcId": {
+          "Ref": "NATVpc7C5DAAB1"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/PublicInstance/InstanceSecurityGroup/Resource"
+      }
+    },
+    "PublicInstanceInstanceProfile4800222F": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "Role1ABCC5F0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/PublicInstance/InstanceProfile"
+      }
+    },
+    "PublicInstance54C2518A": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": {
+          "Fn::Select": [
+            0,
+            {
+              "Fn::GetAZs": ""
+            }
+          ]
+        },
+        "IamInstanceProfile": {
+          "Ref": "PublicInstanceInstanceProfile4800222F"
+        },
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "t2.micro",
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "PublicInstanceInstanceSecurityGroup19199F6B",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetId": {
+          "Ref": "NATVpcPublicSubnet1SubnetD1C51D76"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "NATCdkStack/PublicInstance"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": "#!/bin/bash\nsudo yum update -y\nsudo touch metadata.sh\nsudo chmod 777 metadata.sh\nsudo echo 'curl http://169.254.169.254/latest/meta-data/$1' > metadata.sh\nsudo echo 'VAR=' >> metadata.sh\nsudo echo 'echo $VAR' >> metadata.sh"
+        }
+      },
+      "DependsOn": [
+        "Role1ABCC5F0"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/PublicInstance/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=1.80.0,@aws-cdk/assets=1.80.0,@aws-cdk/aws-cloudwatch=1.80.0,@aws-cdk/aws-ec2=1.80.0,@aws-cdk/aws-events=1.80.0,@aws-cdk/aws-iam=1.80.0,@aws-cdk/aws-kms=1.80.0,@aws-cdk/aws-logs=1.80.0,@aws-cdk/aws-s3=1.80.0,@aws-cdk/aws-s3-assets=1.80.0,@aws-cdk/aws-ssm=1.80.0,@aws-cdk/cloud-assembly-schema=1.80.0,@aws-cdk/core=1.80.0,@aws-cdk/cx-api=1.80.0,@aws-cdk/region-info=1.80.0,jsii-runtime=Python/3.9.0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "NATCdkStack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2"
+    }
+  }
+}

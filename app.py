@@ -2,7 +2,7 @@
 
 from aws_cdk import core
 
-from hi_avail_cdk.hi_avail_cdk_stack import HiAvailCdkStack
+from NAT_vpc_stack import HiAvailCdkStack
 
 
 app = core.App()

@@ -1,0 +1,691 @@
+{
+  "version": "7.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "NATCdkStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-1",
+      "properties": {
+        "templateFile": "NATCdkStack.template.json"
+      },
+      "metadata": {
+        "/NATCdkStack/NAT_Vpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpc7C5DAAB1",
+            "trace": [
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:340:25)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet1SubnetD1C51D76",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:662:24)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:831:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet1RouteTableB14FE3EC",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:678:23)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:831:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet1RouteTableAssociationD909FCEB",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:683:9)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:831:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet1DefaultRoute54637F45",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:718:23)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:373:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:372:32)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet1EIP9B3A7186",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:845:27)",
+              "NatGatewayProvider.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:59:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:520:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:378:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet1NATGatewayD2AD8B25",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:843:21)",
+              "NatGatewayProvider.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:59:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:520:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:378:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet2Subnet68C1F365",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:662:24)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:831:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet2RouteTable6755F190",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:678:23)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:831:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet2RouteTableAssociation9E6ED89E",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:683:9)",
+              "new PublicSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:831:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:562:42",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet2DefaultRouteA49E1BC9",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:718:23)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:373:30",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:372:32)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet2EIPEC314181",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:845:27)",
+              "NatGatewayProvider.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:59:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:520:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:378:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PublicSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPublicSubnet2NATGatewayDE8B3536",
+            "trace": [
+              "PublicSubnet.addNatGateway (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:843:21)",
+              "NatGatewayProvider.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:59:33)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:520:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:378:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet1SubnetC7440145",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:662:24)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:869:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet1RouteTableE7D48BA7",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:678:23)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:869:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet1RouteTableAssociation49057EB9",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:683:9)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:869:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet1DefaultRoute606A0328",
+            "trace": [
+              "PrivateSubnet.addRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:765:23)",
+              "NatGatewayProvider.configureSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:70:16)",
+              "NatGatewayProvider.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:64:18)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:520:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:378:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet2SubnetE0163A67",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:662:24)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:869:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet2RouteTable18423AB4",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:678:23)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:869:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet2RouteTableAssociation324789A9",
+            "trace": [
+              "new Subnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:683:9)",
+              "new PrivateSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:869:9)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:567:43",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:546:32)",
+              "Vpc.createSubnets (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:542:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:361:14)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcPrivateSubnet2DefaultRouteF2F81C4E",
+            "trace": [
+              "PrivateSubnet.addRoute (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:765:23)",
+              "NatGatewayProvider.configureSubnet (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:70:16)",
+              "NatGatewayProvider.configureNat (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/nat.js:64:18)",
+              "Vpc.createNatGateways (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:520:18)",
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:378:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcIGW0E85C1CA",
+            "trace": [
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:365:25)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/NAT_Vpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NATVpcVPCGW05D50887",
+            "trace": [
+              "new Vpc (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/vpc.js:368:25)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Role1ABCC5F0",
+            "trace": [
+              "new Role (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-iam/lib/role.js:70:22)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/mp/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mpF33C555B",
+            "trace": [
+              "new ManagedPolicy (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-iam/lib/managed-policy.js:35:26)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/PrivateInstance/InstanceSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PrivateInstanceInstanceSecurityGroup181877AD",
+            "trace": [
+              "new SecurityGroup (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/security-group.js:205:30)",
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:36:34)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/PrivateInstance/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PrivateInstanceInstanceProfile81FB7A0C",
+            "trace": [
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:48:28)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/PrivateInstance/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PrivateInstance5CA423EB",
+            "trace": [
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:83:25)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+            "trace": [
+              "Function.fromStringParameterAttributes (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ssm/lib/parameter.js:132:15)",
+              "Function.valueForTypedStringParameter (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ssm/lib/parameter.js:206:21)",
+              "AmazonLinuxImage.getImage (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/machine-image.js:123:41)",
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:52:48)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/PublicInstance/InstanceSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PublicInstanceInstanceSecurityGroup19199F6B",
+            "trace": [
+              "new SecurityGroup (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/security-group.js:205:30)",
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:36:34)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/PublicInstance/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PublicInstanceInstanceProfile4800222F",
+            "trace": [
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:48:28)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/PublicInstance/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PublicInstance54C2518A",
+            "trace": [
+              "new Instance (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/aws-ec2/lib/instance.js:83:25)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:49",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "Kernel._create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3556:26)",
+              "Kernel.create (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3300:21)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/NATCdkStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/private/synthesis.js:127:9",
+              "visit (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "visit (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/private/synthesis.js:178:9)",
+              "injectMetadataResources (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/private/synthesis.js:116:5)",
+              "Object.synthesize (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/private/var/folders/yj/gr8yld257v76bw96lf2qbjs80000gr/T/jsii-kernel-Hg69pd/node_modules/@aws-cdk/core/lib/stage.js:98:41)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3380:51",
+              "Kernel._wrapSandboxCode (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4040:16)",
+              "/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3380:25",
+              "Kernel._ensureSync (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:4017:20)",
+              "Kernel.invoke (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:3379:26)",
+              "KernelHost.processRequest (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13119:28)",
+              "KernelHost.run (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13057:14)",
+              "Immediate._onImmediate (/usr/local/lib/python3.9/site-packages/jsii/_embedded/jsii/jsii-runtime.js:13060:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
