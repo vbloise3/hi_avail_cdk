@@ -1,7 +1,12 @@
 """ 
+Make sure you create this file, NAT_vpc_stack.py, 
+   a cdk.json file, and an app.py file
 Make sure you run these commands to setup your environment
-pip install aws_cdk.aws_ec2
-pip install aws_cdk.aws_iam
+   pip install aws_cdk.aws_ec2
+   pip install aws_cdk.aws_iam
+Then run cdk synth
+then run cdk deploy
+When you are done with the lab run cdk destroy
 """
 
 from aws_cdk import (
